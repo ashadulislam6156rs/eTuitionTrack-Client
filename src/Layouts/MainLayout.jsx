@@ -2,21 +2,23 @@ import React from 'react';
 import { Outlet } from 'react-router';
 import Navbar from '../Componants/Navbar/Navbar';
 import Footer from '../Componants/Footer/Footer';
+import { ToastContainer } from 'react-toastify';
 
 
 const MainLayout = () => {
     return (
-        <div>
-            <header>
-                <Navbar></Navbar>
-            </header>
-            <main>
-                <Outlet></Outlet>
-            </main>
-            <footer>
-                <Footer></Footer>
-            </footer>
-        </div>
+      <div className="flex flex-col min-h-screen">
+        <header className="bg-[#fdf7e4] fixed top-0 z-100 dark:bg-background-dark text-gray-600 dark:text-gray-400 shadow-2xl w-full mx-auto">
+          <Navbar></Navbar>
+        </header>
+        <main className="w-full mx-auto flex-1">
+          <Outlet></Outlet>
+        </main>
+        <footer className="w-full mx-auto bg-[#fdf7e4]">
+          <Footer></Footer>
+        </footer>
+        <ToastContainer />
+      </div>
     );
 };
 

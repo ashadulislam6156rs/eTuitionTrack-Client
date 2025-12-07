@@ -1,2 +1,26 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+.myBtn{
+    @apply bg-[#0D47A1] text-white hover:bg-[#F57C00] transition-colors duration-700 ease-in-out
+}
+
+.myBtn-outlet{
+    @apply border-[#0D47A1] border hover:border-[#F57C00] hover:text-white hover:bg-[#F57C00] transition-colors duration-700 ease-in-out
+}
+/* Colors 
+#F57C00
+#0288D1
+#0D47A1
+#29B6F6
+#F9F9F9
+#fdf7e4
+
+Link
+#0288D1
+#F57C00
+button
+#F57C00
+#FB8C00
+*/
