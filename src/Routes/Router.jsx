@@ -4,12 +4,20 @@ import Home from "../Pages/Home";
 import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
-import Tutors from "../Pages/Tutors/Tutors";
 import Tuitions from "../Pages/Tuitions";
 import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import MyProfile from "../Pages/Dropdown/MyProfile";
 import Settings from "../Pages/Dropdown/Settings";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import Tutors from "../Pages/Dashboard/Tutors/Tutors";
+import MyTuitions from "../Pages/Dashboard/Students/MyTuitions";
+import AddTuition from "../Pages/Dropdown/AddTuition";
+import AppliedTutors from "../Pages/Dashboard/Students/AppliedTutors";
+import PaymentsHistory from "../Pages/Dashboard/Students/PaymentsHistory";
+import TuitionManagement from "../Pages/Dashboard/Admin/TuitionManagement";
+import TuitionDetails from "../Componants/TuitionDetails";
+import EditeTuition from "../Pages/Dashboard/Students/EditeTuition";
 
 
 const router = createBrowserRouter([
@@ -39,12 +47,12 @@ const router = createBrowserRouter([
         Component: Contact,
       },
       {
-        path: "/my-profile",
+        path: "/profile-settings",
         Component: MyProfile,
       },
       {
-        path: "/settings",
-        Component: Settings,
+        path: "/tuition-details/:tuitionId",
+        Component: TuitionDetails,
       },
     ],
   },
@@ -59,6 +67,36 @@ const router = createBrowserRouter([
       {
         path: "/register",
         Component: Register,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    Component: DashboardLayout,
+    children: [
+      {
+        path: "my-tuitions",
+        element: <MyTuitions></MyTuitions>,
+      },
+      {
+        path: "add-tuition",
+        element: <AddTuition></AddTuition>,
+      },
+      {
+        path: "applied-tutors",
+        element: <AppliedTutors></AppliedTutors>,
+      },
+      {
+        path: "payments-history",
+        element: <PaymentsHistory></PaymentsHistory>,
+      },
+      {
+        path: "tuition-management",
+        element: <TuitionManagement></TuitionManagement>,
+      },
+      {
+        path: "tuition/:id/update",
+        element: <EditeTuition></EditeTuition>,
       },
     ],
   },

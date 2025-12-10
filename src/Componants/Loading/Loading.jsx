@@ -1,6 +1,6 @@
 import React from "react";
-import Container from "../Container/Container";
 import { RotateLoader } from "react-spinners";
+import Container from "../Container/Container";
 
 const Loading = () => {
   return (

@@ -1,0 +1,112 @@
+[
+  {
+    "_id": "1",
+    "subject": "English",
+    "className": "Class 8",
+    "location": "Charpara",
+    "scheduleTime": "Evening 6 PM - 8 PM",
+    "budget": 3500,
+    "phone": "+8801789456123",
+    "subjectImage": "https://i.ibb.co/tH21x6C/english.jpg",
+    "description": "Spoken + Grammar improvement needed"
+  },
+  {
+    "_id": "2",
+    "subject": "Mathematics",
+    "className": "Class 10",
+    "location": "Ganginar Par",
+    "scheduleTime": "Evening 4 PM - 6 PM",
+    "budget": 5000,
+    "phone": "+8801987452211",
+    "subjectImage": "https://i.ibb.co/87Tnmng/math.jpg",
+    "description": "SSC preparation"
+  },
+  {
+    "_id": "3",
+    "subject": "Physics",
+    "className": "HSC First Year",
+    "location": "Maskanda",
+    "scheduleTime": "Night 8 PM - 9 PM",
+    "budget": 6000,
+    "phone": "+8801789002212",
+    "subjectImage": "https://i.ibb.co/f4hwGLh/physics.jpg",
+    "description": "Chapter 1–4 full revision"
+  },
+  {
+    "_id": "4",
+    "subject": "ICT",
+    "className": "Class 9",
+    "location": "Town Hall",
+    "scheduleTime": "Afternoon 2 PM - 4 PM",
+    "budget": 3000,
+    "phone": "+8801966547733",
+    "subjectImage": "https://i.ibb.co/DR24D8Y/ict.jpg",
+    "description": "Basic ICT theory + practical"
+  },
+  {
+    "_id": "5",
+    "subject": "Chemistry",
+    "className": "HSC Second Year",
+    "location": "C K Ghosh Road",
+    "scheduleTime": "Morning 10 AM - 12 PM",
+    "budget": 7000,
+    "phone": "+8801688452213",
+    "subjectImage": "https://i.ibb.co/4WfN4Pz/chemistry.jpg",
+    "description": "Board exam special batch"
+  },
+  {
+    "_id": "6",
+    "subject": "Bangla",
+    "className": "Class 5",
+    "location": "Sheshmore",
+    "scheduleTime": "Morning 8 AM - 10 AM",
+    "budget": 2500,
+    "phone": "+8801789332212",
+    "subjectImage": "https://i.ibb.co/hfzqWCt/bangla.jpg",
+    "description": "Basic grammar + reading skills"
+  },
+  {
+    "_id": "7",
+    "subject": "Biology",
+    "className": "Class 9",
+    "location": "Sankipara",
+    "scheduleTime": "Evening 4 PM - 6 PM",
+    "budget": 4000,
+    "phone": "+8801789512214",
+    "subjectImage": "https://i.ibb.co/jGCGyFS/biology.jpg",
+    "description": "Chapter 2 & 3 needed"
+  },
+  {
+    "_id": "8",
+    "subject": "Higher Mathematics",
+    "className": "Class 10",
+    "location": "Agricultural University Area",
+    "scheduleTime": "Evening 6 PM - 8 PM",
+    "budget": 5500,
+    "phone": "+8801987546677",
+    "subjectImage": "https://i.ibb.co/WFbvGLB/hmath.jpg",
+    "description": "SSC exam math crash course"
+  },
+  {
+    "_id": "9",
+    "subject": "Accounting",
+    "className": "HSC First Year",
+    "location": "Medical College Area",
+    "scheduleTime": "Afternoon 2 PM - 4 PM",
+    "budget": 6000,
+    "phone": "+8801789283344",
+    "subjectImage": "https://i.ibb.co/2c4WyWz/accounting.jpg",
+    "description": "Full accounts + ledger"
+  },
+  {
+    "_id": "10",
+    "subject": "General Science",
+    "className": "Class 7",
+    "location": "Muktagacha",
+    "scheduleTime": "Morning 8 AM - 10 AM",
+    "budget": 3000,
+    "phone": "+8801799342215",
+    "subjectImage": "https://i.ibb.co/yRZ3y6F/science.jpg",
+    "description": "Complete science book revision"
+  }
+]

@@ -21,67 +21,66 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [role, setRole] = useState("Student");
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const { updateUserInfo, userRegister, userSignInGoogle } = useAuth();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
-  
-    const handleRegister = (data) => {
-  
-      const photoFile = data.photoURL[0];
 
-      // ** User Register
+  const handleRegister = (data) => {
+    const photoFile = data.photoURL[0];
 
-      // Create FormData
-      const formData = new FormData();
-      formData.append("image", photoFile);
+    // ** User Register
 
-      userRegister(data.email, data.password)
-        .then(() => {
-          // ** Update User Info
-          axios
-            .post(
-              `https://api.imgbb.com/1/upload?key=${
-                import.meta.env.VITE_image_api_Key
-              }`,
-              formData
-            )
-            .then((res) => {
-              const photoURL = res.data.data.url;
-              const updateInfo = {
-                displayName: data.name,
-                photoURL: photoURL,
-              };
-              updateUserInfo(updateInfo);
+    // Create FormData
+    const formData = new FormData();
+    formData.append("image", photoFile);
 
-              //** User Info  Store the database
-              const userData = {
-                fullName: data.fullName,
-                photoURL: photoURL,
-                email: data.email,
-                contactNumber: data.contactNumber,
-                userRole: data.role
-              };
+    userRegister(data.email, data.password)
+      .then(() => {
+        // ** Update User Info
+        axios
+          .post(
+            `https://api.imgbb.com/1/upload?key=${
+              import.meta.env.VITE_image_api_Key
+            }`,
+            formData
+          )
+          .then((res) => {
+            const photoURL = res.data.data.url;
+            const updateInfo = {
+              displayName: data.name,
+              photoURL: photoURL,
+            };
+            updateUserInfo(updateInfo);
 
-              axiosSecure.post("/users", userData).then((data) => {
-            
-                if (data.data.message) {
-                   toast.success(data.data.message);
-                   navigate(location?.state || "/");
-                }
-                else {
-                  toast.success("Your Account has been Successfully Created.");
-                  navigate(location?.state || "/");
-                }
-              });
+            //** User Info  Store the database
+            const userData = {
+              fullName: data.fullName,
+              photoURL: photoURL,
+              email: data.email,
+              contactNumber: data.contactNumber,
+              userRole: data.role,
+            };
+
+            axiosSecure.post("/users", userData).then((data) => {
+              if (data.data.message) {
+                toast.success(data.data.message);
+                navigate(location?.state || "/");
+              } else {
+                toast.success("Your Account has been Successfully Created.");
+                navigate(location?.state || "/");
+              }
             });
-        })
-        .catch((err) => {
-          toast.error(err.message);
-        });
-
+          });
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
   };
-  
 
   const handleLogInGoogle = () => {
     userSignInGoogle()
@@ -101,7 +100,6 @@ const Register = () => {
             toast.success("Your Account LogIn Successfull.");
             navigate(location?.state || "/");
           }
-          
         });
       })
       .catch((err) => toast.error(err.message));

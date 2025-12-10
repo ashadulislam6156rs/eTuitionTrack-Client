@@ -160,30 +160,31 @@ const Navbar = () => {
                       tabIndex="-1"
                       className="menu bg-[#fdf7e4] menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow-lg shadow-gray-500"
                     >
-                      <li className=" text-[#0D47A1] font-bold rounded-sm border border-white">
-                        <NavLink
-                          to={"/my-profile"}
-                          className={({ isActive }) =>
-                            isActive
-                              ? "text-white bg-[#0D47A1]"
-                              : "hover:text-[#F57C00] bg-transparent"
-                          }
-                        >
-                          My Profile
-                        </NavLink>
-                      </li>
                       <li className='className=" text-[#0D47A1] font-bold rounded-sm border border-white'>
                         <NavLink
-                          to={"/settings"}
+                          to={"/profile-settings"}
                           className={({ isActive }) =>
                             isActive
                               ? "text-white bg-[#0D47A1]"
                               : "hover:text-[#F57C00] bg-transparent"
                           }
                         >
-                          Settings
+                          Profile Settings
                         </NavLink>
                       </li>
+                      <li className=" text-[#0D47A1] font-bold rounded-sm border border-white">
+                        <NavLink
+                          to={"/dashboard/my-tuitions"}
+                          className={({ isActive }) =>
+                            isActive
+                              ? "text-white bg-[#0D47A1]"
+                              : "hover:text-[#F57C00] bg-transparent"
+                          }
+                        >
+                          Dashboard
+                        </NavLink>
+                      </li>
+
                       <li>
                         <button
                           onClick={handleUserLogOut}
