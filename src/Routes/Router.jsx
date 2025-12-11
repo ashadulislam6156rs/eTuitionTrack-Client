@@ -18,6 +18,10 @@ import PaymentsHistory from "../Pages/Dashboard/Students/PaymentsHistory";
 import TuitionManagement from "../Pages/Dashboard/Admin/TuitionManagement";
 import TuitionDetails from "../Componants/TuitionDetails";
 import EditeTuition from "../Pages/Dashboard/Students/EditeTuition";
+import PaymentSuccess from "../Pages/Dashboard/Students/PaymentSuccess";
+import PaymentCancell from "../Pages/Dashboard/Students/PaymentCancell";
+import MyApplications from "../Pages/Dashboard/Tutors/MyApplications";
+import RevenueHistory from "../Pages/Dashboard/Tutors/RevenueHistory";
 
 
 const router = createBrowserRouter([
@@ -97,6 +101,22 @@ const router = createBrowserRouter([
       {
         path: "tuition/:id/update",
         element: <EditeTuition></EditeTuition>,
+      },
+      {
+        path: "payment-success",
+        element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: "payment-cancel",
+        element: <PaymentCancell></PaymentCancell>,
+      },
+      {
+        path: "my-applications",
+        element: <MyApplications></MyApplications>,
+      },
+      {
+        path: "revenue-history",
+        element: <RevenueHistory></RevenueHistory>,
       },
     ],
   },

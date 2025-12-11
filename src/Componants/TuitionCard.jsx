@@ -6,7 +6,7 @@ import { Link } from "react-router";
 
 const TuitionCard = ({ tuition }) => {
   const { budget, className, location, scheduleTime, subject, subjectImage } =
-    tuition;
+    tuition || {};
   return (
     <div className="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 rounded-xl overflow-hidden border border-base-300">
       {/* Image */}
@@ -53,7 +53,7 @@ const TuitionCard = ({ tuition }) => {
         {/* Button */}
         <div className="card-actions justify-end mt-4">
           <Link
-            to={`/tuition-details/${tuition._id}`}
+            to={`/tuition-details/${tuition?._id}`}
             className="myBtn btn w-full btn-sm"
           >
             <FaRegEye />

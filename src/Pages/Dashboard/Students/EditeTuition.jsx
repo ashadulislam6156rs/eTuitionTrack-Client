@@ -168,7 +168,7 @@ const EditTuition = () => {
       if (subjects.includes(tuition.subject)) {
         setValue("subject", tuition.subject);
       }
-    }, 50);
+    }, 10);
   }, [tuition.className]);
 
 

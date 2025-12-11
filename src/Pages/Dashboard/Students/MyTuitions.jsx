@@ -114,7 +114,7 @@ const MyTuitions = () => {
                       <div>
                         <div className="font-bold">{tuition.subject}</div>
                         <div className="text-sm opacity-50">
-                          {tuition.budget} ৳
+                          {tuition?.budget} ৳
                         </div>
                       </div>
                     </div>

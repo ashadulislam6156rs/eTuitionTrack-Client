@@ -1,21 +1,26 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import Container from '../Componants/Container/Container';
 import TuitionCard from '../Componants/TuitionCard';
+import { BiLogoPatreon } from 'react-icons/bi';
 
 const Tuitions = () => {
 
-    const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
+  const [searchText, setSearchText] = useState("")
 
     const { data: tuitions = []} = useQuery({
-      queryKey: ["tuitions-approved"],
+      queryKey: ["tuitions-approved" , searchText],
       queryFn: async () => {
-        const res = await axiosSecure("/tuitions/approved");
+        const res = await axiosSecure(
+          `/tuitions/approved?searchText=${searchText}`
+        );
         return res.data;
       },
     });
-    console.log(tuitions);
+  
+  
     
 
     return (
@@ -49,7 +54,12 @@ const Tuitions = () => {
                   <path d="m21 21-4.3-4.3"></path>
                 </g>
               </svg>
-              <input type="search" required placeholder="Search" />
+              <input
+                type="search"
+                onChange={(e) => setSearchText(e.target.value)}
+                required
+                placeholder="Search"
+              />
             </label>
 
             <select
@@ -63,13 +73,13 @@ const Tuitions = () => {
             </select>
           </div>
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 pb-10">
-            {tuitions.map((tuition) => (
+            {tuitions?.map((tuition) => (
               <TuitionCard key={tuition._id} tuition={tuition}></TuitionCard>
             ))}
           </div>
 
           {/* paganation */}
-          <div className='flex justify-center items-center pb-10'>
+          <div className="flex justify-center items-center pb-10">
             <div className="join gap-3">
               <input
                 className="join-item btn btn-square"

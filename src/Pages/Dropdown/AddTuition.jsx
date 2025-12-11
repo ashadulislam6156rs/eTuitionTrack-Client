@@ -252,7 +252,7 @@ const AddTuition = () => {
                   placeholder="5000"
                   className="input my-1 input-bordered w-full"
                 />
-                {errors.budget && (
+                {errors?.budget && (
                   <p className="text-xs text-red-500 font-medium">
                     Budget is required
                   </p>

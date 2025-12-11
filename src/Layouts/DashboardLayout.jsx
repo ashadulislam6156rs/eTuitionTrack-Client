@@ -6,8 +6,9 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { LuClipboardList } from "react-icons/lu";
-import { MdAddCard, MdLibraryBooks, MdOutlinePayments } from "react-icons/md";
+import { MdAddCard, MdAssignment, MdLibraryBooks, MdOutlinePayments } from "react-icons/md";
 import { ToastContainer } from "react-toastify";
+import { AiOutlineLineChart } from "react-icons/ai";
 
 const DashboardLayout = () => {
     const { user } = useAuth();
@@ -87,6 +88,46 @@ const DashboardLayout = () => {
                   <span className="is-drawer-close:hidden">Home</span>
                 </NavLink>
               </li>
+              {/* Tutor Route ***************** */}
+              {users?.userRole === "Tutor" && (
+                <>
+                  <li>
+                    <NavLink
+                      to={"/dashboard/my-applications"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-[#F57C00]"
+                          : "is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                      }
+                      data-tip="My Applications"
+                    >
+                      {/* Home icon */}
+                      <MdAssignment className="my-1.5 inline-block size-4" />
+                      <span className="is-drawer-close:hidden">
+                        My Applications
+                      </span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to={"/dashboard/revenue-history"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-[#F57C00]"
+                          : "is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                      }
+                      data-tip="Revenue History"
+                    >
+                      {/* Home icon */}
+                      <AiOutlineLineChart className="my-1.5 inline-block size-4" />
+                      <span className="is-drawer-close:hidden">
+                        Revenue History
+                      </span>
+                    </NavLink>
+                  </li>
+                </>
+              )}
+
               {/* Student Route ***************** */}
               {users?.userRole === "Student" && (
                 <>

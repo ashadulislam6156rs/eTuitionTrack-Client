@@ -93,7 +93,7 @@ const TuitionManagement = () => {
                         <div>
                           <div className="font-bold">{tuition.subject}</div>
                           <div className="text-sm opacity-50">
-                            {tuition.budget} ৳
+                            {tuition?.budget} ৳
                           </div>
                         </div>
                       </div>
@@ -187,7 +187,7 @@ const TuitionManagement = () => {
                   <p className="font-semibold text-gray-600">Budget</p>
                   <p>
                     {currentTuition?.budget
-                      ? `${currentTuition.budget} BDT`
+                      ? `${currentTuition?.budget} BDT`
                       : "-"}
                   </p>
                 </div>
