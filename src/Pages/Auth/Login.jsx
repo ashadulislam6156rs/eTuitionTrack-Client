@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { HiUserAdd } from "react-icons/hi";
 import { MdVisibility, MdVisibilityOff, MdEmail, MdLock } from "react-icons/md";
-import { Link, useNavigate } from "react-router"; // Note: Changed to react-router-dom for standard usage
+import { Link, useNavigate } from "react-router"; 
 import useAuth from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -18,8 +18,12 @@ const Login = () => {
   const handleLogInUser = (data) => {
     userLogIn(data.email, data.password)
       .then(() => {
-        toast.success("Your Account LogIn Successfull.");
-        navigate(location?.state || "/");
+         toast.success("Your Account LogIn Successfull.");
+        setTimeout(() => {
+           navigate(location?.state || "/");
+        }, 500)
+       
+       
     }).catch((err) => toast.error(err.message));
   }
 

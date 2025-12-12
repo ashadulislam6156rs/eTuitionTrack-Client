@@ -9,10 +9,13 @@ import { LuClipboardList } from "react-icons/lu";
 import { MdAddCard, MdAssignment, MdLibraryBooks, MdOutlinePayments } from "react-icons/md";
 import { ToastContainer } from "react-toastify";
 import { AiOutlineLineChart } from "react-icons/ai";
+import { HiUserGroup } from "react-icons/hi";
+import { BsGraphUpArrow } from "react-icons/bs";
 
 const DashboardLayout = () => {
     const { user } = useAuth();
-    const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
+ 
     
     const { data: users = [] } = useQuery({
       queryKey: ["users", user?.email],
@@ -21,6 +24,11 @@ const DashboardLayout = () => {
         return res.data;
       },
     });
+  
+  // console.log(users);
+  // console.log(users?.userRole);
+  
+ 
 
     
     
@@ -88,6 +96,7 @@ const DashboardLayout = () => {
                   <span className="is-drawer-close:hidden">Home</span>
                 </NavLink>
               </li>
+
               {/* Tutor Route ***************** */}
               {users?.userRole === "Tutor" && (
                 <>
@@ -207,6 +216,23 @@ const DashboardLayout = () => {
                 <>
                   <li>
                     <NavLink
+                      to={"/dashboard/users-managment"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-[#F57C00]"
+                          : "is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                      }
+                      data-tip="Users Management"
+                    >
+                      {/* Home icon */}
+                      <HiUserGroup className="my-1.5 inline-block size-4" />
+                      <span className="is-drawer-close:hidden">
+                        Users Management
+                      </span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
                       to={"/dashboard/tuition-management"}
                       className={({ isActive }) =>
                         isActive
@@ -219,6 +245,23 @@ const DashboardLayout = () => {
                       <MdLibraryBooks className="my-1.5 inline-block size-4" />
                       <span className="is-drawer-close:hidden">
                         Tuition Management
+                      </span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to={"/dashboard/reports-analytics"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-[#F57C00]"
+                          : "is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                      }
+                      data-tip="Reports & Analytics"
+                    >
+                      {/* Home icon */}
+                      <BsGraphUpArrow className="my-1.5 inline-block size-4" />
+                      <span className="is-drawer-close:hidden">
+                        Reports & Analytics
                       </span>
                     </NavLink>
                   </li>

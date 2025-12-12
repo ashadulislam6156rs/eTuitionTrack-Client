@@ -24,7 +24,7 @@ export default function HowItWorks() {
   return (
     <div className="bg-base-200">
       <Container>
-        <section className="py-10 dark:bg-[#0f172a] font-display">
+        <section className="py-5 dark:bg-[#0f172a] font-display">
           <div className="mx-auto">
             {/* SECTION TITLE */}
             <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-4">

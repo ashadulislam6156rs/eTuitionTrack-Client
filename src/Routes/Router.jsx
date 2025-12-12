@@ -22,6 +22,8 @@ import PaymentSuccess from "../Pages/Dashboard/Students/PaymentSuccess";
 import PaymentCancell from "../Pages/Dashboard/Students/PaymentCancell";
 import MyApplications from "../Pages/Dashboard/Tutors/MyApplications";
 import RevenueHistory from "../Pages/Dashboard/Tutors/RevenueHistory";
+import UsersManagment from "../Pages/Dashboard/Admin/UsersManagment";
+import ReportsAnalytics from "../Pages/Dashboard/Admin/ReportsAnalytics";
 
 
 const router = createBrowserRouter([
@@ -117,6 +119,14 @@ const router = createBrowserRouter([
       {
         path: "revenue-history",
         element: <RevenueHistory></RevenueHistory>,
+      },
+      {
+        path: "users-managment",
+        element: <UsersManagment></UsersManagment>,
+      },
+      {
+        path: "reports-analytics",
+        element: <ReportsAnalytics></ReportsAnalytics>,
       },
     ],
   },

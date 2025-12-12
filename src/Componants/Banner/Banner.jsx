@@ -2,8 +2,31 @@ import React from "react";
 import { FaPlayCircle } from "react-icons/fa";
 import { MdSchool } from "react-icons/md";
 import Container from "../Container/Container";
+import { Link, useNavigate } from "react-router";
+import useAuth from "../../Hooks/useAuth";
+import { FaRocket } from "react-icons/fa6";
 
 const Banner = () => {
+
+ const { user } = useAuth(); 
+  const navigate = useNavigate();
+
+
+ 
+
+  const handleClick = () => {
+
+     if (user) {
+     
+       navigate("/tuitions");
+     } else {
+      
+       navigate("/register");
+     }
+  }
+ 
+    
+
   return (
     <div className="bg-base-300">
       <Container>
@@ -23,12 +46,15 @@ const Banner = () => {
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                <button className="myBtn btn">Get Started</button>
-
-                <button className="myBtn-outlet btn">
-                  <FaPlayCircle className="text-2xl inline-block" />
-                  Watch Demo
+                <button onClick={handleClick} className="myBtn btn">
+                  <FaRocket />
+                  Get Started
                 </button>
+
+                <Link to={"/tuitions"} className="myBtn-outlet btn">
+                  <FaPlayCircle className="text-2xl inline-block" />
+                  Watch Tuitions
+                </Link>
               </div>
             </div>
 

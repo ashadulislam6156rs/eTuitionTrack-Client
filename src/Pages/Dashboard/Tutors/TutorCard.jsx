@@ -35,7 +35,7 @@ const TutorCard = ({ tutor }) => {
         </div>
 
         {/* Button */}
-        <div className="flex justify-center mt-4">
+        {/* <div className="flex justify-center mt-4">
           <button
             className="
               px-4 py-2 rounded-lg text-sm font-medium 
@@ -45,7 +45,7 @@ const TutorCard = ({ tutor }) => {
           >
             View Profile
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
