@@ -1,26 +1,37 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const TutorCard = ({ tutor }) => {
-    const { fullName, photoURL, email, contactNumber } = tutor || {};
-    
-    
+  const { fullName, photoURL, email, contactNumber } = tutor || {};
 
   return (
-    <div className="p-4">
-      <div
+    <motion.div
+      className="p-4"
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
+      <motion.div
+        whileHover={{
+          scale: 1.03,
+          y: -4,
+          boxShadow: "0px 12px 25px rgba(0,0,0,0.12)",
+        }}
+        transition={{ type: "spring", stiffness: 200, damping: 12 }}
         className="
           bg-white shadow-md rounded-xl p-5 
-          hover:shadow-xl hover:-translate-y-1 
-          transition-all duration-300 cursor-pointer
-          border border-transparent hover:border-[#CAEB66]
+          cursor-pointer border border-transparent 
+          hover:border-[#CAEB66] transition-all duration-300
         "
       >
         {/* Image */}
         <div className="flex justify-center">
-          <img
+          <motion.img
             src={photoURL}
             alt={fullName}
             className="w-24 h-24 object-cover rounded-full border"
+            whileHover={{ scale: 1.08 }}
+            transition={{ type: "spring", stiffness: 150 }}
           />
         </div>
 
@@ -33,21 +44,8 @@ const TutorCard = ({ tutor }) => {
             Contact: <span className="font-semibold">{contactNumber}</span>
           </p>
         </div>
-
-        {/* Button */}
-        {/* <div className="flex justify-center mt-4">
-          <button
-            className="
-              px-4 py-2 rounded-lg text-sm font-medium 
-              bg-[#CAEB66] hover:bg-[#b8db55] 
-              transition-all duration-200
-            "
-          >
-            View Profile
-          </button>
-        </div> */}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

@@ -2,6 +2,7 @@
 @plugin "daisyui";
 
 
+
 .myBtn{
     @apply bg-[#0D47A1] text-white hover:bg-[#F57C00] transition-colors duration-700 ease-in-out
 }

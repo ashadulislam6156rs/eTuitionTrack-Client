@@ -15,7 +15,7 @@ const LatestTuitions = () => {
         return res.data;
       },
     });
-    console.log(tuitions);
+   
 
 
     return (
@@ -34,7 +34,7 @@ const LatestTuitions = () => {
 
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 pb-10">
             {tuitions.map((tuition) => (
-              <TuitionCard tuition={tuition}></TuitionCard>
+              <TuitionCard key={tuition._id} tuition={tuition}></TuitionCard>
             ))}
           </div>
         </Container>

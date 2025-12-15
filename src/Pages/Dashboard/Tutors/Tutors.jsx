@@ -8,15 +8,15 @@ const Tutors = () => {
 
     const axiosSecure = useAxiosSecure();
 
-    const { data: users = [] } = useQuery({
+    const { data: tutors = [] } = useQuery({
       queryKey: ["users"],
       queryFn: async () => {
-        const res = await axiosSecure.get("/users");
+        const res = await axiosSecure.get("/users/tutor/role");
         return res.data;
       },
     });
   
-const tutors = users.filter((user) => user.userRole === "Tutor");
+
 
 
 

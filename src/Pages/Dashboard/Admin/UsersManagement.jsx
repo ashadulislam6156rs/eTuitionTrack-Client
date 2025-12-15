@@ -11,14 +11,14 @@ import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-const UsersManagment = () => {
+const UsersManagement = () => {
     const axiosSecure = useAxiosSecure();
     const userDetailsModalRef = useRef();
     const userInfoUpdateModalRef = useRef();
     const [currentUser, setCurrentUser] = useState({});
 
     const { data: users = [], refetch } = useQuery({
-        queryKey: ["users-managment"],
+        queryKey: ["users-management"],
         queryFn: async () => {
             const res = await axiosSecure.get("/users");
             return res.data;
@@ -515,4 +515,4 @@ const UsersManagment = () => {
     );
 };
 
-export default UsersManagment;
+export default UsersManagement;

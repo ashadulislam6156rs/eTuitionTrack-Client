@@ -22,13 +22,19 @@ import PaymentSuccess from "../Pages/Dashboard/Students/PaymentSuccess";
 import PaymentCancell from "../Pages/Dashboard/Students/PaymentCancell";
 import MyApplications from "../Pages/Dashboard/Tutors/MyApplications";
 import RevenueHistory from "../Pages/Dashboard/Tutors/RevenueHistory";
-import UsersManagment from "../Pages/Dashboard/Admin/UsersManagment";
+import UsersManagement from "../Pages/Dashboard/Admin/UsersManagement";
 import ReportsAnalytics from "../Pages/Dashboard/Admin/ReportsAnalytics";
+import PrivateRoutes from "./PrivateRoutes";
+import AdminRoute from "./AdminRoute";
+import Error_404 from "../Componants/Error/Error_404";
+import TutorRoute from "./TutorRoute";
+import StudentRoute from "./StudentRoute";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <Error_404></Error_404>,
     Component: MainLayout,
     children: [
       {
@@ -54,7 +60,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile-settings",
-        Component: MyProfile,
+        element: (
+          <PrivateRoutes>
+            <MyProfile></MyProfile>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/tuition-details/:tuitionId",
@@ -78,55 +88,107 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    Component: DashboardLayout,
+    element: (
+      <PrivateRoutes>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoutes>
+    ),
     children: [
       {
         path: "my-tuitions",
-        element: <MyTuitions></MyTuitions>,
+        element: (
+          <StudentRoute>
+            <MyTuitions></MyTuitions>
+          </StudentRoute>
+        ),
       },
       {
         path: "add-tuition",
-        element: <AddTuition></AddTuition>,
+        element: (
+          <StudentRoute>
+            <AddTuition></AddTuition>
+          </StudentRoute>
+        ),
       },
       {
         path: "applied-tutors",
-        element: <AppliedTutors></AppliedTutors>,
+        element: (
+          <StudentRoute>
+            <AppliedTutors></AppliedTutors>
+          </StudentRoute>
+        ),
       },
       {
         path: "payments-history",
-        element: <PaymentsHistory></PaymentsHistory>,
+        element: (
+          <StudentRoute>
+            <PaymentsHistory></PaymentsHistory>
+          </StudentRoute>
+        ),
       },
       {
         path: "tuition-management",
-        element: <TuitionManagement></TuitionManagement>,
+        element: (
+          <AdminRoute>
+            <TuitionManagement></TuitionManagement>
+          </AdminRoute>
+        ),
       },
       {
         path: "tuition/:id/update",
-        element: <EditeTuition></EditeTuition>,
+        element: (
+          <StudentRoute>
+            <EditeTuition></EditeTuition>
+          </StudentRoute>
+        ),
       },
       {
         path: "payment-success",
-        element: <PaymentSuccess></PaymentSuccess>,
+        element: (
+          <StudentRoute>
+            <PaymentSuccess></PaymentSuccess>
+          </StudentRoute>
+        ),
       },
       {
         path: "payment-cancel",
-        element: <PaymentCancell></PaymentCancell>,
+        element: (
+          <StudentRoute>
+            <PaymentCancell></PaymentCancell>
+          </StudentRoute>
+        ),
       },
       {
         path: "my-applications",
-        element: <MyApplications></MyApplications>,
+        element: (
+          <TutorRoute>
+            <MyApplications></MyApplications>
+          </TutorRoute>
+        ),
       },
       {
         path: "revenue-history",
-        element: <RevenueHistory></RevenueHistory>,
+        element: (
+          <TutorRoute>
+            <RevenueHistory></RevenueHistory>
+          </TutorRoute>
+        ),
       },
       {
-        path: "users-managment",
-        element: <UsersManagment></UsersManagment>,
+        path: "users-management",
+        element: (
+          <AdminRoute>
+            <UsersManagement></UsersManagement>
+          </AdminRoute>
+        ),
       },
       {
         path: "reports-analytics",
-        element: <ReportsAnalytics></ReportsAnalytics>,
+        element: (
+          <AdminRoute>
+            <ReportsAnalytics></ReportsAnalytics>
+          </AdminRoute>
+        ),
       },
     ],
   },

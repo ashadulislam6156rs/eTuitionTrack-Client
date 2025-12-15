@@ -43,7 +43,7 @@ const ReportsAnalytics = () => {
        });
      };
     
-console.log(paymentsPending, totalPending);
+
 
 
 

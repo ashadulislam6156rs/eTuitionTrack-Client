@@ -6,22 +6,19 @@ import { HiUserAdd } from 'react-icons/hi';
 import useAuth from '../../Hooks/useAuth';
 import { IoLogOutOutline } from 'react-icons/io5';
 import { toast } from 'react-toastify';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import useRole from '../../Hooks/useRole';
+import Loading from '../Loading/Loading';
 
 const Navbar = () => {
   const { user, setUser, userLogOut } = useAuth();
-  const axiosSecure = useAxiosSecure();
 
   const navigate = useNavigate();
+  const { role, roleLoading } = useRole();
+ 
+  if (roleLoading) {
+    return <Loading></Loading>
+  }
   
-   const { data: users = [] } = useQuery({
-     queryKey: ["users", user?.email],
-     queryFn: async () => {
-       const res = await axiosSecure(`/users?email=${user?.email}`);
-       return res.data;
-     },
-   });
 
   const links = (
     <>
@@ -102,13 +99,13 @@ const Navbar = () => {
 
 
   const handleClick = () => {
-    if (users?.userRole === "Admin") {
-      navigate("/dashboard/users-managment");
+    if (role === "Admin") {
+      navigate("/dashboard/users-management");
     } 
-    if (users?.userRole === "Student") {
-       navigate("/dashboard/my-tuitions");
+    if (role === "Student") {
+      navigate("/dashboard/my-tuitions");
     }
-    if (users?.userRole === "Tutor") {
+    if (role === "Tutor") {
       navigate("/dashboard/my-applications");
     }
   };

@@ -18,6 +18,7 @@ const RevenueHistory = () => {
     },
   });
 
+  
   const PaidDatas = applicatios.filter(
     (application) => application.paymentStatus === "Paid"
   );
@@ -25,7 +26,8 @@ const RevenueHistory = () => {
  const totalEarnings = PaidDatas.reduce(
    (sum, item) => sum + Number(item.expectedSalary),
    0
- );
+  );
+  
 
   return (
     <div>
@@ -38,12 +40,35 @@ const RevenueHistory = () => {
         from your tutoring services.
       </p>
 
-      <div className="w-full flex gap-5 pb-6">
-        <div className="bg-[#7627aa] text-white px-10 w-1/2 py-4 rounded-xl shadow-lg text-center">
-          <h2 className="text-xl font-bold">Total Earnings</h2>
-          <p className="text-3xl font-extrabold mt-1">{totalEarnings} ৳</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        {/* Card 1 */}
+        <div className="bg-white p-6 rounded-2xl shadow-lg border border-indigo-100 hover:shadow-xl transition-all duration-200">
+          <h3 className="text-lg font-semibold text-slate-700">
+            Total Earnings
+          </h3>
+          <p className="text-3xl font-bold text-[#7627aa]  mt-2">
+            ৳ {totalEarnings}
+          </p>
+          <p className="text-sm text-slate-500 mt-1">
+            Total revenue earned on the platform
+          </p>
+        </div>
+
+        {/* Card 2 */}
+        <div className="bg-white p-6 rounded-2xl shadow-lg border border-indigo-100 hover:shadow-xl transition-all duration-200">
+          <h3 className="text-lg font-semibold text-slate-700">Transactions</h3>
+          <p className="text-3xl font-bold text-[#7627aa] mt-2">
+            {PaidDatas?.length}
+          </p>
+          <p className="text-sm text-slate-500 mt-1">
+            Successful transactions recorded
+          </p>
         </div>
       </div>
+
+      {/* Charts & graphs */}
+
+
 
       <div className="overflow-x-auto bg-white rounded-xl shadow-lg border border-base-300">
         <table className="table">
@@ -89,14 +114,12 @@ const RevenueHistory = () => {
                 <td>
                   <span
                     className={`badge px-3 py-1 ${
-                      item.tutorRequestStatus === "Pending"
-                        ? "badge-warning"
-                        : item.tutorRequestStatus === "Approved"
+                      item.paymentStatus === "Paid"
                         ? "badge-success"
                         : "badge-error"
                     }`}
                   >
-                    {item.tutorRequestStatus}
+                    {item.paymentStatus}
                   </span>
                 </td>
 

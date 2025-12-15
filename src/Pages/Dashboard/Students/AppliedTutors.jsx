@@ -3,7 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { RxCross2 } from "react-icons/rx";
-import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+
 import { FiEye } from "react-icons/fi";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -193,9 +193,15 @@ const handlePayment =  (tutor) => {
                       Accept Tutor
                     </button>
                   ) : (
-                    ""
+                    <button
+                      disabled
+                      className="btn opacity-60 btn-sm bg-[#0D47A1] hover:bg-transparent cursor-not-allowed text-white"
+                    >
+                      Accepted
+                    </button>
                   )}
                 </td>
+
                 <th className="flex gap-3 items-center">
                   <button
                     onClick={() => handleViewDetails(tutor)}
