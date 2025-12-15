@@ -1,7 +1,8 @@
-import React from 'react';
-import useAuth from '../../../Hooks/useAuth';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import React from "react";
+import useAuth from "../../../Hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
 
 const RevenueHistory = () => {
   const axiosSecure = useAxiosSecure();
@@ -18,14 +19,13 @@ const RevenueHistory = () => {
     },
   });
 
-  
   const PaidDatas = applicatios.filter(
     (application) => application.paymentStatus === "Paid"
   );
 
- const totalEarnings = PaidDatas.reduce(
-   (sum, item) => sum + Number(item.expectedSalary),
-   0
+  const totalEarnings = PaidDatas.reduce(
+    (sum, item) => sum + Number(item.expectedSalary),
+    0
   );
   
 
@@ -65,10 +65,6 @@ const RevenueHistory = () => {
           </p>
         </div>
       </div>
-
-      {/* Charts & graphs */}
-
-
 
       <div className="overflow-x-auto bg-white rounded-xl shadow-lg border border-base-300">
         <table className="table">

@@ -1,144 +1,214 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import {
+  BarChart,
+  Bar,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+  Legend,
+  Cell,
+} from "recharts";
 
 const ReportsAnalytics = () => {
+  const axiosSecure = useAxiosSecure();
 
-    const axiosSecure = useAxiosSecure();
 
-    const { data: paymentsHistory = [] } = useQuery({
-      queryKey: ["payment-history"],
-      queryFn: async () => {
-        const res = await axiosSecure.get("/payment-history");
-        return res.data;
-      },
+  const { data: paymentsHistory = [] } = useQuery({
+    queryKey: ["payment-history"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/payment-history");
+      return res.data;
+    },
+  });
+
+
+  const { data: paymentsPending = [] } = useQuery({
+    queryKey: ["tuition-requests"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/tuition-requests");
+      return res.data;
+    },
+  });
+
+
+  const totalPaid = paymentsHistory.filter(
+    (p) => p.paymentStatus?.toLowerCase() === "paid"
+  );
+
+  const totalPending = paymentsPending.filter(
+    (p) => p.tutorRequestStatus === "Pending"
+  );
+
+  const totalEarnings = totalPaid.reduce(
+    (sum, item) => sum + Number(item.totalAmount),
+    0
+  );
+
+
+  const barChartData = totalPaid.map((item) => ({
+    date: new Date(item.paidAt).toLocaleDateString("en-BD"),
+    amount: Number(item.totalAmount),
+  }));
+
+
+  const pieChartData = [
+    { name: "Paid", value: totalPaid.length },
+    { name: "Pending", value: totalPending.length },
+  ];
+
+
+  const formatBDTime = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleString("en-BD", {
+      timeZone: "Asia/Dhaka",
+      hour12: true,
     });
-    const { data: paymentsPending = [] } = useQuery({
-      queryKey: ["tuition-requests"],
-      queryFn: async () => {
-        const res = await axiosSecure.get("/tuition-requests");
-        return res.data;
-      },
-    });
+  };
 
-   
-
-    const totalPending = paymentsPending.filter(
-      (payment) => payment.tutorRequestStatus === "Pending"
-    );
-    const totalPaid = paymentsHistory.filter(
-      (payment) => payment.paymentStatus === "paid"
-    );
-
-    const totalEarnings = totalPaid.reduce(
-      (sum, item) => sum + Number(item.totalAmount),
-      0
-    );
-
-     const formatBDTime = (dateString) => {
-       const date = new Date(dateString);
-       return date.toLocaleString("en-BD", {
-         timeZone: "Asia/Dhaka",
-         hour12: true,
-       });
-     };
-    
-
-
-
+  const COLORS = ["#22c55e", "#ef4444"];
+  const BAR_COLOR = "#6366f1";
 
   return (
-    <div className="p-6 md:p-10 bg-gray-50 min-h-screen">
-      {/* Header */}
+    <div className="p-6 md:p-10 bg-gray-50 rounded-lg">
       <div className="mb-10 text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-[#F57C00]">
           Reports & Analytics
         </h1>
-        <p className="text-sm md:text-base text-slate-600 mt-3 max-w-3xl mx-auto">
-          The Reports & Analytics dashboard provides administrators with a
-          unified view to monitor earnings, transactions, and overall financial
-          performance.
+        <p className="text-slate-600 mt-3 max-w-3xl mx-auto">
+          Overview of earnings, transactions and payment analytics
         </p>
       </div>
 
-      {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-        {/* Card 1 */}
-        <div className="bg-white p-6 rounded-2xl shadow-lg border border-indigo-100 hover:shadow-xl transition-all duration-200">
-          <h3 className="text-lg font-semibold text-slate-700">
-            Total Earnings
-          </h3>
-          <p className="text-3xl font-bold text-[#F57C00]  mt-2">
+        <div className="bg-white p-6 rounded-2xl shadow border">
+          <h3 className="font-semibold">Total Earnings</h3>
+          <p className="text-3xl font-bold text-[#F57C00] mt-2">
             ৳ {totalEarnings}
           </p>
-          <p className="text-sm text-slate-500 mt-1">
-            Total revenue earned on the platform
-          </p>
         </div>
 
-        {/* Card 2 */}
-        <div className="bg-white p-6 rounded-2xl shadow-lg border border-indigo-100 hover:shadow-xl transition-all duration-200">
-          <h3 className="text-lg font-semibold text-slate-700">Transactions</h3>
+        <div className="bg-white p-6 rounded-2xl shadow border">
+          <h3 className="font-semibold">Transactions</h3>
           <p className="text-3xl font-bold text-[#F57C00] mt-2">
-            {totalPaid?.length}
-          </p>
-          <p className="text-sm text-slate-500 mt-1">
-            Successful transactions recorded
+            {totalPaid.length}
           </p>
         </div>
 
-        {/* Card 3 */}
-        <div className="bg-white p-6 rounded-2xl shadow-lg border border-indigo-100 hover:shadow-xl transition-all duration-200">
-          <h3 className="text-lg font-semibold text-slate-700">
-            Pending / Failed
-          </h3>
+        <div className="bg-white p-6 rounded-2xl shadow border">
+          <h3 className="font-semibold">Pending Payments</h3>
           <p className="text-3xl font-bold text-[#F57C00] mt-2">
             {totalPending.length}
-          </p>
-          <p className="text-sm text-slate-500 mt-1">
-            Pending or failed payments
           </p>
         </div>
       </div>
 
-      {/* Transactions Table */}
-      <div className="bg-white p-4 rounded-2xl shadow-lg border border-indigo-100">
-        <div className="overflow-x-auto rounded-xl">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        {/* <div className="bg-white p-5 rounded-2xl shadow border">
+          <h3 className="text-lg font-semibold mb-4">Earnings by Date</h3>
+          <div style={{ width: "100%", height: 300 }}>
+            <ResponsiveContainer>
+              <BarChart data={barChartData}>
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="amount" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div> */}
+
+        <div className="bg-white p-5 rounded-2xl shadow border">
+          <h3 className="text-lg font-semibold mb-4 text-slate-700">
+            Earnings by Date
+          </h3>
+
+          <div style={{ width: "100%", height: 300 }}>
+            <ResponsiveContainer>
+              <BarChart data={barChartData}>
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar
+                  dataKey="amount"
+                  fill={BAR_COLOR}
+                  radius={[6, 6, 0, 0]} // rounded top
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* PieChart */}
+
+        <div className="bg-white p-5 rounded-2xl shadow border">
+          <h3 className="text-lg font-semibold mb-4">
+            Payment Status Distribution
+          </h3>
+
+          <div style={{ width: "100%", height: 300 }}>
+            <ResponsiveContainer>
+              <PieChart>
+                <Pie
+                  data={pieChartData}
+                  dataKey="value"
+                  nameKey="name"
+                  outerRadius={100}
+                  label
+                >
+                  {pieChartData.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white p-4 rounded-2xl shadow border">
+        <div className="overflow-x-auto">
           <table className="table w-full">
-            <thead className="bg-[#f57b00e9] text-white text-base">
+            <thead className="bg-[#F57C00] text-white">
               <tr>
-                <th>SL.NO.</th>
-                <th>User Email</th>
-                <th>Payment Time</th>
-                <th>Transaction ID</th>
-                <th>Payment Info</th>
-                <th>Currency</th>
+                <th>#</th>
+                <th>Email</th>
+                <th>Paid At</th>
+                <th>Transaction</th>
+                <th>Amount</th>
+                <th>Status</th>
               </tr>
             </thead>
 
-            <tbody className="text-slate-700">
-              {paymentsHistory?.map((Payment, index) => (
-                <tr key={index} className="hover:bg-indigo-50 transition">
-                  <th className="text-slate-800 font-semibold">{index + 1}</th>
-                  <td>{Payment.customerEmail}</td>
-                  <td>{formatBDTime(Payment.paidAt)}</td>
-                  <td className="font-mono">{Payment.transactionId}</td>
-                  <td>
-                    <span className="font-semibold text-[#F57C00]">
-                      {Payment.totalAmount}
-                    </span>
-                    <span className="text-lg"> ৳ </span>
-                    <span
-                      className={`font-semibold ${
-                        Payment.paymentStatus === "paid"
-                          ? "text-green-600"
-                          : "text-red-600"
-                      }`}
-                    >
-                      ({Payment.paymentStatus})
-                    </span>
+            <tbody>
+              {paymentsHistory.map((p, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{p.customerEmail}</td>
+                  <td>{formatBDTime(p.paidAt)}</td>
+                  <td className="font-mono">{p.transactionId}</td>
+                  <td>৳ {p.totalAmount}</td>
+                  <td
+                    className={
+                      p.paymentStatus?.toLowerCase() === "paid"
+                        ? "text-green-600 font-semibold"
+                        : "text-red-600 font-semibold"
+                    }
+                  >
+                    {p.paymentStatus}
                   </td>
-                  <td className="uppercase">{Payment.currency}</td>
                 </tr>
               ))}
             </tbody>
