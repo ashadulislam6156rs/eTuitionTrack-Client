@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
-import { IoHomeOutline } from "react-icons/io5";
+import { IoHomeOutline, IoPersonCircleOutline } from "react-icons/io5";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { LuClipboardList } from "react-icons/lu";
 import { MdAddCard, MdAssignment, MdLibraryBooks, MdOutlinePayments } from "react-icons/md";
@@ -81,6 +81,24 @@ const DashboardLayout = () => {
                       {/* Home icon */}
                       <IoHomeOutline className="my-1.5 inline-block size-4" />
                       <span className="is-drawer-close:hidden">Home</span>
+                    </NavLink>
+                  </li>
+
+                  {/* My Profile */}
+                  <li>
+                    <NavLink
+                      to={"/dashboard/my-profile"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-[#F57C00]"
+                          : "is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                      }
+                      data-tip="My Profile"
+                    >
+                      {/* Home icon */}
+                      {/* User Profile icon */}
+                      <IoPersonCircleOutline className="my-1.5 inline-block size-4" />
+                      <span className="is-drawer-close:hidden">My Profile</span>
                     </NavLink>
                   </li>
 
@@ -254,32 +272,6 @@ const DashboardLayout = () => {
                       </li>
                     </>
                   )}
-
-                  {/* List item */}
-                  <li>
-                    <button
-                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                      data-tip="Settings"
-                    >
-                      {/* Settings icon */}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2"
-                        fill="none"
-                        stroke="currentColor"
-                        className="my-1.5 inline-block size-4"
-                      >
-                        <path d="M20 7h-9"></path>
-                        <path d="M14 17H5"></path>
-                        <circle cx="17" cy="17" r="3"></circle>
-                        <circle cx="7" cy="7" r="3"></circle>
-                      </svg>
-                      <span className="is-drawer-close:hidden">Settings</span>
-                    </button>
-                  </li>
                 </ul>
               </div>
             </div>

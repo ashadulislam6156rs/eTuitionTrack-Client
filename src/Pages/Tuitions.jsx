@@ -9,15 +9,17 @@ const Tuitions = () => {
   const axiosSecure = useAxiosSecure();
 
   const [searchText, setSearchText] = useState("");
+  const [sortBy, setSortBy] = useState("latest");
+
   const [page, setPage] = useState(1);
   const limit = 8;
 
   // Fetch with Pagination
   const { data, isLoading } = useQuery({
-    queryKey: ["tuitions-approved", page, searchText],
+    queryKey: ["tuitions-approved", page, searchText, sortBy],
     queryFn: async () => {
       const res = await axiosSecure.get("/tuitions/approved", {
-        params: { page, limit, searchText },
+        params: { page, limit, searchText, sortBy },
       });
       return res.data;
     },
@@ -70,17 +72,20 @@ const Tuitions = () => {
                 }}
                 placeholder="Search"
               />
-              
             </label>
 
             <select
-              defaultValue="Server location"
+              defaultValue="Select sort"
               className="select select-neutral"
+              onChange={(e) => {
+                setSortBy(e.target.value);
+                setPage(1);
+              }}
             >
-              <option disabled>Server location</option>
-              <option>North America</option>
-              <option>EU west</option>
-              <option>South East Asia</option>
+              <option disabled>Select sort</option>
+              <option value="latest">Latest</option>
+              <option value="high">Budget High</option>
+              <option value="low">Budget Low</option>
             </select>
           </div>
 

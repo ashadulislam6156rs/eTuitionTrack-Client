@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Container from '../../../Componants/Container/Container';
 import TutorCard from './TutorCard';
@@ -7,16 +7,23 @@ import TutorCard from './TutorCard';
 const Tutors = () => {
 
     const axiosSecure = useAxiosSecure();
+     const [page, setPage] = useState(1);
+      const limit = 12;
 
-    const { data: tutors = [] } = useQuery({
-      queryKey: ["users"],
+    const { data } = useQuery({
+      queryKey: ["users", page, limit],
       queryFn: async () => {
-        const res = await axiosSecure.get("/users/tutor/role");
+        const res = await axiosSecure.get("/users/tutor/role", {
+          params: { page, limit },
+        });
         return res.data;
       },
     });
   
-
+  
+  
+  const tutors = data?.data || [];
+  const totalPages = data?.pages || 1;
 
 
 
@@ -38,6 +45,27 @@ const Tutors = () => {
             {tutors?.map((tutor) => (
               <TutorCard key={tutor?._id} tutor={tutor}></TutorCard>
             ))}
+          </div>
+
+          {/* paganation */}
+          <div className="flex justify-center pt-5 items-center pb-10">
+            <div className="join gap-3">
+              {Array.from({ length: totalPages }, (_, i) => {
+                const pageNumber = i + 1;
+
+                return (
+                  <input
+                    key={pageNumber}
+                    className="join-item btn btn-square"
+                    type="radio"
+                    name="options"
+                    aria-label={pageNumber}
+                    checked={page === pageNumber}
+                    onChange={() => setPage(pageNumber)}
+                  />
+                );
+              })}
+            </div>
           </div>
         </Container>
       </div>

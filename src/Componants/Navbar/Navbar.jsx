@@ -4,10 +4,13 @@ import logo from "../../assets/eTuitionTrack-logo.png"
 import Container from '../Container/Container';
 import { HiUserAdd } from 'react-icons/hi';
 import useAuth from '../../Hooks/useAuth';
-import { IoLogOutOutline } from 'react-icons/io5';
+import {  IoLogOutOutline } from 'react-icons/io5';
 import { toast } from 'react-toastify';
 import useRole from '../../Hooks/useRole';
 import Loading from '../Loading/Loading';
+
+import { MdDashboard } from 'react-icons/md';
+
 
 const Navbar = () => {
   const { user, setUser, userLogOut } = useAuth();
@@ -19,71 +22,6 @@ const Navbar = () => {
     return <Loading></Loading>
   }
   
-
-  const links = (
-    <>
-      <li>
-        <NavLink
-          to={"/"}
-          className={({ isActive }) =>
-            isActive
-              ? "text-[#F57C00] bg-transparent"
-              : "hover:text-[#F57C00] bg-transparent"
-          }
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to={"/tuitions"}
-          className={({ isActive }) =>
-            isActive
-              ? "text-[#F57C00] bg-transparent"
-              : "hover:text-[#F57C00] bg-transparent"
-          }
-        >
-          Tuitions
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to={"/tutors"}
-          className={({ isActive }) =>
-            isActive
-              ? "text-[#F57C00] bg-transparent"
-              : "hover:text-[#F57C00] bg-transparent"
-          }
-        >
-          Tutors
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to={"/about"}
-          className={({ isActive }) =>
-            isActive
-              ? "text-[#F57C00] bg-transparent"
-              : "hover:text-[#F57C00] bg-transparent"
-          }
-        >
-          About
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to={"/contact"}
-          className={({ isActive }) =>
-            isActive
-              ? "text-[#F57C00] bg-transparent"
-              : "hover:text-[#F57C00] bg-transparent"
-          }
-        >
-          Contact
-        </NavLink>
-      </li>
-    </>
-  );
 
   const handleUserLogOut = () => {
 
@@ -109,6 +47,86 @@ const Navbar = () => {
       navigate("/dashboard/my-applications");
     }
   };
+
+
+
+    const links = (
+      <>
+        <li>
+          <NavLink
+            to={"/"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-[#F57C00] bg-transparent"
+                : "hover:text-[#F57C00] bg-transparent flex items-center"
+            }
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={"/tuitions"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-[#F57C00] bg-transparent"
+                : "hover:text-[#F57C00] bg-transparent"
+            }
+          >
+           
+            Tuitions
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={"/tutors"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-[#F57C00] bg-transparent"
+                : "hover:text-[#F57C00] bg-transparent"
+            }
+          >
+           
+            Tutors
+          </NavLink>
+        </li>
+        <li>
+          <button
+            onClick={handleClick}
+            className="hover:text-[#F57C00] bg-transparent"
+          >
+          
+            Dashboard
+          </button>
+        </li>
+        <li>
+          <NavLink
+            to={"/about"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-[#F57C00] bg-transparent"
+                : "hover:text-[#F57C00] bg-transparent"
+            }
+          >
+            
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={"/contact"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-[#F57C00] bg-transparent"
+                : "hover:text-[#F57C00] bg-transparent"
+            }
+          >
+          
+            Contact
+          </NavLink>
+        </li>
+      </>
+    );
 
   return (
     <div className="">
@@ -140,7 +158,7 @@ const Navbar = () => {
               {/* Small Device Links */}
               <ul
                 tabIndex="-1"
-                className="menu menu-sm font-bold text-[text-[#0D47A1]] dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm font-bold text-[#0D47A1] dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 {links}
               </ul>
@@ -182,24 +200,12 @@ const Navbar = () => {
                     tabIndex="-1"
                     className="menu bg-[#fdf7e4] menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow-lg shadow-gray-500"
                   >
-                    <li className='className=" text-[#0D47A1] font-bold rounded-sm border border-white'>
-                      <NavLink
-                        to={"/profile-settings"}
-                        className={({ isActive }) =>
-                          isActive
-                            ? "text-white bg-[#0D47A1]"
-                            : "hover:text-[#F57C00] bg-transparent"
-                        }
-                      >
-                        Profile Settings
-                      </NavLink>
-                    </li>
-
                     <li className="text-[#0D47A1] font-bold rounded-sm border border-white">
                       <button
                         onClick={handleClick}
                         className="hover:text-[#F57C00] bg-transparent text-left w-full px-2 py-1"
                       >
+                        <MdDashboard className="-mr-1 text-base" />
                         Dashboard
                       </button>
                     </li>

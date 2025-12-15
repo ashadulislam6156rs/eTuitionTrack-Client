@@ -59,14 +59,6 @@ const router = createBrowserRouter([
         Component: Contact,
       },
       {
-        path: "/profile-settings",
-        element: (
-          <PrivateRoutes>
-            <MyProfile></MyProfile>
-          </PrivateRoutes>
-        ),
-      },
-      {
         path: "/tuition-details/:tuitionId",
         Component: TuitionDetails,
       },
@@ -101,6 +93,10 @@ const router = createBrowserRouter([
             <MyTuitions></MyTuitions>
           </StudentRoute>
         ),
+      },
+      {
+        path: "my-profile",
+        element: <MyProfile></MyProfile>,
       },
       {
         path: "add-tuition",
