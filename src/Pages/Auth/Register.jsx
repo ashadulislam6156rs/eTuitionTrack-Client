@@ -16,10 +16,12 @@ import { toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { IoPersonSharp } from "react-icons/io5";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [role, setRole] = useState("Student");
+   const [gender, setGender] = useState("Male");
 
   const {
     register,
@@ -64,6 +66,7 @@ const Register = () => {
               email: data.email,
               contactNumber: data.contactNumber,
               userRole: data.role,
+              gender: data.gender,
             };
 
             axiosSecure.post("/users", userData).then((data) => {
@@ -174,47 +177,73 @@ const Register = () => {
               )}
             </div>
 
-            {/* Password Input */}
-            <div className="form-control">
-              <label className="label pt-0 pb-1">
-                <span className="label-text font-semibold">Password</span>
-              </label>
-              <label className="input w-full input-bordered flex items-center gap-2 focus-within:ring-2 ring-primary/20 relative">
-                <MdLock className="text-base-content/50 text-lg" />
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Create a password"
-                  className="grow"
-                  {...register("password", {
-                    required: "Password is required",
-                    minLength: {
-                      value: 6,
-                      message: "Password must be at least 6 characters!",
-                    },
-                    validate: {
-                      hasUpper: (value) =>
-                        /[A-Z]/.test(value) ||
-                        "Must include at least 1 uppercase letter!",
-                      hasLow: (value) =>
-                        /[a-z]/.test(value) ||
-                        "Must include at least 1 lowercase letter!",
-                      hasNum: (value) =>
-                        /\d/.test(value) || "Must include at least 1 number!",
-                    },
-                  })}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="btn btn-xs btn-circle btn-ghost absolute right-2 text-lg text-base-content/60"
-                >
-                  {showPassword ? <MdVisibilityOff /> : <MdVisibility />}
-                </button>
-              </label>
-              {/* Error messages */}
-              {errors.password && (
-                <p className="text-red-500 mt-1">{errors.password.message}</p>
-              )}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Password Input */}
+              <div className="form-control">
+                <label className="label pt-0 pb-1">
+                  <span className="label-text font-semibold">Password</span>
+                </label>
+                <label className="input w-full input-bordered flex items-center gap-2 focus-within:ring-2 ring-primary/20 relative">
+                  <MdLock className="text-base-content/50 text-lg" />
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Create a password"
+                    className="grow"
+                    {...register("password", {
+                      required: "Password is required",
+                      minLength: {
+                        value: 6,
+                        message: "Password must be at least 6 characters!",
+                      },
+                      validate: {
+                        hasUpper: (value) =>
+                          /[A-Z]/.test(value) ||
+                          "Must include at least 1 uppercase letter!",
+                        hasLow: (value) =>
+                          /[a-z]/.test(value) ||
+                          "Must include at least 1 lowercase letter!",
+                        hasNum: (value) =>
+                          /\d/.test(value) || "Must include at least 1 number!",
+                      },
+                    })}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="btn btn-xs btn-circle btn-ghost absolute right-2 text-lg text-base-content/60"
+                  >
+                    {showPassword ? <MdVisibilityOff /> : <MdVisibility />}
+                  </button>
+                </label>
+                {/* Error messages */}
+                {errors.password && (
+                  <p className="text-red-500 mt-1">{errors.password.message}</p>
+                )}
+              </div>
+
+              <div className="form-control">
+                <label className="label pt-0 pb-1">
+                  <span className="label-text font-semibold">Gender</span>
+                </label>
+                <label className="input input-bordered flex items-center gap-2 focus-within:ring-2 ring-primary/20">
+                  <IoPersonSharp className="text-base-content/50 text-lg" />
+                  <select
+                    {...register("gender", { required: true })}
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                    className="grow bg-transparent outline-none border-none cursor-pointer"
+                  >
+                    <option value="Student">Male</option>
+                    <option value="Tutor">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+                {errors.role && (
+                  <p className="text-red-500 pt-2 font-semibold">
+                    Gender is required
+                  </p>
+                )}
+              </div>
             </div>
 
             {/* Phone & Role (Grid for Tablet/Desktop) */}

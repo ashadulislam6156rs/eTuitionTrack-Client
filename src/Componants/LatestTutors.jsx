@@ -13,7 +13,7 @@ const LatestTutors = () => {
     const { data: tutors = [] } = useQuery({
       queryKey: ["users"],
       queryFn: async () => {
-        const res = await axiosSecure.get("/users/tutor/role");
+        const res = await axiosSecure.get("/users/tutor/latest");
         return res.data;
       },
     });
@@ -32,15 +32,7 @@ const LatestTutors = () => {
       },
     };
 
-//  const cardVariants = {
-//    hidden: { opacity: 0, scale: 0.9, y: 20 },
-//    show: {
-//      opacity: 1,
-//      scale: 1,
-//      y: 0,
-//      transition: { duration: 0.5, ease: "easeOut" },
-//    },
-//  };
+
 
     return (
       <Container className={`bg-base-200`}>

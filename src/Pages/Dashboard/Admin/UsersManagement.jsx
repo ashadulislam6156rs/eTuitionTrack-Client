@@ -255,27 +255,7 @@ const UsersManagement = () => {
 
                     {/* Update Role */}
 
-                    {/* <td className="space-x-2">
-                            
-                      <button
-                        onClick={() => updateUserRole(user, "Admin")}
-                        className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"
-                      >
-                        <FaUserShield />
-                      </button>
-                      <button
-                        onClick={() => updateUserRole(user, "Student")}
-                        className="btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm"
-                      >
-                        <GrUserManager />
-                      </button>
-                      <button
-                        onClick={() => updateUserRole(user, "Tutor")}
-                        className="btn hover:bg-transparent hover:text-black btn-square bg-green-500 text-white btn-sm"
-                      >
-                        <FaChalkboardUser />
-                      </button>
-                    </td> */}
+                   
                     <td className="space-x-2">
                       <button
                         onClick={() => updateUserRole(user, "Admin")}

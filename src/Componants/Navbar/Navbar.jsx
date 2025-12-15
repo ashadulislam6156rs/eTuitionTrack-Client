@@ -171,7 +171,10 @@ const Navbar = () => {
                       <img
                         referrerPolicy="no-referrer"
                         alt="Tailwind CSS Navbar component"
-                        src={user?.photoURL}
+                        src={
+                          user?.photoURL ||
+                          "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                        }
                       />
                     </div>
                   </div>
