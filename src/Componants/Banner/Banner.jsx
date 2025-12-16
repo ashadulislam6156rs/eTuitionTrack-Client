@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import { FaRocket } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import Typewriter from "typewriter-effect";
 
 const Banner = () => {
   const { user } = useAuth();
@@ -46,7 +47,6 @@ const Banner = () => {
       <Container>
         <section className="font-display dark:bg-[#111827] md:h-[450px] flex items-center justify-center overflow-hidden">
           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
-          
             <motion.div
               variants={textParent}
               initial="hidden"
@@ -57,8 +57,16 @@ const Banner = () => {
                 variants={textChild}
                 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight"
               >
-                Manage Your Tuition System Smarter with{" "}
-                <span className="text-[#F57C00]">eTuitionTrack</span>
+                Manage Your Tuition System Smarter with
+                <span className="text-[#F57C00] text-2xl md:text-4xl block pt-4">
+                  <Typewriter
+                    options={{
+                      strings: ["eTuitionTrack"],
+                      autoStart: true,
+                      loop: true,
+                    }}
+                  />
+                </span>
               </motion.h1>
 
               <motion.p
@@ -66,7 +74,7 @@ const Banner = () => {
                 className="mt-4 text-base md:text-lg text-gray-600 dark:text-gray-300"
               >
                 A complete solution for tutors, coaching centers, and students.
-                Track classes, automate payments, and monitor progress—all from
+                Track classes, automate payments, and monitor progress-all from
                 one dashboard.
               </motion.p>
 
@@ -92,7 +100,6 @@ const Banner = () => {
               </motion.div>
             </motion.div>
 
-          
             <motion.div
               initial={{ opacity: 0, x: 60, scale: 0.95 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}

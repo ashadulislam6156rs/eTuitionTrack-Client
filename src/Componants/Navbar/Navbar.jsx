@@ -171,57 +171,108 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* Nav End  */}
-          <div className="navbar-end">
+          {/* Nav End */}
+          <div className="navbar-end flex items-center gap-3">
             {user ? (
-              <>
-                {/* Dropdown ***************/}
-                <div className="dropdown relative mt-3 z-9999 dropdown-end">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className="btn btn-ghost btn-circle avatar"
-                  >
-                    <div className="w-10 rounded-full">
-                      <img
-                        referrerPolicy="no-referrer"
-                        alt="Tailwind CSS Navbar component"
-                        src={
-                          user?.photoURL ||
-                          "https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                        }
-                      />
-                    </div>
+              /* User Dropdown */
+              <div className="dropdown dropdown-end relative">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar flex items-center"
+                >
+                  <div className="w-10 h-10 rounded-full overflow-hidden">
+                    <img
+                      referrerPolicy="no-referrer"
+                      alt="User Avatar"
+                      src={
+                        user?.photoURL ||
+                        "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                      }
+                    />
                   </div>
-                  <ul
-                    tabIndex="-1"
-                    className="menu bg-[#fdf7e4] menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow-lg shadow-gray-500"
-                  >
-                    <li className="text-[#0D47A1] font-bold rounded-sm border border-white">
-                      <button
-                        onClick={handleClick}
-                        className="hover:text-[#F57C00] bg-transparent text-left w-full px-2 py-1"
-                      >
-                        <MdDashboard className="-mr-1 text-base" />
-                        Dashboard
-                      </button>
-                    </li>
-
-                    <li>
-                      <button
-                        onClick={handleUserLogOut}
-                        className="btn myBtn mt-2 btn-sm"
-                      >
-                        LogOut{" "}
-                        <IoLogOutOutline className="inline-block text-base font-bold" />
-                      </button>
-                    </li>
-                  </ul>
                 </div>
-              </>
+
+                <ul
+                  tabIndex={0}
+                  className="menu bg-[#fdf7e4] menu-sm dropdown-content rounded-box mt-3 w-52 p-2 shadow-lg shadow-gray-500 z-[9999]"
+                >
+                  <li className="text-[#0D47A1] font-bold rounded-sm border border-white">
+                    <button
+                      onClick={handleClick}
+                      className="hover:text-[#F57C00] bg-transparent text-left w-full px-2 py-1 flex items-center gap-2"
+                    >
+                      <MdDashboard className="text-base" />
+                      Dashboard
+                    </button>
+                  </li>
+
+                 
+                    {/* Theme Control */}
+                    {/* <label className="toggle text-base-content">
+                      <input
+                        type="checkbox"
+                        value="synthwave"
+                        className="theme-controller"
+                      />
+
+                      <svg
+                        aria-label="sun"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <g
+                          strokeLinejoin="round"
+                          strokeLinecap="round"
+                          strokeWidth="2"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <circle cx="12" cy="12" r="4"></circle>
+                          <path d="M12 2v2"></path>
+                          <path d="M12 20v2"></path>
+                          <path d="m4.93 4.93 1.41 1.41"></path>
+                          <path d="m17.66 17.66 1.41 1.41"></path>
+                          <path d="M2 12h2"></path>
+                          <path d="M20 12h2"></path>
+                          <path d="m6.34 17.66-1.41 1.41"></path>
+                          <path d="m19.07 4.93-1.41 1.41"></path>
+                        </g>
+                      </svg>
+
+                      <svg
+                        aria-label="moon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <g
+                          strokeLinejoin="round"
+                          strokeLinecap="round"
+                          strokeWidth="2"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                        </g>
+                      </svg>
+                    </label> */}
+                
+
+                  <li>
+                    <button
+                      onClick={handleUserLogOut}
+                      className="btn myBtn mt-2 btn-sm w-full flex items-center justify-center gap-2"
+                    >
+                      LogOut
+                      <IoLogOutOutline className="text-base font-bold" />
+                    </button>
+                  </li>
+                </ul>
+              </div>
             ) : (
-              <Link to={"/login"} className="btn myBtn">
-                <HiUserAdd className="inline-block" /> LogIn
+              <Link to="/login" className="btn myBtn flex items-center gap-2">
+                <HiUserAdd />
+                LogIn
               </Link>
             )}
           </div>

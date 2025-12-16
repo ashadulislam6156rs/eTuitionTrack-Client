@@ -53,12 +53,18 @@ const WhyChooseUs = () => {
               {features.map((feature, index) => (
                 <div
                   key={index}
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 120}
+                  data-aos-duration="800"
+                  data-aos-easing="ease-out-cubic"
                   className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300"
                 >
-                  <div>{feature.icon}</div>
+                  <div className="mb-4">{feature.icon}</div>
+
                   <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
                     {feature.title}
                   </h3>
+
                   <p className="text-gray-700 dark:text-gray-300">
                     {feature.description}
                   </p>

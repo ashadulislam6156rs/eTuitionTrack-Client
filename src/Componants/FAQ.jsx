@@ -4,66 +4,63 @@ import Container from "./Container/Container";
 const FAQ = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [click, setClick] = useState(null);
-  const QuestionsData = [
-    {
-      que: " How does this posture corrector work?",
-      answer: `A posture corrector works by providing support and gentle
-                alignment to your shoulders, back, and spine, encouraging you to
-                maintain proper posture throughout the day. Here's how it
-                typically functions: A posture corrector works by providing
-                support and gentle alignment to your shoulders.`,
+const QuestionsData = [
+  {
+    que: "How do I register as a student on eTuitionTrack?",
+    answer: `To join eTuitionTrack, simply click on the 'Sign Up' button and provide your basic details such as name, email, and class information. 
+Once registered, you can browse available tutors and request tuition sessions immediately.`,
+  },
+  {
+    que: "Can I select tutors based on subjects and experience?",
+    answer: `Yes! eTuitionTrack allows students to search for tutors by subject, class level, experience, and ratings.
+You can review tutor profiles, see their availability, and select the one that suits your learning needs.`,
+  },
+  {
+    que: "How are tuition schedules managed?",
+    answer: {
+      first: `Scheduling is seamless on eTuitionTrack. Once you select a tutor, you can:`,
+      option: [
+        "Check the tutor's available time slots",
+        "Request a session at your preferred time",
+        "Receive confirmation once the tutor approves your request",
+      ],
+      last: "This ensures both students and tutors are synchronized without any confusion.",
     },
-    {
-      que: "Is it suitable for all ages and body types?",
-      answer: `Yes! Our posture corrector is designed with an adjustable and flexible strap system, making it suitable for most ages and body types.
-It can be comfortably worn by teens, adults, and seniors.
-However, for children under 12 or individuals with medical conditions, we recommend consulting a doctor before use.`,
+  },
+  {
+    que: "Is payment secure on eTuitionTrack?",
+    answer: `Absolutely. All payments are processed securely through our platform.
+We offer multiple payment methods and maintain transparency so that both students and tutors can trust the system.`,
+  },
+  {
+    que: "What support does eTuitionTrack provide after enrollment?",
+    answer: {
+      first: `eTuitionTrack provides continuous support to ensure a smooth learning experience. 
+After enrollment, you can:`,
+      option: [
+        "Track your tuition progress",
+        "Provide feedback on sessions",
+        "Contact support for any issues",
+      ],
+      last: "Our dedicated support team is always ready to help students and tutors alike.",
     },
-    {
-      que: "Does it really help with back pain and posture improvement?",
-      answer: {
-        first: `Absolutely.
-The device is engineered to gently align your spine and shoulders, reducing slouching and supporting proper posture.
-Consistent use can help:`,
-        option: [
-          "Reduce back and shoulder pain",
-          "Improve posture",
-          "Promote natural spinal alignment",
-        ],
-        last: "Many users report noticeable improvements within 1-2 weeks of regular use.",
-      },
-    },
-    {
-      que: "Does it have smart features like vibration alerts?",
-      answer: `Yes, our advanced model includes smart vibration reminders that activate whenever you start slouching.
-This helps you stay aware of your posture throughout the day without discomfort.
-If you prefer a simple version, we also offer a non-vibration model.`,
-    },
-    {
-      que: "How will I be notified when the product is back in stock?",
-      answer: {
-        first: `You can simply click the “Notify Me” button on the product page and enter your email or phone number.
-Once the item is restocked, you’ll automatically receive:`,
-        option: [
-          "Instant email notification, or",
-          "SMS alert (if you provided a phone number)",
-        ],
-        last: "This ensures you never miss the chance to grab the product.",
-      },
-    },
-  ];
+  },
+];
+
 
   return (
     <Container>
       <div className="space-y-3 my-5">
-        <h1 className="text-3xl font-bold text-center">
-          Frequently Asked Question (FAQ)
-        </h1>
-        <p className="text-gray-500 text-center w-4/6 mx-auto">
-          Enhance posture, mobility, and well-being effortlessly with Posture
-          Pro. Achieve proper alignment, reduce pain, and strengthen your body
-          with ease!
-        </p>
+        <div className="py-10 px-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-4">
+            Frequently Asked Questions
+          </h1>
+          <p className="text-gray-600 dark:text-gray-300 text-center max-w-3xl mx-auto text-base md:text-lg">
+            Find answers to the most common questions about eTuitionTrack,
+            including student registration, tutor selection, scheduling, secure
+            payments, and ongoing support.
+          </p>
+        </div>
 
         <div className="space-y-2">
           {QuestionsData.map((data, index) => (

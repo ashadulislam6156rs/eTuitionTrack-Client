@@ -35,17 +35,23 @@ export default function HowItWorks() {
               eTuitionTrack.
             </p>
 
-            {/* 3-STEP GRID */}
+            {/* 3-STEP */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10">
               {steps.map((step, index) => (
                 <div
                   key={index}
+                  data-aos="flip-up"
+                  data-aos-delay={index * 150}
+                  data-aos-duration="900"
+                  data-aos-easing="ease-out-cubic"
                   className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center border border-gray-100 dark:border-gray-700 hover:shadow-2xl transition-all"
                 >
                   <div className="flex justify-center mb-6">{step.icon}</div>
+
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                     {step.title}
                   </h3>
+
                   <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                     {step.desc}
                   </p>
