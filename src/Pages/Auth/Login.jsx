@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { HiUserAdd } from "react-icons/hi";
 import { MdVisibility, MdVisibilityOff, MdEmail, MdLock } from "react-icons/md";
-import { Link, useNavigate } from "react-router"; 
+import { Link, useLocation, useNavigate } from "react-router"; 
 import useAuth from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -12,6 +12,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { userSignInGoogle, userLogIn } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const axiosSecure = useAxiosSecure();
   const {handleSubmit, register, formState: {errors}} = useForm();
 

@@ -73,7 +73,6 @@ const Navbar = () => {
                 : "hover:text-[#F57C00] bg-transparent"
             }
           >
-           
             Tuitions
           </NavLink>
         </li>
@@ -86,19 +85,19 @@ const Navbar = () => {
                 : "hover:text-[#F57C00] bg-transparent"
             }
           >
-           
             Tutors
           </NavLink>
         </li>
-        <li>
-          <button
-            onClick={handleClick}
-            className="hover:text-[#F57C00] bg-transparent"
-          >
-          
-            Dashboard
-          </button>
-        </li>
+        {user && (
+          <li>
+            <button
+              onClick={handleClick}
+              className="hover:text-[#F57C00] bg-transparent"
+            >
+              Dashboard
+            </button>
+          </li>
+        )}
         <li>
           <NavLink
             to={"/about"}
@@ -108,7 +107,6 @@ const Navbar = () => {
                 : "hover:text-[#F57C00] bg-transparent"
             }
           >
-            
             About
           </NavLink>
         </li>
@@ -121,7 +119,6 @@ const Navbar = () => {
                 : "hover:text-[#F57C00] bg-transparent"
             }
           >
-          
             Contact
           </NavLink>
         </li>

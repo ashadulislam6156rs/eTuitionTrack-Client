@@ -19,7 +19,7 @@ const TuitionManagement = () => {
     } = useQuery({
       queryKey: ["tuitions-pending"],
       queryFn: async () => {
-        const res = await axiosSecure("/tuitions");
+        const res = await axiosSecure.get("/tuitions");
         return res.data;
       },
     });

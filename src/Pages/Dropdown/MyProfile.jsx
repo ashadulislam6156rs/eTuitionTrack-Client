@@ -3,7 +3,6 @@ import Container from '../../Componants/Container/Container';
 import useAuth from '../../Hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { MdVerifiedUser } from 'react-icons/md';
-import { FaCamera } from 'react-icons/fa6';
 import { BiEditAlt } from "react-icons/bi";
 import { toast } from 'react-toastify';
 import { useQuery } from '@tanstack/react-query';
@@ -149,9 +148,7 @@ const MyProfile = () => {
                   alt="User Avatar"
                   className="w-36 h-36 rounded-full object-cover border-4 border-[#F57C00] shadow-lg"
                 />
-                <div className="absolute bottom-0 right-0 bg-[#F57C00] p-2 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition">
-                  <FaCamera className="text-white" />
-                </div>
+               
               </div>
 
               <h2 className="mt-4 text-xl font-bold text-[#F57C00]">

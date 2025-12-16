@@ -11,7 +11,7 @@ import {
   MdPhone,
   MdBadge,
 } from "react-icons/md";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
@@ -21,7 +21,7 @@ import { IoPersonSharp } from "react-icons/io5";
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [role, setRole] = useState("Student");
-   const [gender, setGender] = useState("Male");
+  const [gender, setGender] = useState("Male");
 
   const {
     register,
@@ -31,6 +31,7 @@ const Register = () => {
   const { updateUserInfo, userRegister, userSignInGoogle } = useAuth();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
+  const location = useLocation();
 
   const handleRegister = (data) => {
     const photoFile = data.photoURL[0];

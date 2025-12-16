@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import useAuth from "./useAuth";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const axiosSecure = axios.create({
   baseURL: "http://localhost:5000",
@@ -27,10 +28,11 @@ const useAxiosSecure = () => {
        },
        (error) => {
         
-         if (error.response?.status === 401 || error.response?.status === 403) {
-           userLogOut().then(() => {
-             navigate("/login");
-           });
+         if (error?.status === 401 || error?.status === 403) {
+          //  userLogOut().then(() => {
+          //    navigate("/login");
+           //  });
+           toast.error("Forbidden Access!");
          }
 
          return Promise.reject(error);
