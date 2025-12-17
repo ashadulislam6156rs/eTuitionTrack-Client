@@ -11,9 +11,6 @@ import Swal from "sweetalert2";
 import { Link } from "react-router";
 
 
-
-
-
 const MyTuitions = () => {
 
   const axiosSecure = useAxiosSecure();
@@ -72,7 +69,7 @@ const MyTuitions = () => {
   }
   
   if (isLoading) {
-    <Loading></Loading>
+    return <Loading></Loading>
   }
   
   return (

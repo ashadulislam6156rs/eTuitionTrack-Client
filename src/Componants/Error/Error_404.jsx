@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { GoHome } from "react-icons/go";
 import { MdOutlineSupportAgent } from "react-icons/md";
 import { Link } from "react-router";
+import { IoArrowBack } from "react-icons/io5";
 
 const Error_404 = () => {
   return (
@@ -86,7 +87,7 @@ const Error_404 = () => {
             to={"/"}
             className="px-5 py-2 flex items-center gap-1 text-white rounded-full bg-pink-400 font-semibold shadow-md hover:shadow-lg transition"
           >
-            <GoHome />
+            <IoArrowBack />
             Go Back Home
           </Link>
         </div>
@@ -96,3 +97,5 @@ const Error_404 = () => {
 };
 
 export default Error_404;
+
+

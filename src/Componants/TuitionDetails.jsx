@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Container from "./Container/Container";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import { IoSendSharp } from "react-icons/io5";
+import { IoArrowBack, IoSendSharp } from "react-icons/io5";
 import { RiSendBackward } from "react-icons/ri";
 import {
   MdPhone,
@@ -25,6 +25,7 @@ const TuitionDetails = () => {
   const { user } = useAuth();
   const modalRef = useRef();
   const [currentTuition, setcurrentTuition] = useState({});
+  const navigate = useNavigate();
 
   const {
     register,
@@ -36,7 +37,7 @@ const TuitionDetails = () => {
   const { data: tuition = {}, isLoading } = useQuery({
     queryKey: ["tuition-details", tuitionId],
     queryFn: async () => {
-      const res = await axiosSecure(`/tuitions/${tuitionId}/details`);
+      const res = await axiosSecure.get(`/tuitions/${tuitionId}/details`);
       return res.data;
     },
   });
@@ -45,7 +46,7 @@ const TuitionDetails = () => {
   const { data: users = {}, isLoading: usersLoading } = useQuery({
     queryKey: ["users", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure(`/users?email=${user?.email}`);
+      const res = await axiosSecure.get(`/users?email=${user?.email}`);
       return res.data;
     },
   });
@@ -69,7 +70,7 @@ const TuitionDetails = () => {
 
   const handleTuitionRequestPopup = () => {
     setcurrentTuition(tuition);
-    modalRef.current.showModal();
+    modalRef.current?.showModal();
     
   }
 
@@ -82,7 +83,7 @@ useEffect(() => {
       tutorImage: users?.photoURL,
     });
   }
-}, [currentTuition, users]);
+}, [currentTuition, users, reset]);
 
   const handleTuitionRequest = (data) => {
     
@@ -97,12 +98,8 @@ useEffect(() => {
     axiosSecure
       .post("/tuition-requests", requestData)
       .then(() => {
-        // if (modalRef.current) {
-        //   // modalRef.current.close();
-        // }
-        // modalRef.current.close();
-
         toast.success("Tuition request sent successfully!");
+         modalRef.current?.close();
       })
       .catch((err) => toast.error(err.message));
     
@@ -112,13 +109,23 @@ useEffect(() => {
     return <Loading></Loading>;
   }
 
-  if (!_id) {
+  if (!tuition?._id) {
     return <TutionsNotFound></TutionsNotFound>;
   }
+  
     return (
       <div className="pt-20 pb-10">
         <Container>
           {/* Header */}
+          <button
+            onClick={() => {
+              navigate(-1);
+            }}
+            className="btn myBtn"
+          >
+            <IoArrowBack />
+            Go Back
+          </button>
           <div className="text-center pt-3 mb-5">
             <h1 className="text-3xl font-bold">{subject} Tuition Details</h1>
             <p className="text-base text-gray-500 mt-2">
