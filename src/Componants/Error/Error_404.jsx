@@ -6,9 +6,11 @@ import { Link } from "react-router";
 
 const Error_404 = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-slate-800 to-slate-900 text-white px-4 py-10">
+    <div className="min-h-screen flex flex-col items-center bg-base-300 justify-center px-4 py-10">
       <div className="flex items-center justify-center gap-6 flex-wrap mb-8">
-        <span className="text-7xl font-extrabold drop-shadow">4</span>
+        <span className="text-7xl text-[#F57C00] font-extrabold drop-shadow">
+          4
+        </span>
 
         <motion.div
           className="relative w-[90px]"
@@ -33,14 +35,16 @@ const Error_404 = () => {
           </div>
         </motion.div>
 
-        <span className="text-7xl font-extrabold drop-shadow">4</span>
+        <span className="text-7xl text-[#F57C00] font-extrabold drop-shadow">
+          4
+        </span>
 
         {/* Dots */}
         <div className="flex gap-2">
           {[...Array(5)].map((_, i) => (
             <motion.span
               key={i}
-              className="w-2.5 h-2.5 bg-white rounded-full opacity-50"
+              className="w-2.5 h-2.5 bg-[#F57C00] rounded-full opacity-50"
               animate={{ opacity: [0.2, 1, 0.2] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
             />
@@ -54,7 +58,7 @@ const Error_404 = () => {
           transition={{ duration: 1.3, repeat: Infinity }}
         >
           <motion.div
-            className="absolute w-full h-full bg-slate-900"
+            className="absolute w-full h-full bg-base-300"
             animate={{
               clipPath: [
                 "polygon(50% 50%, 100% 20%, 100% 80%)",
@@ -73,7 +77,7 @@ const Error_404 = () => {
           <span className="text-4xl font-semibold">o</span>ops! This page cannot
           be found
         </h1>
-        <p className="text-slate-300 mb-6">
+        <p className="text-slate-500 mb-6">
           The page you are looking for might have been removed, had its name
           changed, or is temporarily unavailable.
         </p>
@@ -85,7 +89,6 @@ const Error_404 = () => {
             <GoHome />
             Go Back Home
           </Link>
-         
         </div>
       </div>
     </div>

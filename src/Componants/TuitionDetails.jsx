@@ -16,6 +16,7 @@ import useAuth from "../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Loading from "./Loading/Loading";
+import TutionsNotFound from "./Error/TutionsNotFound";
 
 
 const TuitionDetails = () => {
@@ -111,7 +112,9 @@ useEffect(() => {
     return <Loading></Loading>;
   }
 
-
+  if (!_id) {
+    return <TutionsNotFound></TutionsNotFound>;
+  }
     return (
       <div className="pt-20 pb-10">
         <Container>
@@ -126,7 +129,7 @@ useEffect(() => {
           {/* Main Card */}
           <div className="rounded-xl p-6 grid md:grid-cols-2 gap-8">
             {/* Left: Subject Image */}
-            <div className="w-full h-96">
+            <div className="w-full h-96 ">
               <img
                 src={subjectImage}
                 alt={subject}

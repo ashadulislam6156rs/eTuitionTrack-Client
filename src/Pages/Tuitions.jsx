@@ -4,6 +4,8 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Container from "../Componants/Container/Container";
 import TuitionCard from "../Componants/TuitionCard";
 import Loading from "../Componants/Loading/Loading";
+import noDataFound from "../assets/noDataFound.png";
+
 
 const Tuitions = () => {
   const axiosSecure = useAxiosSecure();
@@ -28,10 +30,7 @@ const Tuitions = () => {
   const tuitions = data?.data || [];
   const totalPages = data?.pages || 1;
 
-
-  // if (isLoading) {
-  //   return <Loading></Loading>
-  // }
+ 
     return (
       <div className="pt-17">
         <Container>
@@ -90,32 +89,58 @@ const Tuitions = () => {
           </div>
 
           {/* Cards */}
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 pb-10">
-            {tuitions.map((tuition) => (
-              <TuitionCard key={tuition._id} tuition={tuition} />
-            ))}
-          </div>
+          {isLoading ? (
+            <Loading></Loading>
+          ) : tuitions.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-3 md:py-10 text-center">
+              <div className="max-w-md">
+                <img
+                  src={noDataFound}
+                  alt="No Data Found"
+                  className="w-72 mx-auto mb-6 opacity-90"
+                />
 
-          {/* paganation */}
-          <div className="flex justify-center items-center pb-10">
-            <div className="join gap-3">
-              {Array.from({ length: totalPages }, (_, i) => {
-                const pageNumber = i + 1;
+                <h1 className="text-3xl md:text-4xl font-bold text-gray-700 mb-2">
+                  No Result Found
+                </h1>
 
-                return (
-                  <input
-                    key={pageNumber}
-                    className="join-item btn btn-square"
-                    type="radio"
-                    name="options"
-                    aria-label={pageNumber}
-                    checked={page === pageNumber}
-                    onChange={() => setPage(pageNumber)}
-                  />
-                );
-              })}
+                <p className="text-sm md:text-base text-gray-500 mb-6">
+                  We couldn’t find what you searched for. Please try using
+                  different keywords or filters.
+                </p>
+
+              </div>
             </div>
-          </div>
+          ) : (
+            <>
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 pb-10">
+                {tuitions.map((tuition) => (
+                  <TuitionCard key={tuition._id} tuition={tuition} />
+                ))}
+              </div>
+
+              {/* paganation */}
+              <div className="flex justify-center items-center pb-10">
+                <div className="join gap-3">
+                  {Array.from({ length: totalPages }, (_, i) => {
+                    const pageNumber = i + 1;
+
+                    return (
+                      <input
+                        key={pageNumber}
+                        className="join-item btn btn-square"
+                        type="radio"
+                        name="options"
+                        aria-label={pageNumber}
+                        checked={page === pageNumber}
+                        onChange={() => setPage(pageNumber)}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            </>
+          )}
         </Container>
       </div>
     );

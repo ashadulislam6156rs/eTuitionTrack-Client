@@ -8,7 +8,6 @@ import Tuitions from "../Pages/Tuitions";
 import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import MyProfile from "../Pages/Dropdown/MyProfile";
-import Settings from "../Pages/Dropdown/Settings";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Tutors from "../Pages/Dashboard/Tutors/Tutors";
 import MyTuitions from "../Pages/Dashboard/Students/MyTuitions";
