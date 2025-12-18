@@ -1,28 +1,24 @@
 import React, { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { FiMail, FiPhone, FiMapPin, FiClock, FiSend } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const PRIMARY_BLUE = "#0288D1";
 const DEEP_BLUE = "#0D47A1";
 
 
 
-const ContactInput = (props) => (
-  <input
-    {...props}
-    className="w-full px-5 py-3 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2 transition duration-300"
-    style={{ focusRingColor: PRIMARY_BLUE }}
-  />
-);
-
-const ContactTextarea = (props) => (
-  <textarea
-    {...props}
-    className="w-full px-5 py-3 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2 transition duration-300"
-    style={{ focusRingColor: PRIMARY_BLUE }}
-  />
-);
-
 const Contact = () => {
+
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+
   useEffect(() => {
    
     if (
@@ -32,6 +28,15 @@ const Contact = () => {
       document.documentElement.classList.add("dark");
     }
   }, []);
+
+  const handleUserMessage = (data) => {
+    toast.success(`Thanks ${data.name}! Your message has been received.`);
+    reset();
+    
+  }
+
+
+
 
   return (
     <section className="w-full font-sans text-slate-700 dark:text-slate-300 transition-colors duration-500">
@@ -131,16 +136,53 @@ const Contact = () => {
             </p>
 
             {/* Form */}
-            <form className="space-y-6">
+            <form
+              onSubmit={handleSubmit(handleUserMessage)}
+              className="space-y-6"
+            >
               <div className="grid md:grid-cols-2 gap-4">
-                <ContactInput placeholder="Your Name" />
-                <ContactInput type="email" placeholder="Email Address" />
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    {...register("name", { required: true })}
+                    className="input input-neutral"
+                  />
+                  {errors.name && (
+                    <p className="text-red-500 inline">Name is require</p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    {...register("email", { required: true })}
+                    placeholder="Your email"
+                    className="input input-neutral"
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 inline">Email is require</p>
+                  )}
+                </div>
               </div>
               <div className="grid md:grid-cols-2 gap-4">
-                <ContactInput placeholder="Phone Number" />
-                <ContactInput placeholder="Subject" />
+                <input
+                  type="text"
+                  {...register("subjectName")}
+                  placeholder="Subject name"
+                  className="input input-neutral"
+                />
+                <input
+                  type="text"
+                  placeholder="Phone number"
+                  {...register("number")}
+                  className="input input-neutral"
+                />
               </div>
-              <ContactTextarea rows="6" placeholder="Write your message..." />
+              <textarea
+                className="textarea"
+                {...register("message")}
+                placeholder="Write your message..."
+              ></textarea>
 
               <button className="myBtn w-full btn">
                 <FiSend /> Send Message

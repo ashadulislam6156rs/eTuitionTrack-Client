@@ -71,7 +71,7 @@ After enrollment, you can:`,
         collapse collapse-arrow border rounded-xl transition-all duration-300 p-4
         ${
           isOpen && click == index
-            ? "border-[#2B8282] bg-[#E6F2F3] shadow-lg text-black"
+            ? "border-[#fdf7e4] bg-[#f57b001c] shadow-lg text-black"
             : "bg-base-100 border-base-300 text-gray-700"
         }
       `}
