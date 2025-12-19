@@ -46,7 +46,7 @@ const RevenueHistory = () => {
           <h3 className="text-lg font-semibold text-slate-700">
             Total Earnings
           </h3>
-          <p className="text-3xl font-bold text-[#7627aa]  mt-2">
+          <p className="text-3xl font-bold text-cyan-500 mt-2">
             ৳ {totalEarnings}
           </p>
           <p className="text-sm text-slate-500 mt-1">
@@ -57,7 +57,7 @@ const RevenueHistory = () => {
         {/* Card 2 */}
         <div className="bg-white p-6 rounded-2xl shadow-lg border border-indigo-100 hover:shadow-xl transition-all duration-200">
           <h3 className="text-lg font-semibold text-slate-700">Transactions</h3>
-          <p className="text-3xl font-bold text-[#7627aa] mt-2">
+          <p className="text-3xl font-bold text-cyan-500 mt-2">
             {PaidDatas?.length}
           </p>
           <p className="text-sm text-slate-500 mt-1">
@@ -68,7 +68,7 @@ const RevenueHistory = () => {
 
       <div className="overflow-x-auto bg-white rounded-xl shadow-lg border border-base-300">
         <table className="table">
-          <thead className="bg-[#7627aa] text-white text-sm">
+          <thead className="bg-cyan-500 text-white text-sm">
             <tr>
               <th>#</th>
               <th>Subject</th>
@@ -93,7 +93,7 @@ const RevenueHistory = () => {
 
                 {/* Class */}
                 <td>
-                  <span className="badge badge-soft badge-primary px-3">
+                  <span className="badge text-xs md:text-sm md:badge-soft md:badge-primary px-3">
                     {item.className}
                   </span>
                 </td>

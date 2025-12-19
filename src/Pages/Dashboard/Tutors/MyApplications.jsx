@@ -67,7 +67,6 @@ const MyApplications = () => {
           .then(() => {
             Swal.fire("Saved!", "", "success");
             refetch();
-           
           })
           .catch((err) => toast.error(err.message));
       } else if (result.isDenied) {
@@ -113,7 +112,7 @@ const MyApplications = () => {
 
       <div className="overflow-x-auto bg-white rounded-xl shadow-lg border border-base-300">
         <table className="table">
-          <thead className="bg-[#0D47A1] text-white text-sm">
+          <thead className="bg-cyan-500 text-white text-sm">
             <tr>
               <th>#</th>
               <th>Subject</th>
@@ -176,6 +175,7 @@ const MyApplications = () => {
                 {/* View Button */}
                 <td className="space-x-2">
                   <button
+                    title="Edit Application"
                     onClick={() => handleModalShow(item)}
                     disabled={item.tutorRequestStatus === "Approved"}
                     className={`btn btn-square btn-sm bg-green-500 text-white 
@@ -190,6 +190,7 @@ const MyApplications = () => {
                   </button>
 
                   <button
+                    title="Delete Application"
                     onClick={() => handleTutorDelete(item)}
                     disabled={item.tutorRequestStatus === "Approved"}
                     className={`btn btn-square btn-sm bg-red-400 text-white 

@@ -30,9 +30,9 @@ const resInterceptors = axiosSecure.interceptors.response.use(
     const status = error?.response?.status;
 
     if (status === 401 || status === 403) {
-      toast.error("Forbidden Access!");
-      // userLogOut();
-      // navigate("/login");
+     
+      userLogOut();
+      navigate("/login");
     }
 
     return Promise.reject(error);

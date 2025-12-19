@@ -96,7 +96,7 @@ const DashboardLayout = () => {
                       }
                       data-tip="My Profile"
                     >
-                      {/* Home icon */}
+                      
                       {/* User Profile icon */}
                       <IoPersonCircleOutline className="my-1.5 inline-block size-4" />
                       <span className="is-drawer-close:hidden">My Profile</span>

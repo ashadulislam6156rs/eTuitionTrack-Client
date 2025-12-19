@@ -175,7 +175,7 @@ const UsersManagement = () => {
       <div>
         <div>
           <h1 className="text-3xl font-bold text-center pt-5">
-            Users Management Dashboard
+            Users Management
           </h1>
           <p className="text-sm text-center md:w-3/4 mx-auto text-base-content/60 pb-7 pt-2">
             This dashboard allows you to efficiently manage all registered
@@ -187,7 +187,7 @@ const UsersManagement = () => {
 
           <div className="overflow-x-auto bg-white rounded-xl shadow-lg border border-base-300">
             <table className="table">
-              <thead className="bg-[#0D47A1] text-white text-sm">
+              <thead className="bg-cyan-500 text-white text-sm">
                 <tr>
                   <th>#</th>
                   <th>User Info</th>
@@ -255,9 +255,9 @@ const UsersManagement = () => {
 
                     {/* Update Role */}
 
-                   
                     <td className="space-x-2">
                       <button
+                        title="Update User Role Admin"
                         onClick={() => updateUserRole(user, "Admin")}
                         disabled={user.userRole === "Admin"}
                         className={`btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm ${
@@ -269,6 +269,7 @@ const UsersManagement = () => {
                         <FaUserShield />
                       </button>
                       <button
+                        title="Update User Role Student"
                         onClick={() => updateUserRole(user, "Student")}
                         disabled={user.userRole === "Student"}
                         className={`btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm ${
@@ -281,6 +282,7 @@ const UsersManagement = () => {
                       </button>
 
                       <button
+                        title="Update User Role Tutor"
                         onClick={() => updateUserRole(user, "Tutor")}
                         disabled={user.userRole === "Tutor"}
                         className={`btn hover:bg-transparent hover:text-black btn-square bg-green-500 text-white btn-sm ${
@@ -296,18 +298,21 @@ const UsersManagement = () => {
                     {/* View Button */}
                     <td className="space-x-2">
                       <button
+                        title="User Details View"
                         onClick={() => handleUsersViewDetails(user)}
                         className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"
                       >
                         <FiEye />
                       </button>
                       <button
+                        title="Update User Info"
                         onClick={() => userInfoUpdate(user)}
                         className="btn hover:bg-transparent hover:text-black btn-square bg-green-500 text-white btn-sm"
                       >
                         <FaRegEdit />
                       </button>
                       <button
+                        title="User Delete"
                         onClick={() => handleUserDelete(user)}
                         className="btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm"
                       >

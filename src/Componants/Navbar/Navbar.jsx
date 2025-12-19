@@ -126,7 +126,7 @@ const Navbar = () => {
     );
 
   return (
-    <div className="">
+    <div>
       <Container>
         <div className="navbar p-0">
           <div className="navbar-start">
@@ -195,8 +195,38 @@ const Navbar = () => {
 
                 <ul
                   tabIndex={0}
-                  className="menu bg-[#fdf7e4] menu-sm dropdown-content rounded-box mt-3 w-52 p-2 shadow-lg shadow-gray-500 z-[9999]"
+                  className="menu bg-[#fdf7e4] menu-sm dropdown-content rounded-box mt-4 w-52 p-2 shadow-lg shadow-gray-500 z-9999"
                 >
+                  <div className="ml-3 pb-2">
+                  
+                    <h1 className="font-semibold pb-1 text-base text-gray-900 dark:text-gray-100 leading-tight">
+                      {user?.displayName}
+                    </h1>
+
+                   
+                    <div
+                      className="mt-1 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full 
+                  bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300
+                  text-xs font-medium"
+                    >
+                      <svg
+                        className="w-3.5 h-3.5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 
+               10 10 10-4.48 10-10S17.52 2 12 2zm-1 
+               15l-4-4 1.41-1.41L11 14.17l5.59-5.59 
+               L18 10l-7 7z"
+                        />
+                      </svg>
+
+                      <span className="capitalize">{role}</span>
+                    </div>
+                  </div>
+
                   <li className="text-[#0D47A1] font-bold rounded-sm border border-white">
                     <button
                       onClick={handleClick}
@@ -207,9 +237,8 @@ const Navbar = () => {
                     </button>
                   </li>
 
-                 
-                    {/* Theme Control */}
-                    {/* <label className="toggle text-base-content">
+                  {/* Theme Control */}
+                  {/* <label className="toggle text-base-content">
                       <input
                         type="checkbox"
                         value="synthwave"
@@ -256,7 +285,6 @@ const Navbar = () => {
                         </g>
                       </svg>
                     </label> */}
-                
 
                   <li>
                     <button

@@ -74,6 +74,7 @@ const PaymentsHistory = () => {
                   <td>
                     {" "}
                     <button
+                      
                       onClick={() => handlePaymentDetails(Payment)}
                       title="View Payment Details"
                       className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"

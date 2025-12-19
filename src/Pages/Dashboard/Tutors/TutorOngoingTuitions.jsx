@@ -34,7 +34,7 @@ const TutorOngoingTuitions = () => {
 
         <div className="overflow-x-auto bg-white rounded-xl shadow-lg border border-base-300">
           <table className="table">
-            <thead className="bg-[#0D47A1] text-white text-sm">
+            <thead className="bg-cyan-500 text-white text-sm">
               <tr>
                 <th>#</th>
                 <th>Subject</th>

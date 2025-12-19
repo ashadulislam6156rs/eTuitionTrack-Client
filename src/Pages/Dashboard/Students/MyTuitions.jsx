@@ -81,10 +81,10 @@ const MyTuitions = () => {
         </p>
       </div>
       <div>
-        <div className="overflow-x-auto mt-5">
+        <div className="overflow-x-auto mt-5 rounded-lg">
           <table className="table bg-white">
             {/* head */}
-            <thead>
+            <thead className="bg-cyan-500 text-white">
               <tr>
                 <th>SL.N</th>
                 <th>Subjects Info</th>
@@ -141,18 +141,21 @@ const MyTuitions = () => {
                   </td>
                   <th className="flex gap-3 items-center">
                     <button
+                      title="View Tution Details"
                       onClick={() => handleViewDetails(tuition)}
                       className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"
                     >
                       <FiEye />
                     </button>
                     <Link
+                      title="Update Tution Details"
                       to={`/dashboard/tuition/${tuition._id}/update`}
                       className="btn hover:bg-transparent hover:text-black btn-square bg-green-500 text-white btn-sm"
                     >
                       <FaRegEdit />
                     </Link>
                     <button
+                      title="Delete Tution"
                       onClick={() => handleTuitionDelete(tuition)}
                       className="btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm"
                     >

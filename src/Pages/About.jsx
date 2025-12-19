@@ -13,7 +13,6 @@ const About = () => {
       {/*  Hero Section */}
       <section className="relative w-full min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-         
           <img
             src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
             alt="About eTuitionTrack"
@@ -25,8 +24,8 @@ const About = () => {
 
         <div className="relative z-10 container mx-auto px-6 max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-5 items-center text-white">
           <div className="max-w-xl p-6 md:p-0">
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight pt-3 mb-6">
-              About <span className="block" style={{ color: PRIMARY_COLOR }}>eTuitionTrack</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight pt-10 md:pt-3 mb-6">
+              About <span className="block text-[#F57C00]">eTuitionTrack</span>
             </h1>
             <p className="text-xl text-gray-200 mb-10">
               eTuitionTrack is a smart tuition management platform that connects
@@ -84,12 +83,9 @@ const About = () => {
       {/* Our Process (Integrated Component) */}
       <OurProcess />
 
-     
       <section className="py-10" style={{ backgroundColor: BACKGROUND_LIGHT }}>
         <div className="container mx-auto px-6 max-w-7xl flex flex-col items-center justify-center gap-16">
-          
           <div className="flex flex-col md:flex-row items-center justify-center gap-16 w-full">
-            
             <div
               className="w-60 h-60 rounded-full border-[18px] border-gray-100 flex flex-col items-center justify-center bg-white shadow-2xl transition-all duration-500 hover:scale-105"
               style={{ borderColor: PRIMARY_COLOR + "20" }}

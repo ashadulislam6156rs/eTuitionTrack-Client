@@ -133,7 +133,7 @@ const MyProfile = () => {
     <Loading></Loading>;
   }
   return (
-    <div className="">
+    <div>
       <Container>
         <div className="bg-base-100 rounded-xl shadow-lg p-6 md:p-8 my-6">
           <div className="flex flex-col md:flex-row md:items-start gap-6">

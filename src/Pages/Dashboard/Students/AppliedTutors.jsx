@@ -132,10 +132,10 @@ const handlePayment =  (tutor) => {
           details and take necessary actions from here.
         </p>
       </div>
-      <div className="overflow-x-auto mt-5">
+      <div className="overflow-x-auto mt-5 rounded-lg">
         <table className="table bg-white">
           {/* head */}
-          <thead>
+          <thead className="bg-cyan-500 text-white">
             <tr>
               <th>SL.N</th>
               <th>Tutors Info</th>
@@ -146,7 +146,7 @@ const handlePayment =  (tutor) => {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="rounded-lg">
             {Tutors.map((tutor, index) => (
               <tr key={tutor._id}>
                 <th>{index + 1}</th>
@@ -202,12 +202,14 @@ const handlePayment =  (tutor) => {
 
                 <th className="flex gap-3 items-center">
                   <button
+                    title="View Tutor Details"
                     onClick={() => handleViewDetails(tutor)}
                     className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"
                   >
                     <FiEye />
                   </button>
                   <button
+                    title="Reject Tutor"
                     onClick={() => handleTutorRejected(tutor, "Rejected")}
                     className="btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm"
                   >

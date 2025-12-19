@@ -6,6 +6,7 @@ import { FiEye } from 'react-icons/fi';
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import { RxCross2 } from 'react-icons/rx';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const TuitionManagement = () => {
   const axiosSecure = useAxiosSecure();
@@ -37,13 +38,48 @@ const TuitionManagement = () => {
           .catch((err) => toast.error(err.message));
       };
 
-      const handleTuitionApproved = (tuition) => {
-        handleTuitions(tuition, "Approved");
-      };
+ const handleTuitionApproved = (tuition) => {
+   Swal.fire({
+     title: "Approve Tuition?",
+     text: "Once approved, the student and tutor will be notified.",
+     icon: "warning",
+     showCancelButton: true,
+     confirmButtonColor: "#3085d6",
+     cancelButtonColor: "#d33",
+     confirmButtonText: "Yes, Approve it!",
+   }).then((result) => {
+     if (result.isConfirmed) {
+       handleTuitions(tuition, "Approved");
+       Swal.fire({
+         title: "Approved!",
+         text: "The tuition has been approved successfully.",
+         icon: "success",
+       });
+     }
+   });
+ };
 
-      const handleTuitionRejected = (tuition) => {
-        handleTuitions(tuition, "Rejected");
-  };
+ const handleTuitionRejected = (tuition) => {
+   Swal.fire({
+     title: "Reject Tuition?",
+     text: "Once rejected, the student and tutor will be notified.",
+     icon: "warning",
+     showCancelButton: true,
+     confirmButtonColor: "#3085d6",
+     cancelButtonColor: "#d33",
+     confirmButtonText: "Yes, Reject it!",
+   }).then((result) => {
+     if (result.isConfirmed) {
+       handleTuitions(tuition, "Rejected");
+       Swal.fire({
+         title: "Rejected!",
+         text: "The tuition has been rejected successfully.",
+         icon: "error",
+       });
+     }
+   });
+ };
+
   
   const handleViewDetails = (tuition) => {
     setCurrentTuition(tuition);
@@ -57,16 +93,16 @@ const TuitionManagement = () => {
       return (
         <div>
           <div className="text-center mt-4">
-            <h1 className="text-2xl font-bold">Tuitions</h1>
+            <h1 className="text-3xl font-bold">Tuitions Management</h1>
             <p className="text-sm text-base-content/60 py-2">
               Review all tuition requests that are waiting for approval. Manage
               details and take necessary actions from here.
             </p>
           </div>
-          <div className="overflow-x-auto mt-5">
+          <div className="overflow-x-auto mt-5 rounded-lg">
             <table className="table bg-white">
               {/* head */}
-              <thead>
+              <thead className="bg-cyan-500 text-white">
                 <tr>
                   <th>SL.N</th>
                   <th>Subjects Info</th>
@@ -122,16 +158,22 @@ const TuitionManagement = () => {
                       )}{" "}
                     </td>
                     <th className="flex gap-3 items-center">
-                      <button onClick={()=> handleViewDetails(tuition)} className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm">
+                      <button
+                        title="Tuition Details View"
+                        onClick={() => handleViewDetails(tuition)}
+                        className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"
+                      >
                         <FiEye />
                       </button>
                       <button
+                        title="Tuition Approved"
                         onClick={() => handleTuitionApproved(tuition)}
                         className="btn hover:bg-transparent hover:text-black btn-square bg-green-500 text-white btn-sm"
                       >
                         <IoMdCheckmarkCircleOutline />
                       </button>
                       <button
+                        title="Tuition Rejected"
                         onClick={() => handleTuitionRejected(tuition)}
                         className="btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm"
                       >

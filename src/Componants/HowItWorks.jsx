@@ -44,7 +44,7 @@ export default function HowItWorks() {
                   data-aos-delay={index * 150}
                   data-aos-duration="900"
                   data-aos-easing="ease-out-cubic"
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center border border-gray-100 dark:border-gray-700 hover:shadow-2xl transition-all"
+                  className="bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-lg text-center border border-gray-100 dark:border-gray-700 hover:shadow-2xl transition-all"
                 >
                   <div className="flex justify-center mb-6">{step.icon}</div>
 

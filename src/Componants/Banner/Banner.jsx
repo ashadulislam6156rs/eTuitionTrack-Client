@@ -46,7 +46,7 @@ const Banner = () => {
     <div className="bg-base-300 pt-3 md:pt-0">
       <Container>
         <section className="font-display dark:bg-[#111827] md:h-[450px] flex items-center justify-center overflow-hidden">
-          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
+          <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
             <motion.div
               variants={textParent}
               initial="hidden"
@@ -55,7 +55,7 @@ const Banner = () => {
             >
               <motion.h1
                 variants={textChild}
-                className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight"
+                className="text-3xl lg:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight"
               >
                 Manage Your Tuition System Smarter with
                 <span className="text-[#F57C00] text-2xl md:text-4xl block pt-4">
@@ -131,10 +131,10 @@ const Banner = () => {
                 <motion.div
                   variants={float}
                   animate="animate"
-                  className="absolute -top-6 -right-6 md:top-6 md:-right-10 z-20 p-4 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-xl shadow-xl border border-white/20 dark:border-gray-700/50 min-w-[180px]"
+                  className="absolute -top-6 -right-6 md:top-6 md:-right-10 z-20 p-2 lg:p-4 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-xl shadow-xl border border-white/20 dark:border-gray-700/50 min-w-[180px]"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full">
+                    <div className="flex items-center justify-center w-6 lg:w-10 lg:h-10 h-6 bg-blue-100 dark:bg-blue-900 rounded-full">
                       <MdSchool className="text-blue-500 dark:text-blue-300 text-2xl" />
                     </div>
                     <div>
@@ -153,7 +153,7 @@ const Banner = () => {
                   variants={float}
                   animate="animate"
                   transition={{ delay: 0.3 }}
-                  className="absolute -bottom-6 -left-6 md:bottom-6 md:-left-10 z-20 p-4 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-xl shadow-xl border border-white/20 dark:border-gray-700/50 min-w-[200px]"
+                  className="absolute -bottom-6 -left-6 md:bottom-6 md:-left-10 z-20 lg:p-4 p-2 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-xl shadow-xl border border-white/20 dark:border-gray-700/50 lg:min-w-[200px] min-w-[100px]"
                 >
                   <div>
                     <p className="font-bold text-lg text-gray-900 dark:text-white">
