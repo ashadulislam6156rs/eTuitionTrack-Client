@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://etuitiontrack-server.vercel.app",
 });
 
 const useAxiosSecure = () => {
@@ -21,23 +21,23 @@ const useAxiosSecure = () => {
 
        return config;
      });
+     
+const resInterceptors = axiosSecure.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    const status = error?.response?.status;
 
-     const resInterceptors = axiosSecure.interceptors.response.use(
-       (response) => {
-         return response;
-       },
-       (error) => {
-        
-         if (error?.status === 401 || error?.status === 403) {
-          //  userLogOut().then(() => {
-          //    navigate("/login");
-           //  });
-           toast.error("Forbidden Access!");
-         }
+    if (status === 401 || status === 403) {
+      toast.error("Forbidden Access!");
+      // userLogOut();
+      // navigate("/login");
+    }
 
-         return Promise.reject(error);
-       }
-     );
+    return Promise.reject(error);
+  }
+);
 
      return () => {
        axiosSecure.interceptors.request.eject(reqInterceptors);

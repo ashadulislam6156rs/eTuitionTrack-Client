@@ -52,7 +52,7 @@ const MyApplications = () => {
       ...data,
     };
 
-    // modalRef.current.close();
+    modalRef.current?.close();
 
     Swal.fire({
       title: "Do you want to save the changes?",
@@ -67,6 +67,7 @@ const MyApplications = () => {
           .then(() => {
             Swal.fire("Saved!", "", "success");
             refetch();
+           
           })
           .catch((err) => toast.error(err.message));
       } else if (result.isDenied) {

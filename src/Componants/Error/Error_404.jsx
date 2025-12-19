@@ -1,7 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { GoHome } from "react-icons/go";
-import { MdOutlineSupportAgent } from "react-icons/md";
 import { Link } from "react-router";
 import { IoArrowBack } from "react-icons/io5";
 

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Container from '../../../Componants/Container/Container';
 import TutorCard from './TutorCard';
+import Loading from '../../../Componants/Loading/Loading';
 
 const Tutors = () => {
 
@@ -10,7 +11,7 @@ const Tutors = () => {
      const [page, setPage] = useState(1);
       const limit = 12;
 
-    const { data } = useQuery({
+    const { data, isLoading } = useQuery({
       queryKey: ["users", page, limit],
       queryFn: async () => {
         const res = await axiosSecure.get("/users/tutor/role", {
@@ -27,7 +28,9 @@ const Tutors = () => {
 
 
 
-    
+  if (isLoading) {
+    return <Loading></Loading>
+  }
     return (
       <div className="pt-17">
         <Container>

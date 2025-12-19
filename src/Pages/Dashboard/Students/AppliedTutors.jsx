@@ -76,8 +76,6 @@ const handlePayment =  (tutor) => {
   };
 
   
-  // console.log(res.data.url);
-  
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
       confirmButton: "btn bg-teal-600 text-white btn-success",
