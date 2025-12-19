@@ -6,43 +6,57 @@ const FAQ = () => {
   const [click, setClick] = useState(null);
 const QuestionsData = [
   {
-    que: "How do I register as a student on eTuitionTrack?",
-    answer: `To join eTuitionTrack, simply click on the 'Sign Up' button and provide your basic details such as name, email, and class information. 
-Once registered, you can browse available tutors and request tuition sessions immediately.`,
+    que: "What is eTuitionTrack and how does it work?",
+    answer: `eTuitionTrack is a tuition management platform where students, tutors, and admins manage tuition activities seamlessly. 
+Students post tuition requirements, tutors apply, and admins review and approve sessions for a smooth learning experience.`,
   },
   {
-    que: "Can I select tutors based on subjects and experience?",
-    answer: `Yes! eTuitionTrack allows students to search for tutors by subject, class level, experience, and ratings.
-You can review tutor profiles, see their availability, and select the one that suits your learning needs.`,
+    que: "How do I post a tuition requirement as a student?",
+    answer: `After registering as a student, you can post your tuition needs by specifying details like class, subject, budget, location, and preferred schedule. 
+This helps tutors find and apply to tuitions that match their expertise.`,
   },
   {
-    que: "How are tuition schedules managed?",
+    que: "How can I apply as a tutor and get approved?",
     answer: {
-      first: `Scheduling is seamless on eTuitionTrack. Once you select a tutor, you can:`,
+      first: `Tutors can browse available tuition posts and apply to those that suit their skills. Once applied, the admin will:`,
+
+      option: [
+        "Review your profile and experience",
+        "Verify your credentials",
+        "Approve or reject your application based on suitability",
+      ],
+      last: "This ensures only verified tutors are connected with students for a trustworthy experience.",
+    },
+  },
+  {
+    que: "How are tuition schedules and sessions managed?",
+    answer: {
+      first: `Scheduling is easy with eTuitionTrack. Once a tutor is approved for a tuition, you can:`,
+
       option: [
         "Check the tutor's available time slots",
-        "Request a session at your preferred time",
-        "Receive confirmation once the tutor approves your request",
+        "Confirm sessions according to mutual convenience",
+        "Track ongoing classes and progress",
       ],
-      last: "This ensures both students and tutors are synchronized without any confusion.",
+      last: "This ensures both students and tutors remain synchronized without confusion.",
     },
   },
   {
     que: "Is payment secure on eTuitionTrack?",
-    answer: `Absolutely. All payments are processed securely through our platform.
-We offer multiple payment methods and maintain transparency so that both students and tutors can trust the system.`,
+    answer: `Yes! All payments are securely processed through the platform. 
+The system ensures transparency for students and tutors with clear payment tracking, receipts, and multiple supported methods.`,
   },
   {
-    que: "What support does eTuitionTrack provide after enrollment?",
+    que: "How can admins monitor and manage the platform?",
     answer: {
-      first: `eTuitionTrack provides continuous support to ensure a smooth learning experience. 
-After enrollment, you can:`,
+      first: `Admins have a dashboard to oversee all activities. They can:`,
+
       option: [
-        "Track your tuition progress",
-        "Provide feedback on sessions",
-        "Contact support for any issues",
+        "Approve or reject tutor applications and tuition posts",
+        "Track payments and financial records",
+        "Monitor student-tutor communication and system activity",
       ],
-      last: "Our dedicated support team is always ready to help students and tutors alike.",
+      last: "This ensures the platform runs smoothly and maintains high-quality educational standards.",
     },
   },
 ];

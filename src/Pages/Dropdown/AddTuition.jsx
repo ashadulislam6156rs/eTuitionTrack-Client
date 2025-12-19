@@ -199,9 +199,7 @@ const AddTuition = () => {
     axiosSecure
       .post("/tuitions", tuitionData)
       .then((res) => {
-        if (res.data.insertedId) {
-          toast.success(res.data.message || "Tuition added successfully");
-        }
+        toast.success(res.data.message || "Tuition added successfully");
       })
       .catch((err) => toast.error(err.message));
 

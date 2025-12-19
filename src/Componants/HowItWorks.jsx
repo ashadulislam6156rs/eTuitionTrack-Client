@@ -1,23 +1,23 @@
 import React from "react";
-import { FaUserGraduate, FaBookOpen, FaCertificate } from "react-icons/fa";
+import { FaPlusCircle, FaClipboardCheck, FaTasks } from "react-icons/fa";
 import Container from "./Container/Container";
 
 export default function HowItWorks() {
   const steps = [
     {
-      icon: <FaUserGraduate className="text-4xl text-[#F57C00]" />,
-      title: "Create Your Account",
-      desc: "Sign up easily using your email to get started with eTuitionTrack.",
+      icon: <FaPlusCircle className="text-4xl text-[#F57C00]" />,
+      title: "Post Your Tuition Requirement",
+      desc: "Students register and post tuition needs including class, subject, budget, schedule, and location.",
     },
     {
-      icon: <FaBookOpen className="text-4xl text-[#F57C00]" />,
-      title: "Enroll in Subjects",
-      desc: "Choose your class subjects, access notes, videos, and study materials.",
+      icon: <FaClipboardCheck className="text-4xl text-[#F57C00]" />,
+      title: "Apply or Approve Tuitions",
+      desc: "Tutors browse available tuitions and apply, while admins review applications and approve or reject them.",
     },
     {
-      icon: <FaCertificate className="text-4xl text-[#F57C00]" />,
-      title: "Track Your Progress",
-      desc: "Monitor learning progress through assignments, quizzes & analytics.",
+      icon: <FaTasks className="text-4xl text-[#F57C00]" />,
+      title: "Track and Manage",
+      desc: "Admins monitor all activities, students and tutors track class progress, payments, and communication seamlessly.",
     },
   ];
 
@@ -31,8 +31,8 @@ export default function HowItWorks() {
               How the Platform Works
             </h2>
             <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
-              Only three simple steps to start your learning journey with
-              eTuitionTrack.
+              A simple workflow to manage tuitions for students, tutors, and
+              admins efficiently.
             </p>
 
             {/* 3-STEP */}

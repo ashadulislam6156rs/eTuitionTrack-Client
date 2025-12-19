@@ -10,6 +10,7 @@ import { HiUserGroup } from "react-icons/hi";
 import { BsGraphUpArrow } from "react-icons/bs";
 import useRole from "../Hooks/useRole";
 import Loading from "../Componants/Loading/Loading";
+import { FaClock } from "react-icons/fa6";
 
 const DashboardLayout = () => {
  
@@ -119,6 +120,24 @@ const DashboardLayout = () => {
                           <MdAssignment className="my-1.5 inline-block size-4" />
                           <span className="is-drawer-close:hidden">
                             My Applications
+                          </span>
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to={"/dashboard/my-ongoing-tuitions"}
+                          className={({ isActive }) =>
+                            isActive
+                              ? "text-[#F57C00]"
+                              : "is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                          }
+                          data-tip="Ongoing Tuitions"
+                        >
+                          {/* Home icon */}
+                          <FaClock className="my-1.5 inline-block size-4" />
+
+                          <span className="is-drawer-close:hidden">
+                            Ongoing Tuitions
                           </span>
                         </NavLink>
                       </li>

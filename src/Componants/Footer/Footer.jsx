@@ -39,36 +39,28 @@ const Footer = () => {
                 </h3>
                 <ul className="space-y-3">
                   <li>
-                    <a
+                    <Link
+                      to={"/"}
                       className="hover:text-[#F57C00] hover:underline dark:hover:text-white transition-colors"
-                      href="#"
                     >
                       Home
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
+                      to={"/about"}
                       className="hover:text-[#F57C00] hover:underline  dark:hover:text-white transition-colors"
-                      href="#"
                     >
-                      Features
-                    </a>
+                      About Us
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
+                      to={"/contact"}
                       className="hover:text-[#F57C00] hover:underline  dark:hover:text-white transition-colors"
-                      href="#"
                     >
-                      Pricing
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="hover:text-[#F57C00] hover:underline  dark:hover:text-white transition-colors"
-                      href="#"
-                    >
-                      Contact
-                    </a>
+                      Contact Us
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -80,28 +72,20 @@ const Footer = () => {
                 </h3>
                 <ul className="space-y-3">
                   <li>
-                    <a
+                    <Link
+                      to={"/privacy"}
                       className="hover:text-[#F57C00] hover:underline  dark:hover:text-white transition-colors"
-                      href="#"
                     >
-                      For Institutes
-                    </a>
+                      Privacy And Policy
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
+                      to={"/conditions"}
                       className="hover:text-[#F57C00] hover:underline  dark:hover:text-white transition-colors"
-                      href="#"
                     >
-                      For Tutors
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="hover:text-[#F57C00] hover:underline  dark:hover:text-white transition-colors"
-                      href="#"
-                    >
-                      For Students
-                    </a>
+                      Terms And Conditions
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -159,7 +143,7 @@ const Footer = () => {
               {/* X (Twitter) Icon */}
               <a
                 className="w-8 h-8 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                href="#"
+                href="https://x.com/"
               >
                 <FaXTwitter className="w-4 h-4" aria-hidden="true" />
                 <span className="sr-only">X (formerly Twitter)</span>
@@ -168,7 +152,7 @@ const Footer = () => {
               {/* Instagram Icon */}
               <a
                 className="w-8 h-8 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                href="#"
+                href="https://www.instagram.com"
               >
                 <FaInstagram className="w-5 h-5" aria-hidden="true" />
                 <span className="sr-only">Instagram</span>
@@ -177,7 +161,7 @@ const Footer = () => {
               {/* Facebook Icon */}
               <a
                 className="w-8 h-8 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                href="#"
+                href="https://www.facebook.com"
               >
                 <FaFacebookF className="w-5 h-5" aria-hidden="true" />
                 <span className="sr-only">Facebook</span>

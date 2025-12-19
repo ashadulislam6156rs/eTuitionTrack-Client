@@ -28,6 +28,9 @@ import AdminRoute from "./AdminRoute";
 import Error_404 from "../Componants/Error/Error_404";
 import TutorRoute from "./TutorRoute";
 import StudentRoute from "./StudentRoute";
+import PrivacyAndPolicy from "../Componants/PrivacyAndPolicy";
+import TermAndConditions from "../Componants/TermAndConditions";
+import TutorOngoingTuitions from "../Pages/Dashboard/Tutors/TutorOngoingTuitions";
 
 
 const router = createBrowserRouter([
@@ -55,6 +58,14 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         Component: Contact,
+      },
+      {
+        path: "/conditions",
+        Component: TermAndConditions,
+      },
+      {
+        path: "/privacy",
+        Component: PrivacyAndPolicy,
       },
       {
         path: "/tuition-details/:tuitionId",
@@ -158,6 +169,14 @@ const router = createBrowserRouter([
         element: (
           <TutorRoute>
             <MyApplications></MyApplications>
+          </TutorRoute>
+        ),
+      },
+      {
+        path: "my-ongoing-tuitions",
+        element: (
+          <TutorRoute>
+            <TutorOngoingTuitions></TutorOngoingTuitions>
           </TutorRoute>
         ),
       },
