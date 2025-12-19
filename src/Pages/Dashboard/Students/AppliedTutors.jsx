@@ -7,6 +7,7 @@ import { RxCross2 } from "react-icons/rx";
 import { FiEye } from "react-icons/fi";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import Loading from "../../../Componants/Loading/Loading";
 
 const AppliedTutors = () => {
   const axiosSecure = useAxiosSecure();
@@ -14,7 +15,7 @@ const AppliedTutors = () => {
   const modalRef = useRef();
   const [currentTutor, setCurrentTutor] = useState({});
 
-  const { data: Tutors = [], refetch } = useQuery({
+  const { data: Tutors = [], refetch, isLoading } = useQuery({
     queryKey: ["tuition-requests", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(
@@ -119,172 +120,175 @@ const handlePayment =  (tutor) => {
     });
     
    
-};
+  };
+  
+  if (isLoading) {
+    return <Loading></Loading>
+  }
 
-
-
-  return (
-    <div>
-      <div className="text-center mt-4">
-        <h1 className="text-2xl font-bold">Applied Tutors</h1>
-        <p className="text-sm text-base-content/60 py-2">
-          Review all tuition requests that are waiting for approval. Manage
-          details and take necessary actions from here.
-        </p>
-      </div>
-      <div className="overflow-x-auto mt-5 rounded-lg">
-        <table className="table bg-white">
-          {/* head */}
-          <thead className="bg-cyan-500 text-white">
-            <tr>
-              <th>SL.N</th>
-              <th>Tutors Info</th>
-              <th>Experience</th>
-              <th>Expected Salary</th>
-              <th>Status</th>
-              <th>Accepted</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody className="rounded-lg">
-            {Tutors.map((tutor, index) => (
-              <tr key={tutor._id}>
-                <th>{index + 1}</th>
-                <td>
-                  <div className="flex items-center gap-3">
-                    <div className="avatar">
-                      <div className="mask rounded-full  h-12 w-12">
-                        <img src={tutor.tutorImage} alt="Avatar" />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="font-bold">{tutor.tutorName}</div>
-                      <div className="text-sm opacity-50">
-                        {tutor.tutorEmail}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td>{tutor.experience}</td>
-                <td>{tutor.expectedSalary} ৳</td>
-                <td>
-                  {tutor.tutorRequestStatus === "Pending" ? (
-                    <span className="badge badge-soft badge-primary">
-                      Pending
-                    </span>
-                  ) : tutor.tutorRequestStatus === "Approved" ? (
-                    <span className="badge badge-soft badge-accent">
-                      Approved
-                    </span>
-                  ) : (
-                    <span className="badge badge-soft badge-error">
-                      {tutor.tutorRequestStatus}
-                    </span>
-                  )}{" "}
-                </td>
-                <td>
-                  {tutor.tutorRequestStatus === "Pending" ? (
-                    <button
-                      onClick={() => handlePayment(tutor)}
-                      className="btn btn-sm bg-[#0D47A1] hover:bg-transparent hover:text-black text-white"
-                    >
-                      Accept Tutor
-                    </button>
-                  ) : (
-                    <button
-                      disabled
-                      className="btn opacity-60 btn-sm bg-[#0D47A1] hover:bg-transparent cursor-not-allowed text-white"
-                    >
-                      Accepted
-                    </button>
-                  )}
-                </td>
-
-                <th className="flex gap-3 items-center">
-                  <button
-                    title="View Tutor Details"
-                    onClick={() => handleViewDetails(tutor)}
-                    className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"
-                  >
-                    <FiEye />
-                  </button>
-                  <button
-                    title="Reject Tutor"
-                    onClick={() => handleTutorRejected(tutor, "Rejected")}
-                    className="btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm"
-                  >
-                    <RxCross2 />
-                  </button>
-                </th>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      {/* Open the modal using document.getElementById('ID').showModal() method */}
-      <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box p-6 sm:p-8 rounded-xl bg-white shadow-lg max-w-lg">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary">
-              <img
-                src={currentTutor?.tutorImage || "/default-avatar.png"}
-                alt={currentTutor?.tutorImage || "Student"}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-gray-800">
-                {currentTutor?.tutorName || "No Name"}
-              </h3>
-              <p className="text-sm text-gray-500">
-                {currentTutor?.tutorEmail}
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-gray-700">
-            <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-              <p className="font-semibold text-gray-600">Experiment</p>
-              <p>{currentTutor?.experience || "-"}</p>
-            </div>
-            <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-              <p className="font-semibold text-gray-600">Qualifications</p>
-              <p>{currentTutor?.qualifications || "-"}</p>
-            </div>
-            <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-              <p className="font-semibold text-gray-600">Status</p>
-              <p>{currentTutor?.tutorRequestStatus || "-"}</p>
-            </div>
-            <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-              <p className="font-semibold text-gray-600">Rquest Time</p>
-              <p>{formatBDTime(currentTutor?.createdAt || "-")}</p>
-            </div>
-            <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-              <p className="font-semibold text-gray-600">Expected Salary</p>
-              <p>
-                {currentTutor?.expectedSalary
-                  ? `${currentTutor.expectedSalary} BDT`
-                  : "-"}
-              </p>
-            </div>
-          </div>
-
-          {currentTutor?.details && (
-            <div className="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
-              <p className="font-semibold text-gray-600 mb-1">Details</p>
-              <p className="text-gray-700 text-sm">{currentTutor.details}</p>
-            </div>
-          )}
-
-          <div className="modal-action">
-            <form method="dialog">
-              <button className="btn btn-primary w-full">Close</button>
-            </form>
-          </div>
+  
+    return (
+      <div>
+        <div className="text-center mt-4">
+          <h1 className="text-2xl font-bold">Applied Tutors</h1>
+          <p className="text-sm text-base-content/60 py-2">
+            Review all tuition requests that are waiting for approval. Manage
+            details and take necessary actions from here.
+          </p>
         </div>
-      </dialog>
-    </div>
-  );
+        <div className="overflow-x-auto mt-5 rounded-lg">
+          <table className="table bg-white">
+            {/* head */}
+            <thead className="bg-cyan-500 text-white">
+              <tr>
+                <th>SL.N</th>
+                <th>Tutors Info</th>
+                <th>Experience</th>
+                <th>Expected Salary</th>
+                <th>Status</th>
+                <th>Accepted</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody className="rounded-lg">
+              {Tutors.map((tutor, index) => (
+                <tr key={tutor._id}>
+                  <th>{index + 1}</th>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <div className="avatar">
+                        <div className="mask rounded-full  h-12 w-12">
+                          <img src={tutor.tutorImage} alt="Avatar" />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-bold">{tutor.tutorName}</div>
+                        <div className="text-sm opacity-50">
+                          {tutor.tutorEmail}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>{tutor.experience}</td>
+                  <td>{tutor.expectedSalary} ৳</td>
+                  <td>
+                    {tutor.tutorRequestStatus === "Pending" ? (
+                      <span className="badge badge-soft badge-primary">
+                        Pending
+                      </span>
+                    ) : tutor.tutorRequestStatus === "Approved" ? (
+                      <span className="badge badge-soft badge-accent">
+                        Approved
+                      </span>
+                    ) : (
+                      <span className="badge badge-soft badge-error">
+                        {tutor.tutorRequestStatus}
+                      </span>
+                    )}{" "}
+                  </td>
+                  <td>
+                    {tutor.tutorRequestStatus === "Pending" ? (
+                      <button
+                        onClick={() => handlePayment(tutor)}
+                        className="btn btn-sm bg-[#0D47A1] hover:bg-transparent hover:text-black text-white"
+                      >
+                        Accept Tutor
+                      </button>
+                    ) : (
+                      <button
+                        disabled
+                        className="btn opacity-60 btn-sm bg-[#0D47A1] hover:bg-transparent cursor-not-allowed text-white"
+                      >
+                        Accepted
+                      </button>
+                    )}
+                  </td>
+
+                  <th className="flex gap-3 items-center">
+                    <button
+                      title="View Tutor Details"
+                      onClick={() => handleViewDetails(tutor)}
+                      className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"
+                    >
+                      <FiEye />
+                    </button>
+                    <button
+                      title="Reject Tutor"
+                      onClick={() => handleTutorRejected(tutor, "Rejected")}
+                      className="btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm"
+                    >
+                      <RxCross2 />
+                    </button>
+                  </th>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {/* Open the modal using document.getElementById('ID').showModal() method */}
+        <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
+          <div className="modal-box p-6 sm:p-8 rounded-xl bg-white shadow-lg max-w-lg">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary">
+                <img
+                  src={currentTutor?.tutorImage || "/default-avatar.png"}
+                  alt={currentTutor?.tutorImage || "Student"}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-800">
+                  {currentTutor?.tutorName || "No Name"}
+                </h3>
+                <p className="text-sm text-gray-500">
+                  {currentTutor?.tutorEmail}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-gray-700">
+              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
+                <p className="font-semibold text-gray-600">Experiment</p>
+                <p>{currentTutor?.experience || "-"}</p>
+              </div>
+              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
+                <p className="font-semibold text-gray-600">Qualifications</p>
+                <p>{currentTutor?.qualifications || "-"}</p>
+              </div>
+              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
+                <p className="font-semibold text-gray-600">Status</p>
+                <p>{currentTutor?.tutorRequestStatus || "-"}</p>
+              </div>
+              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
+                <p className="font-semibold text-gray-600">Rquest Time</p>
+                <p>{formatBDTime(currentTutor?.createdAt || "-")}</p>
+              </div>
+              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
+                <p className="font-semibold text-gray-600">Expected Salary</p>
+                <p>
+                  {currentTutor?.expectedSalary
+                    ? `${currentTutor.expectedSalary} BDT`
+                    : "-"}
+                </p>
+              </div>
+            </div>
+
+            {currentTutor?.details && (
+              <div className="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+                <p className="font-semibold text-gray-600 mb-1">Details</p>
+                <p className="text-gray-700 text-sm">{currentTutor.details}</p>
+              </div>
+            )}
+
+            <div className="modal-action">
+              <form method="dialog">
+                <button className="btn btn-primary w-full">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+      </div>
+    );
 };
 
 export default AppliedTutors;

@@ -10,6 +10,7 @@ import { GrUserManager } from "react-icons/gr";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import axios from "axios";
+import Loading from "../../../Componants/Loading/Loading";
 
 const UsersManagement = () => {
     const axiosSecure = useAxiosSecure();
@@ -17,7 +18,7 @@ const UsersManagement = () => {
     const userInfoUpdateModalRef = useRef();
     const [currentUser, setCurrentUser] = useState({});
 
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: ["users-management"],
         queryFn: async () => {
             const res = await axiosSecure.get("/users");
@@ -168,9 +169,13 @@ const UsersManagement = () => {
            
        }
      });
-   };
+  };
 
-
+  
+  if (isLoading) {
+    return <Loading></Loading>
+  }
+  
     return (
       <div>
         <div>

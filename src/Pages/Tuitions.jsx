@@ -69,7 +69,7 @@ const Tuitions = () => {
                   setSearchText(e.target.value);
                   setPage(1);
                 }}
-                placeholder="Search"
+                placeholder="Search by class, subject & location..."
               />
             </label>
 
@@ -81,7 +81,7 @@ const Tuitions = () => {
                 setPage(1);
               }}
             >
-              <option disabled>Select sort</option>
+              <option disabled>Sort By</option>
               <option value="latest">Latest</option>
               <option value="high">Budget High</option>
               <option value="low">Budget Low</option>
@@ -108,7 +108,6 @@ const Tuitions = () => {
                   We couldn’t find what you searched for. Please try using
                   different keywords or filters.
                 </p>
-
               </div>
             </div>
           ) : (

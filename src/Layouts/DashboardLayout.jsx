@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, Outlet } from "react-router";
+import { Link, NavLink, Outlet, useNavigation } from "react-router";
 import { IoHomeOutline, IoPersonCircleOutline } from "react-icons/io5";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { LuClipboardList } from "react-icons/lu";
@@ -15,11 +15,12 @@ import { FaClock } from "react-icons/fa6";
 const DashboardLayout = () => {
  
   const { role, roleLoading } = useRole();
+   const navigatation = useNavigation();
   
  
 
   if (roleLoading) {
-      <Loading></Loading>
+     return <Loading></Loading>
     }
       return (
         <div className="max-w-7xl mx-auto">
@@ -55,7 +56,12 @@ const DashboardLayout = () => {
               </nav>
               {/* Page content here *******************************/}
               <div className="p-4 bg-base-300 min-h-screen">
-                <Outlet></Outlet>
+                {navigatation?.state == "loading" ? (
+                  <Loading></Loading>
+                ) : (
+                  <Outlet></Outlet>
+                )}{" "}
+               
               </div>
             </div>
 
@@ -96,7 +102,6 @@ const DashboardLayout = () => {
                       }
                       data-tip="My Profile"
                     >
-                      
                       {/* User Profile icon */}
                       <IoPersonCircleOutline className="my-1.5 inline-block size-4" />
                       <span className="is-drawer-close:hidden">My Profile</span>

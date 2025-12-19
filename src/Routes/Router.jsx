@@ -31,6 +31,7 @@ import StudentRoute from "./StudentRoute";
 import PrivacyAndPolicy from "../Componants/PrivacyAndPolicy";
 import TermAndConditions from "../Componants/TermAndConditions";
 import TutorOngoingTuitions from "../Pages/Dashboard/Tutors/TutorOngoingTuitions";
+import Loading from "../Componants/Loading/Loading";
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
     path: "/",
     errorElement: <Error_404></Error_404>,
     Component: MainLayout,
+    hydrateFallbackElement: <Loading></Loading>,
     children: [
       {
         index: true,
@@ -90,6 +92,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     errorElement: <Error_404></Error_404>,
+    hydrateFallbackElement: <Loading></Loading>,
     element: (
       <PrivateRoutes>
         <DashboardLayout></DashboardLayout>

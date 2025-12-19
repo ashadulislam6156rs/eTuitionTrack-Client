@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import Loading from '../../../Componants/Loading/Loading';
 
 const TutorOngoingTuitions = () => {
 
@@ -10,7 +11,7 @@ const TutorOngoingTuitions = () => {
     const axiosSecure = useAxiosSecure();
 
 
-     const { data: ongoingTutions = [] } = useQuery({
+     const { data: ongoingTutions = [], isLoading } = useQuery({
        queryKey: ["tutor-applications-approved", user?.email],
        queryFn: async () => {
          const res = await axiosSecure.get(
@@ -19,13 +20,17 @@ const TutorOngoingTuitions = () => {
          return res.data;
        },
      });
-    
-    
+
+  
+  if (isLoading) {
+    return <Loading></Loading>
+  }
+
 
     return (
       <div>
         <h1 className="text-3xl font-bold text-center pt-5">
-         My Ongoing Tuitions
+          My Ongoing Tuitions
         </h1>
         <p className="text-sm text-center text-base-content/60 pb-7 pt-2">
           Keep track of all your ongoing tuition sessions, monitor student
