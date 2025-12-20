@@ -3,6 +3,7 @@ import React from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Loading from '../../../Componants/Loading/Loading';
+import NoData from '../../../Componants/NoData';
 
 const TutorOngoingTuitions = () => {
 
@@ -52,7 +53,12 @@ const TutorOngoingTuitions = () => {
             </thead>
 
             <tbody>
-              {ongoingTutions?.map((item, index) => (
+              {ongoingTutions.length === 0 ? <tr>
+                  <td colSpan="7" className="py-10">
+                    <NoData />
+                  </td>
+                </tr>
+: ongoingTutions?.map((item, index) => (
                 <tr key={index} className="hover">
                   <td className="font-bold">{index + 1}</td>
 

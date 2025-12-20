@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import Loading from "../../../Componants/Loading/Loading";
+import NoData from "../../../Componants/NoData";
 
 const MyApplications = () => {
   const axiosSecure = useAxiosSecure();
@@ -132,86 +133,89 @@ const MyApplications = () => {
             </thead>
 
             <tbody>
-              {applicatios?.map((item, index) => (
-                <tr key={index} className="hover">
-                  <td className="font-bold">{index + 1}</td>
-
-                  {/* Subject */}
-                  <td className="font-medium text-[#F57C00]">
-                    {item.subjectName}
-                  </td>
-
-                  {/* Class */}
-                  <td>
-                    <span className="badge badge-soft badge-primary px-3">
-                      {item.className}
-                    </span>
-                  </td>
-
-                  {/* Location */}
-                  <td>{item.location}</td>
-
-                  {/* Expected Salary */}
-                  <td className="font-semibold text-green-600">
-                    {item.expectedSalary}৳
-                  </td>
-
-                  {/* Status */}
-                  <td>
-                    <span
-                      className={`badge px-3 py-1 ${
-                        item.tutorRequestStatus === "Pending"
-                          ? "badge-warning"
-                          : item.tutorRequestStatus === "Approved"
-                          ? "badge-success"
-                          : "badge-error"
-                      }`}
-                    >
-                      {item.tutorRequestStatus}
-                    </span>
-                  </td>
-
-                  {/* Applied Time */}
-                  <td className="text-sm opacity-70">
-                    {new Date(item.createdAt).toLocaleString("en-GB", {
-                      timeZone: "Asia/Dhaka",
-                    })}
-                  </td>
-
-                  {/* View Button */}
-                  <td className="space-x-2">
-                    <button
-                      title="Edit Application"
-                      onClick={() => handleModalShow(item)}
-                      disabled={item.tutorRequestStatus === "Approved"}
-                      className={`btn btn-square btn-sm bg-green-500 text-white 
-      hover:bg-transparent hover:text-black
-      ${
-        item.tutorRequestStatus === "Approved"
-          ? "opacity-50 cursor-not-allowed"
-          : ""
-      }`}
-                    >
-                      <FaRegEdit />
-                    </button>
-
-                    <button
-                      title="Delete Application"
-                      onClick={() => handleTutorDelete(item)}
-                      disabled={item.tutorRequestStatus === "Approved"}
-                      className={`btn btn-square btn-sm bg-red-400 text-white 
-      hover:bg-transparent hover:text-black
-      ${
-        item.tutorRequestStatus === "Approved"
-          ? "opacity-50 cursor-not-allowed"
-          : ""
-      }`}
-                    >
-                      <RiDeleteBinLine />
-                    </button>
+              {applicatios.length === 0 ? (
+                <tr>
+                  <td colSpan="8" className="py-10">
+                    <NoData />
                   </td>
                 </tr>
-              ))}
+              ) : (
+                applicatios.map((item, index) => (
+                  <tr key={item._id} className="hover">
+                    <td className="font-bold">{index + 1}</td>
+
+                    <td className="font-medium text-[#F57C00]">
+                      {item.subjectName}
+                    </td>
+
+                    <td>
+                      <span className="badge badge-soft badge-primary px-3">
+                        {item.className}
+                      </span>
+                    </td>
+
+                    <td>{item.location}</td>
+
+                    <td className="font-semibold text-green-600">
+                      {item.expectedSalary}৳
+                    </td>
+
+                    <td>
+                      <span
+                        className={`badge px-3 py-1 ${
+                          item.tutorRequestStatus === "Pending"
+                            ? "badge-warning"
+                            : item.tutorRequestStatus === "Approved"
+                            ? "badge-success"
+                            : "badge-error"
+                        }`}
+                      >
+                        {item.tutorRequestStatus}
+                      </span>
+                    </td>
+
+                    <td className="text-sm opacity-70">
+                      {new Date(item.createdAt).toLocaleString("en-GB", {
+                        timeZone: "Asia/Dhaka",
+                      })}
+                    </td>
+
+                    <td className="space-x-2">
+                      {/* Edit Button */}
+                      <button
+                        title="Edit Application"
+                        onClick={() => handleModalShow(item)}
+                        disabled={item.tutorRequestStatus === "Approved"}
+                        className={`btn btn-square btn-sm bg-green-500 text-white
+      hover:bg-transparent hover:text-black
+      ${
+        item.tutorRequestStatus === "Approved"
+          ? "opacity-50 cursor-not-allowed"
+          : ""
+      }`}
+                      >
+                        <FaRegEdit />
+                      </button>
+
+                      {/* Delete Button */}
+                      <button
+                        title="Delete Application"
+                        onClick={() => handleTutorDelete(item)}
+                        disabled={item.tutorRequestStatus === "Approved"}
+                        className={`btn btn-square btn-sm bg-red-400 text-white
+      hover:bg-transparent hover:text-black
+      ${
+        item.tutorRequestStatus === "Approved"
+          ? "opacity-50 cursor-not-allowed"
+          : ""
+      }`}
+                      >
+                        <RiDeleteBinLine />
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

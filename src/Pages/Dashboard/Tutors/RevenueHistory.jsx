@@ -3,6 +3,7 @@ import useAuth from "../../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Loading from "../../../Componants/Loading/Loading";
+import NoData from "../../../Componants/NoData";
 
 
 const RevenueHistory = () => {
@@ -89,7 +90,12 @@ const RevenueHistory = () => {
             </thead>
 
             <tbody>
-              {PaidDatas?.map((item, index) => (
+              {PaidDatas.length === 0 ? <tr>
+                  <td colSpan="8" className="py-10">
+                    <NoData />
+                  </td>
+                </tr>
+: PaidDatas?.map((item, index) => (
                 <tr key={index} className="hover">
                   <td className="font-bold">{index + 1}</td>
 

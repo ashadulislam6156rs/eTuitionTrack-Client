@@ -15,6 +15,7 @@ import { MdDashboard } from 'react-icons/md';
 const Navbar = () => {
   const { user, setUser, userLogOut } = useAuth();
 
+
   const navigate = useNavigate();
   const { role, roleLoading } = useRole();
  
@@ -181,8 +182,9 @@ const Navbar = () => {
                   role="button"
                   className="btn btn-ghost btn-circle avatar flex items-center"
                 >
-                  <div className="w-10 h-10 rounded-full overflow-hidden">
+                  <div className="w-10 h-10 border-2 border-[#29B6F6] rounded-full overflow-hidden">
                     <img
+                      
                       referrerPolicy="no-referrer"
                       alt="User Avatar"
                       src={
@@ -198,12 +200,10 @@ const Navbar = () => {
                   className="menu bg-[#fdf7e4] menu-sm dropdown-content rounded-box mt-4 w-52 p-2 shadow-lg shadow-gray-500 z-9999"
                 >
                   <div className="ml-3 pb-2">
-                  
                     <h1 className="font-semibold pb-1 text-base text-gray-900 dark:text-gray-100 leading-tight">
                       {user?.displayName}
                     </h1>
 
-                   
                     <div
                       className="mt-1 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full 
                   bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300

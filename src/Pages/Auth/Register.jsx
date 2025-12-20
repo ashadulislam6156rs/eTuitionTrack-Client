@@ -34,6 +34,8 @@ const Register = () => {
   const location = useLocation();
 
   const handleRegister = (data) => {
+    console.log(data);
+    
     const photoFile = data.photoURL[0];
 
     // ** User Register
@@ -60,6 +62,12 @@ const Register = () => {
             };
             updateUserInfo(updateInfo);
 
+             navigate(location?.state || "/");
+
+             setTimeout(() => {
+               toast.success("Your Account has been Successfully Created.");
+             }, 500);
+
             //** User Info  Store the database
             const userData = {
               fullName: data.fullName,
@@ -70,19 +78,7 @@ const Register = () => {
               gender: data.gender,
             };
 
-            axiosSecure.post("/users", userData).then((data) => {
-              navigate(location?.state || "/");
-               
-              setTimeout(() => {
-               
-                 toast.success(
-                   data.data.message ||
-                     "Your Account has been Successfully Created."
-                 );
-              }, 500);
-               
-            
-            });
+            axiosSecure.post("/users", userData)
           });
       })
       .catch((err) => {

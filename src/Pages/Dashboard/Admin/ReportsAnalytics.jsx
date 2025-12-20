@@ -14,6 +14,7 @@ import {
   Cell,
 } from "recharts";
 import Loading from "../../../Componants/Loading/Loading";
+import NoData from "../../../Componants/NoData";
 
 const ReportsAnalytics = () => {
   const axiosSecure = useAxiosSecure();
@@ -199,24 +200,32 @@ const ReportsAnalytics = () => {
               </thead>
 
               <tbody>
-                {paymentsHistory.map((p, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{p.customerEmail}</td>
-                    <td>{formatBDTime(p.paidAt)}</td>
-                    <td className="font-mono">{p.transactionId}</td>
-                    <td>৳ {p.totalAmount}</td>
-                    <td
-                      className={
-                        p.paymentStatus?.toLowerCase() === "paid"
-                          ? "text-green-600 font-semibold"
-                          : "text-red-600 font-semibold"
-                      }
-                    >
-                      {p.paymentStatus}
+                {paymentsHistory.length === 0 ? (
+                  <tr>
+                    <td colSpan="8" className="py-10">
+                      <NoData />
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  paymentsHistory.map((p, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{p.customerEmail}</td>
+                      <td>{formatBDTime(p.paidAt)}</td>
+                      <td className="font-mono">{p.transactionId}</td>
+                      <td>৳ {p.totalAmount}</td>
+                      <td
+                        className={
+                          p.paymentStatus?.toLowerCase() === "paid"
+                            ? "text-green-600 font-semibold"
+                            : "text-red-600 font-semibold"
+                        }
+                      >
+                        {p.paymentStatus}
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>

@@ -7,6 +7,7 @@ import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import { RxCross2 } from 'react-icons/rx';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import NoData from '../../../Componants/NoData';
 
 const TuitionManagement = () => {
   const axiosSecure = useAxiosSecure();
@@ -113,75 +114,83 @@ const TuitionManagement = () => {
                 </tr>
               </thead>
               <tbody>
-                {tuitions.map((tuition, index) => (
-                  <tr key={tuition._id}>
-                    <th>{index + 1}</th>
-                    <td>
-                      <div className="flex items-center gap-3">
-                        <div className="avatar">
-                          <div className="mask  h-12 w-12">
-                            <img
-                              src={tuition.subjectImage}
-                              alt="Avatar Tailwind CSS Component"
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <div className="font-bold">{tuition.subject}</div>
-                          <div className="text-sm opacity-50">
-                            {tuition?.budget} ৳
-                          </div>
-                        </div>
-                      </div>
+                {tuitions.length === 0 ? (
+                  <tr>
+                    <td colSpan="6" className="py-10">
+                      <NoData />
                     </td>
-                    <td>
-                      {tuition.studentName}
-                      <br />
-                      <span className="badge badge-ghost badge-sm">
-                        {tuition.className}
-                      </span>
-                    </td>
-                    <td>{tuition.location}</td>
-                    <td>
-                      {tuition.tuitionStatus === "Pending" ? (
-                        <span className="badge badge-soft badge-primary">
-                          Pending
-                        </span>
-                      ) : tuition.tuitionStatus === "Approved" ? (
-                        <span className="badge badge-soft badge-accent">
-                          Approved
-                        </span>
-                      ) : (
-                        <span className="badge badge-soft badge-error">
-                          {tuition.tuitionStatus}
-                        </span>
-                      )}{" "}
-                    </td>
-                    <th className="flex gap-3 items-center">
-                      <button
-                        title="Tuition Details View"
-                        onClick={() => handleViewDetails(tuition)}
-                        className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"
-                      >
-                        <FiEye />
-                      </button>
-                      <button
-                        title="Tuition Approved"
-                        onClick={() => handleTuitionApproved(tuition)}
-                        className="btn hover:bg-transparent hover:text-black btn-square bg-green-500 text-white btn-sm"
-                      >
-                        <IoMdCheckmarkCircleOutline />
-                      </button>
-                      <button
-                        title="Tuition Rejected"
-                        onClick={() => handleTuitionRejected(tuition)}
-                        className="btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm"
-                      >
-                        <RxCross2 />
-                      </button>
-                    </th>
                   </tr>
-                ))}
+                ) : (
+                  tuitions.map((tuition, index) => (
+                    <tr key={tuition._id}>
+                      <th>{index + 1}</th>
+                      <td>
+                        <div className="flex items-center gap-3">
+                          <div className="avatar">
+                            <div className="mask  h-12 w-12">
+                              <img
+                                src={tuition.subjectImage}
+                                alt="Avatar Tailwind CSS Component"
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <div className="font-bold">{tuition.subject}</div>
+                            <div className="text-sm opacity-50">
+                              {tuition?.budget} ৳
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        {tuition.studentName}
+                        <br />
+                        <span className="badge badge-ghost badge-sm">
+                          {tuition.className}
+                        </span>
+                      </td>
+                      <td>{tuition.location}</td>
+                      <td>
+                        {tuition.tuitionStatus === "Pending" ? (
+                          <span className="badge badge-soft badge-primary">
+                            Pending
+                          </span>
+                        ) : tuition.tuitionStatus === "Approved" ? (
+                          <span className="badge badge-soft badge-accent">
+                            Approved
+                          </span>
+                        ) : (
+                          <span className="badge badge-soft badge-error">
+                            {tuition.tuitionStatus}
+                          </span>
+                        )}{" "}
+                      </td>
+                      <th className="flex gap-3 items-center">
+                        <button
+                          title="Tuition Details View"
+                          onClick={() => handleViewDetails(tuition)}
+                          className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"
+                        >
+                          <FiEye />
+                        </button>
+                        <button
+                          title="Tuition Approved"
+                          onClick={() => handleTuitionApproved(tuition)}
+                          className="btn hover:bg-transparent hover:text-black btn-square bg-green-500 text-white btn-sm"
+                        >
+                          <IoMdCheckmarkCircleOutline />
+                        </button>
+                        <button
+                          title="Tuition Rejected"
+                          onClick={() => handleTuitionRejected(tuition)}
+                          className="btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm"
+                        >
+                          <RxCross2 />
+                        </button>
+                      </th>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
