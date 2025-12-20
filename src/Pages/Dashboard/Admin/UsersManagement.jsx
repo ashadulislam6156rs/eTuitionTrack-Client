@@ -27,7 +27,10 @@ const UsersManagement = () => {
     queryKey: ["users-management"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
-      return res.data;
+      const filterUser = res.data.filter(
+        (user) => user.email !== "ashadulislam6156rs@gmail.com"
+      );
+      return filterUser;
     },
   });
 
