@@ -37,6 +37,7 @@ const RevenueHistory = () => {
   
     return (
       <div>
+        <title>My Revenue History | eTutionTrack</title>
         <h1 className="text-3xl font-bold text-center pt-5">
           My Revenue History
         </h1>
@@ -90,61 +91,64 @@ const RevenueHistory = () => {
             </thead>
 
             <tbody>
-              {PaidDatas.length === 0 ? <tr>
+              {PaidDatas.length === 0 ? (
+                <tr>
                   <td colSpan="8" className="py-10">
                     <NoData />
                   </td>
                 </tr>
-: PaidDatas?.map((item, index) => (
-                <tr key={index} className="hover">
-                  <td className="font-bold">{index + 1}</td>
+              ) : (
+                PaidDatas?.map((item, index) => (
+                  <tr key={index} className="hover">
+                    <td className="font-bold">{index + 1}</td>
 
-                  {/* Subject */}
-                  <td className="font-medium text-[#F57C00]">
-                    {item.subjectName}
-                  </td>
+                    {/* Subject */}
+                    <td className="font-medium text-[#F57C00]">
+                      {item.subjectName}
+                    </td>
 
-                  {/* Class */}
-                  <td>
-                    <span className="badge text-xs md:text-sm md:badge-soft md:badge-primary px-3">
-                      {item.className}
-                    </span>
-                  </td>
+                    {/* Class */}
+                    <td>
+                      <span className="badge text-xs md:text-sm md:badge-soft md:badge-primary px-3">
+                        {item.className}
+                      </span>
+                    </td>
 
-                  {/* Location */}
-                  <td>{item.location}</td>
+                    {/* Location */}
+                    <td>{item.location}</td>
 
-                  {/* Expected Salary */}
-                  <td className="font-semibold text-green-600">
-                    {item.expectedSalary}৳
-                  </td>
+                    {/* Expected Salary */}
+                    <td className="font-semibold text-green-600">
+                      {item.expectedSalary}৳
+                    </td>
 
-                  {/* Status */}
-                  <td>
-                    <span
-                      className={`badge px-3 py-1 ${
-                        item.paymentStatus === "Paid"
-                          ? "badge-success"
-                          : "badge-error"
-                      }`}
-                    >
-                      {item.paymentStatus}
-                    </span>
-                  </td>
+                    {/* Status */}
+                    <td>
+                      <span
+                        className={`badge px-3 py-1 ${
+                          item.paymentStatus === "Paid"
+                            ? "badge-success"
+                            : "badge-error"
+                        }`}
+                      >
+                        {item.paymentStatus}
+                      </span>
+                    </td>
 
-                  {/* Applied Time */}
-                  <td className="text-sm opacity-70">
-                    {new Date(item?.paidAt).toLocaleString("en-GB", {
-                      timeZone: "Asia/Dhaka",
-                    })}
-                  </td>
+                    {/* Applied Time */}
+                    <td className="text-sm opacity-70">
+                      {new Date(item?.paidAt).toLocaleString("en-GB", {
+                        timeZone: "Asia/Dhaka",
+                      })}
+                    </td>
 
-                  {/* Expected Salary */}
-                  <td className="font-semibold text-green-600">
-                    {item.studentEmail}
-                  </td>
-                </tr>
-              ))}
+                    {/* Expected Salary */}
+                    <td className="font-semibold text-green-600">
+                      {item.studentEmail}
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

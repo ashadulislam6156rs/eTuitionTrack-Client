@@ -129,6 +129,7 @@ const AppliedTutors = () => {
   return (
     <div>
       <div className="text-center mt-4">
+        <title>Applied Tutors | eTutionTrack</title>
         <h1 className="text-2xl font-bold">Applied Tutors</h1>
         <p className="text-sm text-base-content/60 py-2">
           Review all tuition requests that are waiting for approval. Manage

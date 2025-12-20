@@ -106,6 +106,7 @@ const Register = () => {
 
   return (
     <div className="bg-base-200 flex items-center justify-center p-4 font-sans">
+      <title>Create Account | eTutionTrack</title>
       <div className="card lg:card-side bg-base-100 shadow-2xl max-w-6xl w-full rounded-2xl overflow-hidden">
         {/* Left Side: Form Section */}
         <div className="card-body w-full lg:w-1/2 p-8 sm:p-10">

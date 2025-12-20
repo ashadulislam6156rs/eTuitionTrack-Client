@@ -4,6 +4,7 @@ import { Link } from "react-router";
 const PaymentCancell = () => {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
+      <title>Payment Cancelled | eTutionTrack</title>
       <div className="bg-white shadow-xl rounded-2xl p-8 max-w-lg w-full text-center animate-fadeIn">
         <h1 className="text-3xl md:text-4xl font-extrabold text-red-600 mb-4">
           Payment Cancelled

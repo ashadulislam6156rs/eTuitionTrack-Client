@@ -179,6 +179,7 @@ const UsersManagement = () => {
 
   return (
     <div>
+      <title>Users Management | eTutionTrack</title>
       <div>
         <h1 className="text-3xl font-bold text-center pt-5">
           Users Management

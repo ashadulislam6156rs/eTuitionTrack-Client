@@ -115,6 +115,7 @@ useEffect(() => {
   
     return (
       <div className="pt-20 pb-10">
+        <title>Tuition Details | eTuitionTrack</title>
         <Container>
           {/* Header */}
           <button

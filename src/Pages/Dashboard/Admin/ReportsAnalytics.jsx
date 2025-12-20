@@ -82,6 +82,7 @@ const ReportsAnalytics = () => {
   
     return (
       <div className="p-6 md:p-10 bg-gray-50 rounded-lg">
+        <title>Reports & Analytics | eTutionTrack</title>
         <div className="mb-10 text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-[#F57C00]">
             Reports & Analytics

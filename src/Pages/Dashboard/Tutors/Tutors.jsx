@@ -34,6 +34,7 @@ const Tutors = () => {
   
     return (
       <div className="pt-17">
+        <title>Tutors | eTutionTrack</title>
         <Container>
           <div className="pb-5 pt-10">
             <h1 className="text-2xl font-bold text-center">

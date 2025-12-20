@@ -6,6 +6,7 @@ import { IoArrowBack } from "react-icons/io5";
 const Error_404 = () => {
   return (
     <div className="min-h-screen flex flex-col items-center bg-base-300 justify-center px-4 py-10">
+      <title>Error 404 | eTutionTrack</title>
       <div className="flex items-center justify-center gap-6 flex-wrap mb-8">
         <span className="text-7xl text-[#F57C00] font-extrabold drop-shadow">
           4
@@ -17,14 +18,14 @@ const Error_404 = () => {
           transition={{ duration: 2.5, repeat: Infinity }}
         >
           <div className="bg-pink-400 w-full h-[90px] rounded-t-full rounded-b-md shadow-lg relative">
-            <div className="absolute top-6 left-5 w-[22px] h-[28px] bg-white rounded-full">
-              <div className="w-[10px] h-[12px] bg-slate-800 rounded-full absolute bottom-1 right-1" />
+            <div className="absolute top-6 left-5 w-[22px] h-7 bg-white rounded-full">
+              <div className="w-2.5 h-3 bg-slate-800 rounded-full absolute bottom-1 right-1" />
             </div>
-            <div className="absolute top-6 right-5 w-[22px] h-[28px] bg-white rounded-full">
-              <div className="w-[10px] h-[12px] bg-slate-800 rounded-full absolute bottom-1 right-1" />
+            <div className="absolute top-6 right-5 w-[22px] h-7 bg-white rounded-full">
+              <div className="w-2.5 h-3 bg-slate-800 rounded-full absolute bottom-1 right-1" />
             </div>
           </div>
-          <div className="absolute bottom-[-12px] w-full flex justify-between px-1">
+          <div className="absolute bottom-3 w-full flex justify-between px-1">
             {[...Array(4)].map((_, i) => (
               <span
                 key={i}
@@ -52,7 +53,7 @@ const Error_404 = () => {
 
         {/* Pac-Man */}
         <motion.div
-          className="w-[80px] h-[80px] bg-yellow-400 rounded-full shadow-lg relative"
+          className="w-20 h-20 bg-yellow-400 rounded-full shadow-lg relative"
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.3, repeat: Infinity }}
         >
@@ -83,7 +84,7 @@ const Error_404 = () => {
         <div className="flex flex-wrap justify-center gap-4">
           <Link
             to={"/"}
-            className="px-5 py-2 flex items-center gap-1 text-white rounded-full bg-pink-400 font-semibold shadow-md hover:shadow-lg transition"
+            className="btn myBtn rounded-lg"
           >
             <IoArrowBack />
             Go Back Home

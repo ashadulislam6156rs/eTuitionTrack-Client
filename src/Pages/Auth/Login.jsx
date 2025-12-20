@@ -53,6 +53,7 @@ const Login = () => {
 
   return (
     <div className=" flex items-center justify-center p-4">
+      <title>User login | eTutionTrack</title>
       <div className="card md:card-side bg-base-100 shadow-2xl max-w-5xl w-full rounded-2xl overflow-hidden">
         {/* Left Side: Form Section */}
         <div className="card-body w-full lg:w-1/2 p-8 sm:p-12">

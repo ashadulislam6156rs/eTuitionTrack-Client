@@ -3,6 +3,7 @@ import React from "react";
 const TermAndConditions = () => {
   return (
     <div className="min-h-screen mt-5 bg-gradient-to-br from-indigo-50 via-sky-50 to-purple-50 py-12 px-4 sm:px-6 lg:px-8">
+      <title>Terms & Conditions | eTutionTrack</title>
       <div className="max-w-5xl mx-auto backdrop-blur-md p-6 sm:p-10  ">
         {/* Header */}
         <div className="text-center mb-10">
@@ -125,8 +126,6 @@ const TermAndConditions = () => {
             </p>
           </section>
         </div>
-
-       
       </div>
     </div>
   );

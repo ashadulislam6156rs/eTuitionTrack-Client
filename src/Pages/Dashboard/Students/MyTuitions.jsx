@@ -75,6 +75,7 @@ const MyTuitions = () => {
   
   return (
     <div>
+      <title>My Approved Tuitions | eTutionTrack</title>
       <div className="text-center mt-4">
         <h1 className="text-2xl font-bold">My Approved Tuitions</h1>
         <p className="text-sm text-base-content/60 py-2">

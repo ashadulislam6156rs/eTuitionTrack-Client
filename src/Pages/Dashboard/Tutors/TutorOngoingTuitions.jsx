@@ -30,6 +30,7 @@ const TutorOngoingTuitions = () => {
 
     return (
       <div>
+        <title>My Ongoing Tuitions | eTutionTrack</title>
         <h1 className="text-3xl font-bold text-center pt-5">
           My Ongoing Tuitions
         </h1>
@@ -53,58 +54,61 @@ const TutorOngoingTuitions = () => {
             </thead>
 
             <tbody>
-              {ongoingTutions.length === 0 ? <tr>
+              {ongoingTutions.length === 0 ? (
+                <tr>
                   <td colSpan="7" className="py-10">
                     <NoData />
                   </td>
                 </tr>
-: ongoingTutions?.map((item, index) => (
-                <tr key={index} className="hover">
-                  <td className="font-bold">{index + 1}</td>
+              ) : (
+                ongoingTutions?.map((item, index) => (
+                  <tr key={index} className="hover">
+                    <td className="font-bold">{index + 1}</td>
 
-                  {/* Subject */}
-                  <td className="font-medium text-[#F57C00]">
-                    {item.subjectName}
-                  </td>
+                    {/* Subject */}
+                    <td className="font-medium text-[#F57C00]">
+                      {item.subjectName}
+                    </td>
 
-                  {/* Class */}
-                  <td>
-                    <span className="badge badge-soft badge-primary px-3">
-                      {item.className}
-                    </span>
-                  </td>
+                    {/* Class */}
+                    <td>
+                      <span className="badge badge-soft badge-primary px-3">
+                        {item.className}
+                      </span>
+                    </td>
 
-                  {/* Location */}
-                  <td>{item.location}</td>
+                    {/* Location */}
+                    <td>{item.location}</td>
 
-                  {/* Expected Salary */}
-                  <td className="font-semibold text-green-600">
-                    {item.expectedSalary}৳
-                  </td>
+                    {/* Expected Salary */}
+                    <td className="font-semibold text-green-600">
+                      {item.expectedSalary}৳
+                    </td>
 
-                  {/* Status */}
-                  <td>
-                    <span
-                      className={`badge px-3 py-1 ${
-                        item.tutorRequestStatus === "Pending"
-                          ? "badge-warning"
-                          : item.tutorRequestStatus === "Approved"
-                          ? "badge-success"
-                          : "badge-error"
-                      }`}
-                    >
-                      {item.tutorRequestStatus}
-                    </span>
-                  </td>
+                    {/* Status */}
+                    <td>
+                      <span
+                        className={`badge px-3 py-1 ${
+                          item.tutorRequestStatus === "Pending"
+                            ? "badge-warning"
+                            : item.tutorRequestStatus === "Approved"
+                            ? "badge-success"
+                            : "badge-error"
+                        }`}
+                      >
+                        {item.tutorRequestStatus}
+                      </span>
+                    </td>
 
-                  {/* Applied Time */}
-                  <td className="text-sm opacity-70">
-                    {new Date(item.createdAt).toLocaleString("en-GB", {
-                      timeZone: "Asia/Dhaka",
-                    })}
-                  </td>
-                </tr>
-              ))}
+                    {/* Applied Time */}
+                    <td className="text-sm opacity-70">
+                      {new Date(item.createdAt).toLocaleString("en-GB", {
+                        timeZone: "Asia/Dhaka",
+                      })}
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

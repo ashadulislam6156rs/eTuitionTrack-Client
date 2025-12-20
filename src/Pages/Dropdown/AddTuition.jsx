@@ -208,6 +208,7 @@ const AddTuition = () => {
 
   return (
     <div className="flex items-center justify-center p-6 font-sans">
+      <title>Add Tuition | eTutionTrack</title>
       <div className="card bg-base-100 shadow-2xl max-w-6xl w-full rounded-2xl overflow-hidden">
         <div className="card-body w-full p-8 sm:p-10">
           <h1 className="text-4xl font-bold text-base-content mb-2">
@@ -385,7 +386,6 @@ const AddTuition = () => {
                   </p>
                 )}
               </div>
-              
             </div>
 
             <div className="lg:col-span-2">

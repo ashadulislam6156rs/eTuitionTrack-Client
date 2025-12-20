@@ -27,6 +27,7 @@ const PaymentSuccess = () => {
 
   return (
     <div className="min-h-screen flex justify-center items-center relative p-5 ">
+      <title>Payment Success | eTutionTrack</title>
       {showConfetti && (
         <Confetti width={window.innerWidth} height={window.innerHeight} />
       )}
@@ -39,10 +40,7 @@ const PaymentSuccess = () => {
           Thank you for your payment. Your transaction has been completed
           successfully.
         </p>
-        <Link
-          to="/"
-          className="btn myBtn rounded-lg"
-        >
+        <Link to="/" className="btn myBtn rounded-lg">
           <IoArrowBack />
           Go Back Home
         </Link>

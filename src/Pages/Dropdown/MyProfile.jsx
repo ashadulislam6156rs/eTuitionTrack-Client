@@ -134,6 +134,7 @@ const MyProfile = () => {
   }
   return (
     <div>
+      <title>My Profile | eTutionTrack</title>
       <Container>
         <div className="bg-base-100 rounded-xl shadow-lg p-6 md:p-8 my-6">
           <div className="flex flex-col md:flex-row md:items-start gap-6">
@@ -148,7 +149,6 @@ const MyProfile = () => {
                   alt="User Avatar"
                   className="w-36 h-36 rounded-full object-cover border-4 border-[#F57C00] shadow-lg"
                 />
-               
               </div>
 
               <h2 className="mt-4 text-xl font-bold text-[#F57C00]">

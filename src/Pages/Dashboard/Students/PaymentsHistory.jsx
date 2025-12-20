@@ -41,6 +41,7 @@ const PaymentsHistory = () => {
 
   return (
     <div>
+      <title>My Payment History | eTutionTrack</title>
       <h1 className="text-3xl font-bold text-center pt-5">
         My Payment History: ({payments?.length})
       </h1>

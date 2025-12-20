@@ -3,6 +3,7 @@ import React from "react";
 const PrivacyAndPolicy = () => {
   return (
     <div className=" py-12 px-4 sm:px-6 lg:px-8">
+      <title>Privacy Policy | eTutionTrack</title>
       <div className="max-w-5xl mx-auto rounded-2xl p-6 sm:p-10">
         {/* Header */}
         <div className="text-center mb-10">

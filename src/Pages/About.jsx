@@ -11,6 +11,7 @@ const About = () => {
   return (
     <div className="font-sans bg-white dark:bg-gray-900 transition-colors duration-500">
       {/*  Hero Section */}
+      <title>About Us | eTutionTrack</title>
       <section className="relative w-full min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img

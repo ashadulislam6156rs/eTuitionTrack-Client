@@ -257,6 +257,7 @@ if (result.isConfirmed) {
 
   return (
     <div className="flex items-center justify-center p-6">
+      <title>Update Tuition | eTutionTrack</title>
       <div className="card bg-base-100 shadow-2xl max-w-6xl w-full rounded-2xl overflow-hidden">
         <div className="card-body p-8 sm:p-10">
           <h1 className="text-4xl text-center font-bold mb-2">
@@ -403,9 +404,7 @@ if (result.isConfirmed) {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">
-                   Location
-                  </span>
+                  <span className="label-text font-semibold">Location</span>
                 </label>
                 <select
                   {...register("location", { required: true })}

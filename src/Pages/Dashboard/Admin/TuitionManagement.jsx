@@ -93,6 +93,7 @@ const TuitionManagement = () => {
     }
       return (
         <div>
+          <title>Tuitions Management | eTutionTrack</title>
           <div className="text-center mt-4">
             <h1 className="text-3xl font-bold">Tuitions Management</h1>
             <p className="text-sm text-base-content/60 py-2">
