@@ -1,6 +1,6 @@
-# 🎓 eTuitionBd - Tuition Management System
+# 🎓 eTuitionTrack - Tuition Management System
 
-A comprehensive full-stack platform connecting students with qualified tutors, streamlining the entire tuition management process from job posting to payment processing.
+eTuitionTrack is a modern digital platform that connects students, tutors, and administrators within a complete ecosystem. The primary goal of this platform is to make the tuition process simple, efficient, secure, and transparent. Students can easily find qualified and experienced tutors here and book sessions according to their needs. On the other hand, tutors are able to select the right students, showcase their expertise, and enhance their professional growth while increasing their earnings. The entire system is managed by the administrator, who ensures user safety, data protection, and overall transparency. As a result, eTuitionTrack stands as a reliable and effective solution for students, tutors, and administrators alike. In short, it is not just a medium for finding tutors, but a smart digital ecosystem that modernizes the learning experience and makes it beneficial for everyone.
 
 ## 🌐 Live Demo
 
@@ -16,15 +16,34 @@ A comprehensive full-stack platform connecting students with qualified tutors, s
 https://github.com/ashadulislam6156rs/eTuitionTrack-Server.git
 
 
-## 📋 Project Overview
-
-eTuitionBd is a modern tuition management platform designed to solve the real-world problem of connecting students with qualified tutors. The platform provides automated workflows, transparent payment processing, and structured communication between all parties involved.
-
 ### 🎯 Purpose
 
-- **For Students:** Easily post tuition requirements and find qualified tutors
-- **For Tutors:** Discover tuition opportunities and manage ongoing classes
-- **For Admins:** Monitor platform activities, verify users, and ensure quality
+**eTuitionTrack** is designed to revolutionize the private tuition ecosystem by creating a trusted, efficient, and transparent platform that serves three distinct user groups:
+
+- **For Students:** 
+  - Simplify the process of finding qualified, verified tutors who match their specific academic needs
+  - Post detailed tuition requirements with preferences for subject, budget, schedule, and location
+  - Access tutor profiles with ratings, reviews, and credentials to make informed decisions
+  - Manage all tuition activities—from applications to payments—in one centralized platform
+  - Eliminate the uncertainty and risk of hiring unverified tutors
+
+- **For Tutors:** 
+  - Discover genuine tuition opportunities from real students actively seeking help
+  - Showcase qualifications, experience, and specializations through comprehensive profiles
+  - Apply to suitable tuitions efficiently without wasting time on fake leads
+  - Build a professional reputation through student reviews and ratings
+  - Manage multiple tuitions, track earnings, and organize schedules seamlessly
+  - Gain access to a steady stream of verified opportunities for income growth
+
+- **For Admins:** 
+  - Maintain complete oversight of all platform activities to ensure quality and safety
+  - Verify tutor credentials and approve legitimate tuition posts to prevent fraud
+  - Monitor user interactions and resolve disputes fairly with full context
+  - Analyze platform performance through analytics and reporting tools
+  - Ensure data security, user privacy, and compliance with platform policies
+  - Foster a trusted community where both students and tutors can thrive
+
+**The Ultimate Goal:** To transform scattered, risky, and time-consuming tuition searches into a streamlined, secure, and mutually beneficial experience for everyone involved in the private education ecosystem.
 
 ## ✨ Key Features
 
@@ -56,37 +75,37 @@ eTuitionBd is a modern tuition management platform designed to solve the real-wo
 - **Platform Analytics:** Monitor total earnings and transaction reports
 - **Quality Control:** Ensure only legitimate tuition posts are published
 
-### 🚀 Additional Features
-- **Search & Filter:** Find tuitions by subject, location, class, and budget
-- **Sorting Options:** Sort listings by date, budget, or relevance
-- **Pagination:** Smooth browsing experience with paginated results
-- **Responsive Design:** Fully optimized for mobile, tablet, and desktop
-- **Real-time Updates:** Dynamic content loading and status updates
-- **Smooth Animations:** Enhanced UX with Framer Motion animations
 
-## 🛠️ Technologies Used
+## 📸 Website Screenshots
 
-### Frontend
-- **React.js** - UI library
-- **React Router DOM** - Client-side routing
-- **Tailwind CSS** - Utility-first styling
-- **DaisyUI** - Component library
-- **Framer Motion** - Animations
-- **Firebase** - Authentication
-- **Axios** - HTTP client
-- **React Hook Form** - Form management
-- **React Hot Toast** - Notifications
-- **Stripe** - Payment processing
+### 🏠 Home Page
+![Homepage Screenshot](public/eTutionTrack-Home.png)
 
-### Backend
-- **Node.js** - Runtime environment
-- **Express.js** - Web framework
-- **MongoDB** - Database
-- **Mongoose** - ODM
-- **JWT** - Token authentication
-- **Bcrypt** - Password hashing
-- **Cors** - Cross-origin resource sharing
-- **Dotenv** - Environment variables
+### 🛠️ Technology Stack
+
+| Category | Technology |
+|----------|------------|
+| **Frontend Framework** | React.js |
+| **Routing** | React Router |
+| **Styling** | Tailwind CSS |
+| **Animations** | Framer Motion, AOS, Lottie React, Motion |
+| **Authentication** | Firebase |
+| **HTTP Client** | Axios |
+| **State Management** | React Query (@tanstack/react-query) |
+| **Form Handling** | React Hook Form |
+| **Notifications** | React Toastify, SweetAlert2 |
+| **Data Visualization** | Recharts |
+| **UI Components** | Swiper, React Confetti, React Spinners, React Icons |
+| **Effects** | Typewriter Effect |
+| **Backend Framework** | Node.js, Express.js |
+| **Database** | MongoDB |
+| **Server Authentication** | Firebase Admin |
+| **Payment Processing** | Stripe |
+| **Middleware** | Cors |
+| **Environment Config** | Dotenv |
+| **Build Tool** | Vite |
+| **Code Quality** | ESLint |
+| **Version Control** | Git |
 
 ## 📦 NPM Packages
 
@@ -139,29 +158,25 @@ eTuitionBd is a modern tuition management platform designed to solve the real-wo
 - Firebase project
 - Stripe account
 
-### Installation
+---
+### 🖥️ How to Run Locally:
+1. Clone the Repository
 
-#### Clone the repositories
-```bash
-# Client
-git clone https://github.com/yourusername/etuitionbd-client.git
-cd etuitionbd-client
-npm install
-
-# Server
-git clone https://github.com/yourusername/etuitionbd-server.git
-cd etuitionbd-server
-npm install
+Create file eTutionTrack
 ```
+cd eTutionTrack
+```
+```
+git clone https://github.com/ashadulislam6156rs/eTuitionTrack-Client.git
 
-#### Run the application
-
-```bash
-# Client (port 5173)
+```
+2. Install Dependencies
+```
+npm i
+```
+3. Start Development Server
+```
 npm run dev
-
-# Server (port 5000)
-npm start
 ```
 
 
@@ -188,37 +203,6 @@ npm start
 2. Manage user accounts and roles
 3. View platform analytics
 4. Ensure platform quality and trust
-
-## 🔒 Security Features
-
-- Environment variables for sensitive data
-- JWT token verification with role-based access
-- Secure password hashing with bcrypt
-- Protected API routes
-- Firebase authentication integration
-- CORS configuration for API security
-
-## 📊 Project Statistics
-
-- ✅ 20+ meaningful commits (client)
-- ✅ 12+ meaningful commits (server)
-- ✅ Fully responsive design
-- ✅ No CORS/404/504 errors
-- ✅ Smooth user experience
-- ✅ Professional UI/UX
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 👨‍💻 Developer
-
-**Ashadul islam**  
-[GitHub](https://github.com/yourusername) | [LinkedIn](https://linkedin.com/in/yourusername) | [Portfolio](https://yourportfolio.com)
 
 ## 📞 Support
 
