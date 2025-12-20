@@ -2,10 +2,9 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import useAuth from "./useAuth";
 import { useNavigate } from "react-router";
-import { toast } from "react-toastify";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://etuitiontrack-server.vercel.app",
 });
 
 const useAxiosSecure = () => {

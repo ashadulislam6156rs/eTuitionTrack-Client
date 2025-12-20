@@ -55,7 +55,7 @@ const Register = () => {
           .then((res) => {
             const photoURL = res.data.data.url;
             const updateInfo = {
-              displayName: data.name,
+              displayName: data.fullName,
               photoURL: photoURL,
             };
             updateUserInfo(updateInfo);
@@ -71,13 +71,17 @@ const Register = () => {
             };
 
             axiosSecure.post("/users", userData).then((data) => {
-              if (data.data.message) {
-                toast.success(data.data.message);
-                navigate(location?.state || "/");
-              } else {
-                toast.success("Your Account has been Successfully Created.");
-                navigate(location?.state || "/");
-              }
+              navigate(location?.state || "/");
+               
+              setTimeout(() => {
+               
+                 toast.success(
+                   data.data.message ||
+                     "Your Account has been Successfully Created."
+                 );
+              }, 500);
+               
+            
             });
           });
       })
@@ -96,21 +100,16 @@ const Register = () => {
           email: res.user.email,
           userRole: "Student",
         };
-        axiosSecure.post("/users", userData).then((data) => {
-          if (data.data.message) {
-            toast.success(data.data.message);
-            navigate(location?.state || "/");
-          } else {
-            toast.success("Your Account LogIn Successfull.");
-            navigate(location?.state || "/");
-          }
+        axiosSecure.post("/users", userData).then(() => {
+          navigate(location?.state || "/");
         });
+         toast.success("Your Account LogIn Successfull.");
       })
       .catch((err) => toast.error(err.message));
   };
 
   return (
-    <div className="min-h-screen bg-base-200 flex items-center justify-center p-4 font-sans">
+    <div className="bg-base-200 flex items-center justify-center p-4 font-sans">
       <div className="card lg:card-side bg-base-100 shadow-2xl max-w-6xl w-full rounded-2xl overflow-hidden">
         {/* Left Side: Form Section */}
         <div className="card-body w-full lg:w-1/2 p-8 sm:p-10">
@@ -234,8 +233,8 @@ const Register = () => {
                     onChange={(e) => setGender(e.target.value)}
                     className="grow bg-transparent outline-none border-none cursor-pointer"
                   >
-                    <option value="Student">Male</option>
-                    <option value="Tutor">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                     <option value="Other">Other</option>
                   </select>
                 </label>
@@ -332,7 +331,7 @@ const Register = () => {
         </div>
 
         {/* Right Side: Visual Section */}
-        <div className="w-full lg:w-1/2 bg-primary/5 flex flex-col items-center justify-center p-8 relative overflow-hidden hidden md:flex">
+        <div className="w-full lg:w-1/2 bg-primary/5 flex-col items-center justify-center p-8 relative overflow-hidden hidden lg:flex">
           {/* Decorative circles (Matching Login Page) */}
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-primary/10 blur-3xl"></div>
           <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-secondary/10 blur-3xl"></div>

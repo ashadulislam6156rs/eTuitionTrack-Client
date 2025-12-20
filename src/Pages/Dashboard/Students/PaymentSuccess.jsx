@@ -3,6 +3,7 @@ import { useSearchParams, Link } from "react-router";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Confetti from "react-confetti";
 import { IoArrowBack } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 const PaymentSuccess = () => {
   const axiosSecure = useAxiosSecure();
@@ -14,8 +15,8 @@ const PaymentSuccess = () => {
     if (sessionId) {
       axiosSecure
         .patch(`/payment-success?session_id=${sessionId}`)
-        .then(() => console.log("Payment marked successful"))
-        .catch((err) => console.error("Payment error", err));
+        .then(() => toast.success("Payment marked successful"))
+        .catch((err) => toast.error("Payment error: " + err));
     }
   }, [sessionId, axiosSecure]);
 

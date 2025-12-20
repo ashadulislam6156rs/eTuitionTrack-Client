@@ -53,7 +53,7 @@ const Login = () => {
 
   return (
     <div className=" flex items-center justify-center p-4">
-      <div className="card lg:card-side bg-base-100 shadow-2xl max-w-5xl w-full rounded-2xl overflow-hidden">
+      <div className="card md:card-side bg-base-100 shadow-2xl max-w-5xl w-full rounded-2xl overflow-hidden">
         {/* Left Side: Form Section */}
         <div className="card-body w-full lg:w-1/2 p-8 sm:p-12">
           <div className="mb-6">
@@ -168,7 +168,7 @@ const Login = () => {
         </div>
 
         {/* Right Side: Visual/Image Section */}
-        <div className="w-full lg:w-1/2 bg-primary/5 flex flex-col items-center justify-center p-8 relative overflow-hidden hidden md:flex">
+        <div className="w-full lg:w-1/2 bg-primary/5 flex-col items-center justify-center p-8 relative overflow-hidden hidden md:flex">
           {/* Decorative circles for background effect */}
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-primary/10 blur-3xl"></div>
           <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-secondary/10 blur-3xl"></div>
