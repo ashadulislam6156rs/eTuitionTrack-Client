@@ -28,7 +28,7 @@ const UsersManagement = () => {
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
       const filterUser = res.data.filter(
-        (user) => user.email !== "ashadulislam6156rs@gmail.com"
+        (user) => user.userRole !== "Admin"
       );
       return filterUser;
     },
