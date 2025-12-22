@@ -8,7 +8,7 @@ import logo from "../../assets/eTuitionTrack-logo.png";
 const Footer = () => {
   return (
     <Container>
-      <footer className=" dark:bg-background-dark text-gray-600 dark:text-gray-400 overflow-hidden">
+      <footer className=" text-gray-600 overflow-hidden">
         <div className="pt-12 pb-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
             {/* Logo and Description */}
@@ -34,14 +34,14 @@ const Footer = () => {
             <div className="md:col-span-7 lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm">
               {/* Useful Links */}
               <div>
-                <h3 className="font-bold text-[#0D47A1] dark:text-gray-300 mb-4 tracking-wide">
+                <h3 className="font-bold text-[#0D47A1] mb-4 tracking-wide">
                   Useful Links
                 </h3>
                 <ul className="space-y-3">
                   <li>
                     <Link
                       to={"/"}
-                      className="hover:text-[#F57C00] hover:underline dark:hover:text-white transition-colors"
+                      className="hover:text-[#F57C00] hover:underline transition-colors"
                     >
                       Home
                     </Link>
@@ -49,7 +49,7 @@ const Footer = () => {
                   <li>
                     <Link
                       to={"/about"}
-                      className="hover:text-[#F57C00] hover:underline  dark:hover:text-white transition-colors"
+                      className="hover:text-[#F57C00] hover:underline  transition-colors"
                     >
                       About Us
                     </Link>
@@ -57,7 +57,7 @@ const Footer = () => {
                   <li>
                     <Link
                       to={"/contact"}
-                      className="hover:text-[#F57C00] hover:underline  dark:hover:text-white transition-colors"
+                      className="hover:text-[#F57C00] hover:underline transition-colors"
                     >
                       Contact Us
                     </Link>
@@ -67,14 +67,14 @@ const Footer = () => {
 
               {/* Product Links */}
               <div>
-                <h3 className="font-bold text-[#0D47A1] dark:text-gray-300 mb-4 tracking-wide">
+                <h3 className="font-bold text-[#0D47A1] mb-4 tracking-wide">
                   Solutions
                 </h3>
                 <ul className="space-y-3">
                   <li>
                     <Link
                       to={"/privacy"}
-                      className="hover:text-[#F57C00] hover:underline  dark:hover:text-white transition-colors"
+                      className="hover:text-[#F57C00] hover:underline transition-colors"
                     >
                       Privacy And Policy
                     </Link>
@@ -82,7 +82,7 @@ const Footer = () => {
                   <li>
                     <Link
                       to={"/conditions"}
-                      className="hover:text-[#F57C00] hover:underline  dark:hover:text-white transition-colors"
+                      className="hover:text-[#F57C00] hover:underline transition-colors"
                     >
                       Terms And Conditions
                     </Link>
@@ -92,18 +92,18 @@ const Footer = () => {
 
               {/* Company Links */}
               <div className="">
-                <h3 className="font-bold text-[#0D47A1] dark:text-gray-300 mb-4 tracking-wide">
+                <h3 className="font-bold text-[#0D47A1] mb-4 tracking-wide">
                   Contact Info
                 </h3>
                 <ul className="space-y-3 text-sm">
                   <li className="flex items-center gap-2">
                     <FaEnvelope
-                      className="text-gray-500 dark:text-gray-300 w-4 h-4"
+                      className="text-gray-500 w-4 h-4"
                       aria-hidden="true"
                     />
                     <a
                       href="mailto:support@etuitiontrack.com"
-                      className="hover:text-gray-900 dark:hover:text-white transition-colors"
+                      className="hover:text-gray-900 transition-colors"
                     >
                       support@etuitiontrack.com
                     </a>
@@ -111,12 +111,12 @@ const Footer = () => {
 
                   <li className="flex items-center gap-2">
                     <FaPhone
-                      className="text-gray-500 dark:text-gray-300 w-4 h-4"
+                      className="text-gray-500 w-4 h-4"
                       aria-hidden="true"
                     />
                     <a
                       href="tel:+880123456789"
-                      className="hover:text-gray-900 dark:hover:text-white transition-colors"
+                      className="hover:text-gray-900 transition-colors"
                     >
                       +880 1234 56789
                     </a>
@@ -124,7 +124,7 @@ const Footer = () => {
 
                   <li className="flex items-center gap-2">
                     <FaMapMarkerAlt
-                      className="text-gray-500 dark:text-gray-300 w-4 h-4"
+                      className="text-gray-500 w-4 h-4"
                       aria-hidden="true"
                     />
                     <span>Mymensingh, Bangladesh</span>
@@ -135,14 +135,14 @@ const Footer = () => {
           </div>
 
           {/* Copyright and Social Icons */}
-          <div className="bg-[#0d48a1e8] dark:bg-primary/20 rounded-full py-3 px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-white font-semibold dark:text-gray-300">
+          <div className="bg-[#0d48a1e8] rounded-full py-3 px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-white font-semibold">
               Copyright © 2025 eTuitionTrack
             </p>
             <div className="flex items-center space-x-2">
               {/* X (Twitter) Icon */}
               <a
-                className="w-8 h-8 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="w-8 h-8 flex items-center justify-center bg-white  rounded-full text-gray-600  hover:bg-gray-100 transition-colors"
                 href="https://x.com/"
               >
                 <FaXTwitter className="w-4 h-4" aria-hidden="true" />
@@ -151,7 +151,7 @@ const Footer = () => {
 
               {/* Instagram Icon */}
               <a
-                className="w-8 h-8 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="w-8 h-8 flex items-center justify-center bg-white  rounded-full text-gray-600 hover:bg-gray-100 transition-colors"
                 href="https://www.instagram.com"
               >
                 <FaInstagram className="w-5 h-5" aria-hidden="true" />
@@ -160,7 +160,7 @@ const Footer = () => {
 
               {/* Facebook Icon */}
               <a
-                className="w-8 h-8 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="w-8 h-8 flex items-center justify-center bg-white rounded-full text-gray-600 hover:bg-gray-100 transition-colors"
                 href="https://www.facebook.com"
               >
                 <FaFacebookF className="w-5 h-5" aria-hidden="true" />

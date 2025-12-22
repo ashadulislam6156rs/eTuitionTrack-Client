@@ -10,7 +10,7 @@ const MainLayout = () => {
    const navigatation = useNavigation();
     return (
       <div className="flex flex-col min-h-screen">
-        <header className="bg-[#fdf7e4] fixed top-0 z-100 dark:bg-background-dark text-gray-600 dark:text-gray-400 shadow-2xl w-full mx-auto">
+        <header className="bg-[#fdf7e4] fixed top-0 z-100 text-gray-600 shadow-2xl w-full mx-auto">
           <Navbar></Navbar>
         </header>
         <main className="w-full mx-auto flex-1">

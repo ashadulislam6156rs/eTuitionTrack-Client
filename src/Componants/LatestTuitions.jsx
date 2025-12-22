@@ -21,10 +21,10 @@ const LatestTuitions = () => {
     return (
       <div>
         <Container>
-          <h2 className="text-4xl pt-7 font-bold text-center text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl pt-7 font-bold text-center text-gray-900 mb-4">
             Latest Tuitions
           </h2>
-          <p className="text-center text-gray-600 dark:text-gray-300 md:w-2/3 mx-auto mb-10">
+          <p className="text-center text-gray-600 md:w-2/3 mx-auto mb-10">
             Stay updated with the most recent tuition posts and explore a wide
             range of learning opportunities. Whether you're looking for
             subject-specific guidance, home tuition, or online support, here you

@@ -39,7 +39,7 @@ const Contact = () => {
 
 
   return (
-    <section className="w-full font-sans text-slate-700 dark:text-slate-300 transition-colors duration-500">
+    <section className="w-full font-sans text-slate-700 transition-colors duration-500">
       <title>Contact Us | eTutionTrack</title>
       <section className="relative py-24 text-center text-white">
         <div

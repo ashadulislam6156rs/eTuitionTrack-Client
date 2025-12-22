@@ -19,6 +19,7 @@ const PaymentSuccess = () => {
         .catch((err) => toast.error("Payment error: " + err));
     }
   }, [sessionId, axiosSecure]);
+  
 
   useEffect(() => {
     const timer = setTimeout(() => setShowConfetti(false), 6000);

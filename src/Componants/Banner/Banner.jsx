@@ -45,7 +45,7 @@ const Banner = () => {
   return (
     <div className="bg-base-300 pt-3 md:pt-0">
       <Container>
-        <section className="font-display dark:bg-[#111827] md:h-[450px] flex items-center justify-center overflow-hidden">
+        <section className="font-display md:h-[450px] flex items-center justify-center overflow-hidden">
           <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
             <motion.div
               variants={textParent}
@@ -55,7 +55,7 @@ const Banner = () => {
             >
               <motion.h1
                 variants={textChild}
-                className="text-3xl lg:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight"
+                className="text-3xl lg:text-5xl font-extrabold text-gray-900 leading-tight"
               >
                 Manage Your Tuition System Smarter with
                 <span className="text-[#F57C00] text-2xl md:text-4xl block pt-4">
@@ -71,7 +71,7 @@ const Banner = () => {
 
               <motion.p
                 variants={textChild}
-                className="mt-4 text-base md:text-lg text-gray-600 dark:text-gray-300"
+                className="mt-4 text-base md:text-lg text-gray-600 "
               >
                 A complete solution for tutors, coaching centers, and students.
                 Track classes, automate payments, and monitor progress-all from
@@ -115,7 +115,7 @@ const Banner = () => {
                     duration: 6,
                     ease: "easeInOut",
                   }}
-                  className="absolute inset-0 bg-amber-200 dark:bg-amber-800 rounded-2xl -rotate-3"
+                  className="absolute inset-0 bg-amber-200 rounded-2xl -rotate-3"
                 />
 
                 {/* MAIN IMAGE PARALLAX */}
@@ -131,17 +131,17 @@ const Banner = () => {
                 <motion.div
                   variants={float}
                   animate="animate"
-                  className="absolute -top-6 -right-6 md:top-6 md:-right-10 z-20 p-2 lg:p-4 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-xl shadow-xl border border-white/20 dark:border-gray-700/50 min-w-[180px]"
+                  className="absolute -top-6 -right-6 md:top-6 md:-right-10 z-20 p-2 lg:p-4 bg-white/70  backdrop-blur-md rounded-xl shadow-xl border border-white/20  min-w-[180px]"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-6 lg:w-10 lg:h-10 h-6 bg-blue-100 dark:bg-blue-900 rounded-full">
-                      <MdSchool className="text-blue-500 dark:text-blue-300 text-2xl" />
+                    <div className="flex items-center justify-center w-6 lg:w-10 lg:h-10 h-6 bg-blue-100  rounded-full">
+                      <MdSchool className="text-blue-500 text-2xl" />
                     </div>
                     <div>
-                      <p className="font-bold text-lg text-gray-900 dark:text-white">
+                      <p className="font-bold text-lg text-gray-900">
                         500+
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
+                      <p className="text-sm text-gray-600">
                         Active Tutors
                       </p>
                     </div>
@@ -153,13 +153,13 @@ const Banner = () => {
                   variants={float}
                   animate="animate"
                   transition={{ delay: 0.3 }}
-                  className="absolute -bottom-6 -left-6 md:bottom-6 md:-left-10 z-20 lg:p-4 p-2 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-xl shadow-xl border border-white/20 dark:border-gray-700/50 lg:min-w-[200px] min-w-[100px]"
+                  className="absolute -bottom-6 -left-6 md:bottom-6 md:-left-10 z-20 lg:p-4 p-2 bg-white/70 backdrop-blur-md rounded-xl shadow-xl border  lg:min-w-[200px] min-w-[100px]"
                 >
                   <div>
-                    <p className="font-bold text-lg text-gray-900 dark:text-white">
+                    <p className="font-bold text-lg text-gray-900 ">
                       8k+
                     </p>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                    <p className="text-sm text-gray-600 mb-2">
                       Registered Students
                     </p>
                   </div>
@@ -169,12 +169,12 @@ const Banner = () => {
                       <img
                         key={n}
                         src={`https://i.pravatar.cc/50?img=${n}`}
-                        className="w-7 h-7 rounded-full border-2 border-white dark:border-gray-800 -ml-2 first:ml-0"
+                        className="w-7 h-7 rounded-full border-2 border-white -ml-2 first:ml-0"
                       />
                     ))}
 
-                    <div className="flex items-center justify-center w-7 h-7 rounded-full border-2 border-white dark:border-gray-800 -ml-2 bg-gray-200 dark:bg-gray-600">
-                      <span className="text-[10px] font-bold text-gray-600 dark:text-gray-200">
+                    <div className="flex items-center justify-center w-7 h-7 rounded-full border-2 border-white  -ml-2 bg-gray-200 ">
+                      <span className="text-[10px] font-bold text-gray-600 ">
                         +5
                       </span>
                     </div>

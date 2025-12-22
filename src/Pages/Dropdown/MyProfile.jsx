@@ -222,7 +222,7 @@ const MyProfile = () => {
                     type="text"
                     {...register("email", { required: true })}
                     readOnly
-                    className="w-full p-3 border rounded-lg bg-gray-100 dark:bg-gray-900 cursor-not-allowed"
+                    className="w-full p-3 border rounded-lg bg-gray-100 cursor-not-allowed"
                   />
                   {errors.email && (
                     <p className="pt-1 text-sm md:text-base text-red-500 font-medium">

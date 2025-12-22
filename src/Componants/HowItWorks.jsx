@@ -24,13 +24,13 @@ export default function HowItWorks() {
   return (
     <div className="bg-base-200">
       <Container>
-        <section className="py-5 dark:bg-[#0f172a] font-display">
+        <section className="py-5 font-display">
           <div className="mx-auto">
             {/* SECTION TITLE */}
-            <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
               How the Platform Works
             </h2>
-            <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
+            <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
               A simple workflow to manage tuitions for students, tutors, and
               admins efficiently.
             </p>
@@ -44,15 +44,15 @@ export default function HowItWorks() {
                   data-aos-delay={index * 150}
                   data-aos-duration="900"
                   data-aos-easing="ease-out-cubic"
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-lg text-center border border-gray-100 dark:border-gray-700 hover:shadow-2xl transition-all"
+                  className="bg-white rounded-2xl p-4 lg:p-8 shadow-lg text-center border border-gray-100 hover:shadow-2xl transition-all"
                 >
                   <div className="flex justify-center mb-6">{step.icon}</div>
 
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {step.title}
                   </h3>
 
-                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                  <p className="text-gray-600 text-sm leading-relaxed">
                     {step.desc}
                   </p>
                 </div>

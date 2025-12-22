@@ -38,12 +38,12 @@ const WhyChooseUs = () => {
   return (
     <div className="bg-base-200">
       <Container>
-        <section className="py-10 dark:bg-[#111827]">
+        <section className="py-10">
           <div className="container mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+            <h2 className="text-4xl font-bold mb-6 text-gray-900">
               Why Choose <span className="text-[#F57C00]">eTuitionTrack</span>
             </h2>
-            <p className="mb-12 text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="mb-12 text-gray-700 max-w-2xl mx-auto">
               Discover the benefits of joining eTuitionTrack. Our platform is
               designed to provide high-quality, flexible, and interactive
               learning experiences for every student.
@@ -57,15 +57,15 @@ const WhyChooseUs = () => {
                   data-aos-delay={index * 120}
                   data-aos-duration="800"
                   data-aos-easing="ease-out-cubic"
-                  className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300"
+                  className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300"
                 >
                   <div className="mb-4">{feature.icon}</div>
 
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900 ">
                     {feature.title}
                   </h3>
 
-                  <p className="text-gray-700 dark:text-gray-300">
+                  <p className="text-gray-700">
                     {feature.description}
                   </p>
                 </div>

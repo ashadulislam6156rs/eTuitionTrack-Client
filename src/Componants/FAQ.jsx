@@ -66,10 +66,10 @@ The system ensures transparency for students and tutors with clear payment track
     <Container>
       <div className="space-y-3 my-5">
         <div className="py-10 px-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-900  mb-4">
             Frequently Asked Questions
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 text-center max-w-3xl mx-auto text-base md:text-lg">
+          <p className="text-gray-600 text-center max-w-3xl mx-auto text-base md:text-lg">
             Find answers to the most common questions about eTuitionTrack,
             including student registration, tutor selection, scheduling, secure
             payments, and ongoing support.

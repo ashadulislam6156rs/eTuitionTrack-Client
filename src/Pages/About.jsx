@@ -9,7 +9,7 @@ const BACKGROUND_LIGHT = "#F9F9F9";
 
 const About = () => {
   return (
-    <div className="font-sans bg-white dark:bg-gray-900 transition-colors duration-500">
+    <div className="font-sans bg-white transition-colors duration-500">
       {/*  Hero Section */}
       <title>About Us | eTutionTrack</title>
       <section className="relative w-full min-h-[500px] flex items-center justify-center overflow-hidden">

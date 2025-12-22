@@ -200,13 +200,13 @@ const Navbar = () => {
                   className="menu bg-[#fdf7e4] menu-sm dropdown-content rounded-box mt-4 w-52 p-2 shadow-lg shadow-gray-500 z-9999"
                 >
                   <div className="ml-3 pb-2">
-                    <h1 className="font-semibold pb-1 text-base text-gray-900 dark:text-gray-100 leading-tight">
+                    <h1 className="font-semibold pb-1 text-base text-gray-900 leading-tight">
                       {user?.displayName}
                     </h1>
 
                     <div
                       className="mt-1 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full 
-                  bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300
+                  bg-green-100 text-green-700
                   text-xs font-medium"
                     >
                       <svg

@@ -41,11 +41,11 @@ const LatestTutors = () => {
       <motion.div variants={containerVariants} initial="hidden" animate="show">
         <motion.h2
           variants={containerVariants}
-          className="text-4xl pt-7 font-bold text-center text-gray-900 dark:text-white mb-4"
+          className="text-4xl pt-7 font-bold text-center text-gray-900 mb-4"
         >
           Latest Tutors
         </motion.h2>
-        <p className="text-center text-gray-600 dark:text-gray-300 md:w-2/3 mx-auto mb-10">
+        <p className="text-center text-gray-600 md:w-2/3 mx-auto mb-10">
           Meet our newest tutors who have recently joined the platform. Explore
           qualified and verified educators offering personalized guidance across
           a wide range of subjects to help you achieve your academic goals.
