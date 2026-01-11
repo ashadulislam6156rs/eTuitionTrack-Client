@@ -20,8 +20,8 @@ const LatestTuitions = () => {
 
     return (
       <div>
-        <Container>
-          <h2 className="text-4xl pt-7 font-bold text-center text-gray-900 mb-4">
+        <Container className={"pt-10"}>
+          <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
             Latest Tuitions
           </h2>
           <p className="text-center text-gray-600 md:w-2/3 mx-auto mb-10">

@@ -36,7 +36,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="bg-base-200">
+    <div className="bg-base-200 pt-5">
       <Container>
         <section className="py-10">
           <div className="container mx-auto text-center">

@@ -37,7 +37,7 @@ const LatestTutors = () => {
   return <Loading></Loading>
 }
   return (
-    <Container className={`bg-base-200`}>
+    <Container className={`bg-base-200 pt-10`}>
       <motion.div variants={containerVariants} initial="hidden" animate="show">
         <motion.h2
           variants={containerVariants}

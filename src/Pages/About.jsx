@@ -8,6 +8,8 @@ const PRIMARY_COLOR = "#0288D1";
 const BACKGROUND_LIGHT = "#F9F9F9";
 
 const About = () => {
+
+  
   return (
     <div className="font-sans bg-white transition-colors duration-500">
       {/*  Hero Section */}

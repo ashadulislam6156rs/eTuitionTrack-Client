@@ -5,6 +5,9 @@ import WhyChooseUs from '../Componants/WhyChooseUs';
 import LatestTuitions from '../Componants/LatestTuitions';
 import LatestTutors from '../Componants/LatestTutors';
 import FAQ from '../Componants/FAQ';
+import Testimonials from '../Componants/Testimonials';
+import Statistics from '../Componants/Statistics';
+import Highlights from '../Componants/Highlights';
 
 const Home = () => {
     return (
@@ -13,6 +16,9 @@ const Home = () => {
         <LatestTuitions
         ></LatestTuitions>
         <LatestTutors></LatestTutors>
+        <Highlights></Highlights>
+        <Testimonials></Testimonials>
+        <Statistics></Statistics>
         <HowItWorks></HowItWorks>
         <WhyChooseUs></WhyChooseUs>
         <FAQ></FAQ>

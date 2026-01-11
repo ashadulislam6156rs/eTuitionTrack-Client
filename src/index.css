@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "tailwindcss";
  @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
-  themes: light --default;
+}
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
- }
 
-
+*{
+    font-family: "Tinos", serif;
+}
+h1,h2,h3,h4,h5,a,span{
+    font-family: "Raleway", sans-serif;
+}
 
 .myBtn{
     @apply bg-[#0D47A1] text-white hover:bg-[#F57C00] transition-colors duration-700 ease-in-out

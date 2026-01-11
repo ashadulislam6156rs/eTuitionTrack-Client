@@ -22,7 +22,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <div className="bg-base-200">
+    <div className="bg-base-200 pt-10">
       <Container>
         <section className="py-5 font-display">
           <div className="mx-auto">

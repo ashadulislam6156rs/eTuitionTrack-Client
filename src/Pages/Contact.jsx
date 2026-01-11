@@ -6,8 +6,6 @@ import { toast } from "react-toastify";
 const PRIMARY_BLUE = "#0288D1";
 const DEEP_BLUE = "#0D47A1";
 
-
-
 const Contact = () => {
 
 
@@ -203,7 +201,7 @@ const Contact = () => {
       </section>
 
       {/* 4. Map Section */}
-      <section className="max-w-7xl mx-auto px-6 py-7">
+      <section className="max-w-7xl mx-auto px-6 py-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-900 dark:text-white mb-8">
           Find Our Office Location
         </h2>
