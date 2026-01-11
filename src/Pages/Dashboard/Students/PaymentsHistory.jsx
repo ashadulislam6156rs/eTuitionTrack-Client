@@ -42,18 +42,18 @@ const PaymentsHistory = () => {
   return (
     <div>
       <title>My Payment History | eTutionTrack</title>
-      <h1 className="text-3xl font-bold text-center pt-5">
+      <h1 className="text-3xl font-bold text-center pt-5 dark:text-gray-100">
         My Payment History: ({payments?.length})
       </h1>
-      <p className="text-sm text-center text-base-content/60 pb-7 pt-2">
+      <p className="text-sm text-center text-base-content/60 dark:text-gray-400 pb-7 pt-2">
         All your tuition payment records, including transaction details and
         status, are listed here for easy tracking.
       </p>
       <div>
-        <div className="overflow-x-auto bg-white rounded-lg">
-          <table className="table table-zebra">
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-lg">
+          <table className="table table-zebra dark:text-gray-300">
             {/* head */}
-            <thead className="bg-cyan-500 text-white">
+            <thead className="bg-cyan-500 dark:bg-cyan-700 text-white">
               <tr>
                 <th>SL.NO.</th>
                 <th>Payment Time</th>
@@ -72,14 +72,14 @@ const PaymentsHistory = () => {
                 </tr>
               ) : (
                 payments?.map((Payment, index) => (
-                  <tr key={index}>
-                    <th>{index + 1}</th>
+                  <tr key={index} className="hover dark:hover:bg-gray-700/50">
+                    <th className="dark:text-gray-300">{index + 1}</th>
                     <td>{formatBDTime(Payment.paidAt)}</td>
                     <td>{Payment.transactionId}</td>
                     <td>
                       <span>{Payment.totalAmount}</span>
                       <span className="text-xl">৳</span>
-                      <span className="text-green-600 font-semibold">
+                      <span className="text-green-600 dark:text-green-400 font-semibold">
                         {" "}
                         ({Payment.paymentStatus})
                       </span>
@@ -90,7 +90,7 @@ const PaymentsHistory = () => {
                       <button
                         onClick={() => handlePaymentDetails(Payment)}
                         title="View Payment Details"
-                        className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"
+                        className="btn bg-[#0D47A1] dark:bg-blue-700 hover:bg-transparent dark:hover:bg-blue-600 hover:text-black dark:hover:text-white text-white btn-square btn-sm"
                       >
                         <GrView />
                       </button>
@@ -103,38 +103,46 @@ const PaymentsHistory = () => {
         </div>
         {/* Open the modal using document.getElementById('ID').showModal() method */}
         <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box p-6 sm:p-8 rounded-xl bg-white shadow-lg max-w-lg">
+          <div className="modal-box p-6 sm:p-8 rounded-xl bg-white dark:bg-gray-800 shadow-lg dark:shadow-gray-950/50 max-w-lg">
             {/* Header */}
             <div className="flex items-center gap-4 mb-4">
               <div>
-                <h3 className="text-2xl font-bold text-gray-800">
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
                   {currentPayment?.customerEmail || "No Name"}
                 </h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   {currentPayment?.studentEmail}
                 </p>
               </div>
             </div>
 
             {/* Info */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-gray-700">
-              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-                <p className="font-semibold text-gray-600">Total Paid</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-gray-700 dark:text-gray-300">
+              <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+                <p className="font-semibold text-gray-600 dark:text-gray-400">
+                  Total Paid
+                </p>
                 <p>{currentPayment?.totalAmount || "-"} BDT</p>
               </div>
-              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-                <p className="font-semibold text-gray-600">Paid Time</p>
+              <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+                <p className="font-semibold text-gray-600 dark:text-gray-400">
+                  Paid Time
+                </p>
                 <p>{formatBDTime(currentPayment?.paidAt) || "-"}</p>
               </div>
-              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-                <p className="font-semibold text-gray-600">Transaction Id</p>
+              <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+                <p className="font-semibold text-gray-600 dark:text-gray-400">
+                  Transaction Id
+                </p>
                 <p className="text-[11px]">
                   {currentPayment?.transactionId || "-"}
                 </p>
               </div>
-              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-                <p className="font-semibold text-gray-600">Payment Status</p>
-                <p className=" font-semibold text-cyan-500 w-fit rounded-lg px-2">
+              <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+                <p className="font-semibold text-gray-600 dark:text-gray-400">
+                  Payment Status
+                </p>
+                <p className="font-semibold text-cyan-500 dark:text-cyan-400 w-fit rounded-lg px-2">
                   {currentPayment?.paymentStatus || "-"}
                 </p>
               </div>
@@ -142,9 +150,11 @@ const PaymentsHistory = () => {
 
             {/* Details */}
             {currentPayment?.details && (
-              <div className="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
-                <p className="font-semibold text-gray-600 mb-1">Details</p>
-                <p className="text-gray-700 text-sm">
+              <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm mb-4">
+                <p className="font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                  Details
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">
                   {currentPayment.details}
                 </p>
               </div>
@@ -153,7 +163,9 @@ const PaymentsHistory = () => {
             {/* Close Button */}
             <div className="modal-action">
               <form method="dialog">
-                <button className="btn btn-primary w-full">Close</button>
+                <button className="btn btn-primary dark:bg-blue-700 dark:border-blue-700 w-full">
+                  Close
+                </button>
               </form>
             </div>
           </div>

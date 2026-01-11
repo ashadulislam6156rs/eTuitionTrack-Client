@@ -2,25 +2,27 @@ import React from "react";
 
 const TermAndConditions = () => {
   return (
-    <div className="min-h-screen mt-5 bg-gradient-to-br from-indigo-50 via-sky-50 to-purple-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen mt-5 bg-gradient-to-br from-indigo-50 via-sky-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <title>Terms & Conditions | eTutionTrack</title>
-      <div className="max-w-5xl mx-auto backdrop-blur-md p-6 sm:p-10  ">
+      <div className="max-w-5xl mx-auto backdrop-blur-md p-6 sm:p-10">
         {/* Header */}
         <div className="text-center mb-10">
-          <h1 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-indigo-600 via-sky-500 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-indigo-600 via-sky-500 to-purple-600 dark:from-blue-400 dark:via-cyan-400 dark:to-purple-400 bg-clip-text text-transparent">
             Terms & Conditions
           </h1>
-          <p className="mt-3 text-gray-500 text-sm sm:text-base">
+          <p className="mt-3 text-gray-500 dark:text-gray-400 text-sm sm:text-base">
             Please read these terms carefully before using{" "}
-            <span className="font-semibold text-indigo-600">eTutionTrack</span>
+            <span className="font-semibold text-indigo-600 dark:text-blue-400">
+              eTutionTrack
+            </span>
           </p>
         </div>
 
         {/* Content */}
-        <div className="space-y-8 text-gray-700 text-sm sm:text-base leading-relaxed">
+        <div className="space-y-8 text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
           {/* Section 1 */}
-          <section className="bg-indigo-50/60 rounded-xl p-4 sm:p-6">
-            <h2 className="text-xl font-semibold text-indigo-700 mb-2">
+          <section className="bg-indigo-50/60 dark:bg-gray-800/50 rounded-xl p-4 sm:p-6 border dark:border-gray-700">
+            <h2 className="text-xl font-semibold text-indigo-700 dark:text-indigo-400 mb-2">
               1. Acceptance of Terms
             </h2>
             <p>
@@ -31,8 +33,8 @@ const TermAndConditions = () => {
           </section>
 
           {/* Section 2 */}
-          <section className="bg-sky-50/60 rounded-xl p-4 sm:p-6">
-            <h2 className="text-xl font-semibold text-sky-700 mb-2">
+          <section className="bg-sky-50/60 dark:bg-gray-800/50 rounded-xl p-4 sm:p-6 border dark:border-gray-700">
+            <h2 className="text-xl font-semibold text-sky-700 dark:text-sky-400 mb-2">
               2. User Accounts
             </h2>
             <p>
@@ -43,8 +45,8 @@ const TermAndConditions = () => {
           </section>
 
           {/* Section 3 */}
-          <section className="bg-purple-50/60 rounded-xl p-4 sm:p-6">
-            <h2 className="text-xl font-semibold text-purple-700 mb-2">
+          <section className="bg-purple-50/60 dark:bg-gray-800/50 rounded-xl p-4 sm:p-6 border dark:border-gray-700">
+            <h2 className="text-xl font-semibold text-purple-700 dark:text-purple-400 mb-2">
               3. Use of Services
             </h2>
             <p>
@@ -55,8 +57,8 @@ const TermAndConditions = () => {
           </section>
 
           {/* Section 4 */}
-          <section className="bg-indigo-50/60 rounded-xl p-4 sm:p-6">
-            <h2 className="text-xl font-semibold text-indigo-700 mb-2">
+          <section className="bg-indigo-50/60 dark:bg-gray-800/50 rounded-xl p-4 sm:p-6 border dark:border-gray-700">
+            <h2 className="text-xl font-semibold text-indigo-700 dark:text-indigo-400 mb-2">
               4. Tutor & Student Responsibilities
             </h2>
             <p>
@@ -67,8 +69,8 @@ const TermAndConditions = () => {
           </section>
 
           {/* Section 5 */}
-          <section className="bg-sky-50/60 rounded-xl p-4 sm:p-6">
-            <h2 className="text-xl font-semibold text-sky-700 mb-2">
+          <section className="bg-sky-50/60 dark:bg-gray-800/50 rounded-xl p-4 sm:p-6 border dark:border-gray-700">
+            <h2 className="text-xl font-semibold text-sky-700 dark:text-sky-400 mb-2">
               5. Payments & Fees
             </h2>
             <p>
@@ -79,8 +81,8 @@ const TermAndConditions = () => {
           </section>
 
           {/* Section 6 */}
-          <section className="bg-purple-50/60 rounded-xl p-4 sm:p-6">
-            <h2 className="text-xl font-semibold text-purple-700 mb-2">
+          <section className="bg-purple-50/60 dark:bg-gray-800/50 rounded-xl p-4 sm:p-6 border dark:border-gray-700">
+            <h2 className="text-xl font-semibold text-purple-700 dark:text-purple-400 mb-2">
               6. Intellectual Property
             </h2>
             <p>
@@ -91,8 +93,8 @@ const TermAndConditions = () => {
           </section>
 
           {/* Section 7 */}
-          <section className="bg-indigo-50/60 rounded-xl p-4 sm:p-6">
-            <h2 className="text-xl font-semibold text-indigo-700 mb-2">
+          <section className="bg-indigo-50/60 dark:bg-gray-800/50 rounded-xl p-4 sm:p-6 border dark:border-gray-700">
+            <h2 className="text-xl font-semibold text-indigo-700 dark:text-indigo-400 mb-2">
               7. Termination
             </h2>
             <p>
@@ -102,8 +104,8 @@ const TermAndConditions = () => {
           </section>
 
           {/* Section 8 */}
-          <section className="bg-sky-50/60 rounded-xl p-4 sm:p-6">
-            <h2 className="text-xl font-semibold text-sky-700 mb-2">
+          <section className="bg-sky-50/60 dark:bg-gray-800/50 rounded-xl p-4 sm:p-6 border dark:border-gray-700">
+            <h2 className="text-xl font-semibold text-sky-700 dark:text-sky-400 mb-2">
               8. Changes to Terms
             </h2>
             <p>
@@ -114,13 +116,13 @@ const TermAndConditions = () => {
           </section>
 
           {/* Section 9 */}
-          <section className="bg-purple-50/60 rounded-xl p-4 sm:p-6">
-            <h2 className="text-xl font-semibold text-purple-700 mb-2">
+          <section className="bg-purple-50/60 dark:bg-gray-800/50 rounded-xl p-4 sm:p-6 border dark:border-gray-700">
+            <h2 className="text-xl font-semibold text-purple-700 dark:text-purple-400 mb-2">
               9. Contact Information
             </h2>
             <p>
               For any questions regarding these Terms, please contact us at{" "}
-              <span className="font-medium text-indigo-600">
+              <span className="font-medium text-indigo-600 dark:text-indigo-400">
                 support@etuitiontrack.com
               </span>
             </p>

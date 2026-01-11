@@ -147,7 +147,6 @@ const EditTuition = () => {
     "Sankipara",
   ];
 
-  
   const { data: tuition = {}, isLoading } = useQuery({
     queryKey: ["edit-tuition", id],
     queryFn: async () => {
@@ -156,14 +155,12 @@ const EditTuition = () => {
     },
   });
 
- 
   useEffect(() => {
     if (!tuition.className) return;
 
     const subjects = subjectsByClass[tuition.className] || [];
     setFilteredSubjects(subjects);
 
-   
     setTimeout(() => {
       if (subjects.includes(tuition.subject)) {
         setValue("subject", tuition.subject);
@@ -171,17 +168,14 @@ const EditTuition = () => {
     }, 10);
   }, [tuition.className]);
 
-
   useEffect(() => {
     if (!selectedClass) return;
     const subjects = subjectsByClass[selectedClass] || [];
     setFilteredSubjects(subjects);
 
-    
     setValue("subject", "");
   }, [selectedClass]);
 
-  
   useEffect(() => {
     if (tuition) {
       reset({
@@ -198,7 +192,6 @@ const EditTuition = () => {
     }
   }, [tuition, reset]);
 
- 
   const uploadImageToImgBB = async (file) => {
     const formData = new FormData();
     formData.append("image", file);
@@ -231,36 +224,34 @@ const EditTuition = () => {
         studentImage: finalStudentImage,
       };
 
-    
-const result = await Swal.fire({
-  title: "Do you want to save the changes?",
-  showDenyButton: true,
-  showCancelButton: true,
-  confirmButtonText: "Save",
-  denyButtonText: `Don't save`,
-});
+      const result = await Swal.fire({
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        denyButtonText: `Don't save`,
+      });
 
-if (result.isConfirmed) {
-  await axiosSecure.patch(`/my-tuitions/${id}/update`, updatedData);
-  Swal.fire("Updated successfully!", "", "success");
-} else if (result.isDenied) {
-  Swal.fire("Changes are not saved", "", "info");
-}
-
-
+      if (result.isConfirmed) {
+        await axiosSecure.patch(`/my-tuitions/${id}/update`, updatedData);
+        Swal.fire("Updated successfully!", "", "success");
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
     } catch (err) {
       toast.error(err.message);
     }
   };
 
-  if (isLoading) return <p className="text-center p-10">Loading...</p>;
+  if (isLoading)
+    return <p className="text-center p-10 dark:text-gray-300">Loading...</p>;
 
   return (
     <div className="flex items-center justify-center p-6">
       <title>Update Tuition | eTutionTrack</title>
-      <div className="card bg-base-100 shadow-2xl max-w-6xl w-full rounded-2xl overflow-hidden">
+      <div className="card bg-base-100 dark:bg-gray-800 shadow-2xl dark:shadow-gray-950/50 max-w-6xl w-full rounded-2xl overflow-hidden">
         <div className="card-body p-8 sm:p-10">
-          <h1 className="text-4xl text-center font-bold mb-2">
+          <h1 className="text-4xl text-center font-bold mb-2 dark:text-gray-100">
             Update Tuition
           </h1>
 
@@ -272,16 +263,18 @@ if (result.isConfirmed) {
             <div className="flex flex-col gap-5">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Phone</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Phone
+                  </span>
                 </label>
                 <input
                   type="tel"
                   {...register("phone", { required: true })}
                   placeholder="phone"
-                  className="input my-1 input-bordered w-full"
+                  className="input my-1 input-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 dark:placeholder-gray-500 w-full"
                 />
                 {errors.phone && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Phone number is required
                   </p>
                 )}
@@ -289,35 +282,41 @@ if (result.isConfirmed) {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Budget</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Budget
+                  </span>
                 </label>
                 <input
                   type="number"
                   {...register("budget", { required: true })}
                   placeholder="5000"
-                  className="input my-1 input-bordered w-full"
+                  className="input my-1 input-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 dark:placeholder-gray-500 w-full"
                 />
                 {errors.budget && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Budget is required
                   </p>
                 )}
               </div>
 
-              <label className="label -mb-3.5">Subject Image</label>
+              <label className="label dark:text-gray-300 -mb-3.5">
+                Subject Image
+              </label>
               <input
                 type="file"
                 {...register("subjectImage")}
-                className="file-input w-full file-input-bordered"
+                className="file-input w-full file-input-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100"
               />
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Class</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Class
+                  </span>
                 </label>
                 <select
                   {...register("className", { required: true })}
-                  className="select my-1 select-bordered w-full"
+                  className="select my-1 select-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 w-full"
                   value={selectedClass}
                   onChange={(e) => setValue("className", e.target.value)}
                 >
@@ -329,7 +328,7 @@ if (result.isConfirmed) {
                   ))}
                 </select>
                 {errors.className && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Class is required
                   </p>
                 )}
@@ -337,17 +336,19 @@ if (result.isConfirmed) {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Your email</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Your email
+                  </span>
                 </label>
                 <input
                   type="email"
                   {...register("studentEmail", { required: true })}
                   placeholder="studentEmail"
                   readOnly
-                  className="input my-1 input-bordered w-full"
+                  className="input my-1 input-bordered dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400 w-full"
                 />
                 {errors.phone && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Email is required
                   </p>
                 )}
@@ -358,11 +359,13 @@ if (result.isConfirmed) {
             <div className="flex flex-col gap-5">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Subject</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Subject
+                  </span>
                 </label>
                 <select
                   {...register("subject", { required: true })}
-                  className="select my-1 select-bordered w-full"
+                  className="select my-1 select-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 w-full"
                   value={watch("subject") || ""}
                   onChange={(e) => setValue("subject", e.target.value)}
                 >
@@ -374,7 +377,7 @@ if (result.isConfirmed) {
                   ))}
                 </select>
                 {errors.subject && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Subject is required
                   </p>
                 )}
@@ -382,11 +385,13 @@ if (result.isConfirmed) {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Schedule</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Schedule
+                  </span>
                 </label>
                 <select
                   {...register("scheduleTime", { required: true })}
-                  className="select my-1 select-bordered w-full"
+                  className="select my-1 select-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 w-full"
                 >
                   <option value="">Select a schedule</option>
                   {scheduleTimes.map((time) => (
@@ -396,7 +401,7 @@ if (result.isConfirmed) {
                   ))}
                 </select>
                 {errors.scheduleTime && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Schedule is required
                   </p>
                 )}
@@ -404,11 +409,13 @@ if (result.isConfirmed) {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Location</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Location
+                  </span>
                 </label>
                 <select
                   {...register("location", { required: true })}
-                  className="select my-1 select-bordered w-full"
+                  className="select my-1 select-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 w-full"
                 >
                   <option value="">Select a location</option>
                   {locations.map((loc) => (
@@ -418,31 +425,35 @@ if (result.isConfirmed) {
                   ))}
                 </select>
                 {errors.location && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Location is required
                   </p>
                 )}
               </div>
 
-              <label className="label -mb-3.5">Your Image</label>
+              <label className="label dark:text-gray-300 -mb-3.5">
+                Your Image
+              </label>
               <input
                 type="file"
                 {...register("studentImage")}
-                className="file-input w-full file-input-bordered"
+                className="file-input w-full file-input-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100"
               />
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Your Name</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Your Name
+                  </span>
                 </label>
                 <input
                   type="text"
                   {...register("studentName", { required: true })}
                   placeholder="studentName"
-                  className="input my-1 input-bordered w-full"
+                  className="input my-1 input-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 dark:placeholder-gray-500 w-full"
                 />
                 {errors.phone && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Name is required
                   </p>
                 )}
@@ -451,15 +462,17 @@ if (result.isConfirmed) {
 
             <div className="form-control w-full md:col-span-2">
               <label className="label">
-                <span className="label-text font-semibold">Details</span>
+                <span className="label-text dark:text-gray-300 font-semibold">
+                  Details
+                </span>
               </label>
               <textarea
                 {...register("details", { required: true })}
-                className="textarea my-1 textarea-bordered w-full h-24"
+                className="textarea my-1 textarea-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 dark:placeholder-gray-500 w-full h-24"
                 placeholder="Enter details (optional)"
               />
               {errors.details && (
-                <p className="text-xs text-red-500 font-medium">
+                <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                   Details is required
                 </p>
               )}
@@ -467,7 +480,7 @@ if (result.isConfirmed) {
 
             <button
               type="submit"
-              className="btn btn-primary w-full md:col-span-2"
+              className="btn btn-primary dark:bg-blue-700 dark:border-blue-700 dark:hover:bg-blue-600 w-full md:col-span-2"
             >
               <MdEdit /> Update Tuition
             </button>

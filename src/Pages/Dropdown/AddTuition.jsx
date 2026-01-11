@@ -167,8 +167,6 @@ const AddTuition = () => {
   ];
 
   const handleAddTuition = async (data) => {
-    
-
     const photoFile = data.subjectImage?.[0];
     if (!photoFile) return toast.error("Please upload a subject image");
 
@@ -202,19 +200,17 @@ const AddTuition = () => {
         toast.success(res.data.message || "Tuition added successfully");
       })
       .catch((err) => toast.error(err.message));
-
-    
   };
 
   return (
     <div className="flex items-center justify-center p-6 font-sans">
       <title>Add Tuition | eTutionTrack</title>
-      <div className="card bg-base-100 shadow-2xl max-w-6xl w-full rounded-2xl overflow-hidden">
+      <div className="card bg-base-100 dark:bg-gray-800 shadow-2xl dark:shadow-gray-950/50 max-w-6xl w-full rounded-2xl overflow-hidden">
         <div className="card-body w-full p-8 sm:p-10">
-          <h1 className="text-4xl font-bold text-base-content mb-2">
+          <h1 className="text-4xl font-bold text-base-content dark:text-gray-100 mb-2">
             Add Tuition
           </h1>
-          <p className="text-base-content/70 mb-6">
+          <p className="text-base-content/70 dark:text-gray-400 mb-6">
             Provide details to create a professional tuition listing.
           </p>
 
@@ -226,16 +222,18 @@ const AddTuition = () => {
             <div className="flex flex-col gap-5">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Phone</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Phone
+                  </span>
                 </label>
                 <input
                   type="tel"
                   {...register("phone", { required: true })}
                   placeholder="+880123456789"
-                  className="input my-1 input-bordered w-full"
+                  className="input my-1 input-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 dark:placeholder-gray-500 w-full"
                 />
                 {errors.phone && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Phone number is required
                   </p>
                 )}
@@ -243,16 +241,18 @@ const AddTuition = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Budget</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Budget
+                  </span>
                 </label>
                 <input
                   type="number"
                   {...register("budget", { required: true })}
                   placeholder="5000"
-                  className="input my-1 input-bordered w-full"
+                  className="input my-1 input-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 dark:placeholder-gray-500 w-full"
                 />
                 {errors?.budget && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Budget is required
                   </p>
                 )}
@@ -260,17 +260,17 @@ const AddTuition = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">
+                  <span className="label-text dark:text-gray-300 font-semibold">
                     Subject Image
                   </span>
                 </label>
                 <input
                   type="file"
                   {...register("subjectImage", { required: true })}
-                  className="file-input my-1 file-input-bordered w-full"
+                  className="file-input my-1 file-input-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 w-full"
                 />
                 {errors.subjectImage && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Subject Image is required
                   </p>
                 )}
@@ -278,11 +278,13 @@ const AddTuition = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Class</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Class
+                  </span>
                 </label>
                 <select
                   {...register("className", { required: true })}
-                  className="select my-1 select-bordered w-full"
+                  className="select my-1 select-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 w-full"
                   value={selectedClass}
                   onChange={(e) => setValue("className", e.target.value)}
                 >
@@ -294,7 +296,7 @@ const AddTuition = () => {
                   ))}
                 </select>
                 {errors.className && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Class is required
                   </p>
                 )}
@@ -305,15 +307,20 @@ const AddTuition = () => {
             <div className="flex flex-col gap-5">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Subject</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Subject
+                  </span>
                 </label>
                 <select
                   {...register("subject", { required: true })}
-                  className="select my-1 select-bordered w-full"
+                  className="select my-1 select-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 w-full"
                   value={watch("subject") || ""}
                   onChange={(e) => setValue("subject", e.target.value)}
                 >
-                  <option value="">Select a subject</option>
+                  <option value="" disabled selected>
+                    Select a class first to choose a subject
+                  </option>
+
                   {filteredSubjects.map((sub) => (
                     <option key={sub} value={sub}>
                       {sub}
@@ -321,7 +328,7 @@ const AddTuition = () => {
                   ))}
                 </select>
                 {errors.subject && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Subject is required
                   </p>
                 )}
@@ -329,11 +336,13 @@ const AddTuition = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Schedule</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Schedule
+                  </span>
                 </label>
                 <select
                   {...register("scheduleTime", { required: true })}
-                  className="select my-1 select-bordered w-full"
+                  className="select my-1 select-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 w-full"
                 >
                   <option value="">Select a schedule</option>
                   {scheduleTimes.map((time) => (
@@ -343,7 +352,7 @@ const AddTuition = () => {
                   ))}
                 </select>
                 {errors.scheduleTime && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Schedule is required
                   </p>
                 )}
@@ -351,11 +360,13 @@ const AddTuition = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Location</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Location
+                  </span>
                 </label>
                 <select
                   {...register("location", { required: true })}
-                  className="select my-1 select-bordered w-full"
+                  className="select my-1 select-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 w-full"
                 >
                   <option value="">Select a location</option>
                   {locations.map((loc) => (
@@ -365,7 +376,7 @@ const AddTuition = () => {
                   ))}
                 </select>
                 {errors.location && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Location is required
                   </p>
                 )}
@@ -373,15 +384,17 @@ const AddTuition = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Details</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    Details
+                  </span>
                 </label>
                 <textarea
                   {...register("details", { required: true })}
-                  className="textarea my-1 textarea-bordered w-full h-24"
+                  className="textarea my-1 textarea-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 dark:placeholder-gray-500 w-full h-24"
                   placeholder="Enter details (optional)"
                 />
                 {errors.details && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Details is required
                   </p>
                 )}

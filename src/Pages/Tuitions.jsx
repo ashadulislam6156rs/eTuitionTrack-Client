@@ -6,7 +6,6 @@ import TuitionCard from "../Componants/TuitionCard";
 import Loading from "../Componants/Loading/Loading";
 import noDataFound from "../assets/noDataFound.png";
 
-
 const Tuitions = () => {
   const axiosSecure = useAxiosSecure();
 
@@ -30,120 +29,120 @@ const Tuitions = () => {
   const tuitions = data?.data || [];
   const totalPages = data?.pages || 1;
 
- 
-    return (
-      <div className="pt-17">
-        <title>Tuitions | eTutionTrack</title>
-        <Container>
-          <div className="pb-5 pt-10">
-            <h1 className="text-2xl font-bold text-center">
-              Find Your Next Tuition
-            </h1>
-            <p className="text-sm text-center text-base-content/60 py-2">
-              Discover tuition requests from students across different classes
-              and subjects. Choose the ones that match your skills and schedule.
-            </p>
-          </div>
+  return (
+    <div className="pt-17 dark:bg-gray-900 min-h-screen">
+      <title>Tuitions | eTutionTrack</title>
+      <Container>
+        <div className="pb-5 pt-10">
+          <h1 className="text-2xl font-bold text-center dark:text-gray-100">
+            Find Your Next Tuition
+          </h1>
+          <p className="text-sm text-center text-base-content/60 dark:text-gray-300 py-2">
+            Discover tuition requests from students across different classes and
+            subjects. Choose the ones that match your skills and schedule.
+          </p>
+        </div>
 
-          {/* Search */}
-          <div className="flex justify-between gap-5 items-center py-10">
-            <label className="input">
-              <svg
-                className="h-[1em] opacity-50"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
+        {/* Search */}
+        <div className="flex justify-between gap-5 items-center py-10">
+          <label className="input dark:bg-gray-800 dark:border-gray-700">
+            <svg
+              className="h-[1em] opacity-50 dark:text-gray-400"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth="2.5"
+                fill="none"
+                stroke="currentColor"
               >
-                <g
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2.5"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <path d="m21 21-4.3-4.3"></path>
-                </g>
-              </svg>
-              <input
-                type="search"
-                onChange={(e) => {
-                  setSearchText(e.target.value);
-                  setPage(1);
-                }}
-                placeholder="Search by class, subject & location..."
-              />
-            </label>
-
-            <select
-              defaultValue="Select sort"
-              className="select select-neutral"
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </g>
+            </svg>
+            <input
+              type="search"
               onChange={(e) => {
-                setSortBy(e.target.value);
+                setSearchText(e.target.value);
                 setPage(1);
               }}
-            >
-              <option disabled>Sort By</option>
-              <option value="latest">Latest</option>
-              <option value="high">Budget High</option>
-              <option value="low">Budget Low</option>
-            </select>
+              placeholder="Search by class, subject & location..."
+              className="dark:text-gray-100 dark:placeholder-gray-400"
+            />
+          </label>
+
+          <select
+            defaultValue="Select sort"
+            className="select select-neutral dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100"
+            onChange={(e) => {
+              setSortBy(e.target.value);
+              setPage(1);
+            }}
+          >
+            <option disabled>Sort By</option>
+            <option value="latest">Latest</option>
+            <option value="high">Budget High</option>
+            <option value="low">Budget Low</option>
+          </select>
+        </div>
+
+        {/* Cards */}
+        {isLoading ? (
+          <Loading></Loading>
+        ) : tuitions.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-3 md:py-10 text-center">
+            <div className="max-w-md">
+              <img
+                src={noDataFound}
+                alt="No Data Found"
+                className="w-72 mx-auto mb-6 opacity-90"
+              />
+
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-700 dark:text-gray-300 mb-2">
+                No Result Found
+              </h1>
+
+              <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 mb-6">
+                We couldn't find what you searched for. Please try using
+                different keywords or filters.
+              </p>
+            </div>
           </div>
+        ) : (
+          <>
+            <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 pb-10">
+              {tuitions.map((tuition) => (
+                <TuitionCard key={tuition._id} tuition={tuition} />
+              ))}
+            </div>
 
-          {/* Cards */}
-          {isLoading ? (
-            <Loading></Loading>
-          ) : tuitions.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-3 md:py-10 text-center">
-              <div className="max-w-md">
-                <img
-                  src={noDataFound}
-                  alt="No Data Found"
-                  className="w-72 mx-auto mb-6 opacity-90"
-                />
+            {/* paganation */}
+            <div className="flex justify-center items-center pb-10">
+              <div className="join gap-3">
+                {Array.from({ length: totalPages }, (_, i) => {
+                  const pageNumber = i + 1;
 
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-700 mb-2">
-                  No Result Found
-                </h1>
-
-                <p className="text-sm md:text-base text-gray-500 mb-6">
-                  We couldn’t find what you searched for. Please try using
-                  different keywords or filters.
-                </p>
+                  return (
+                    <input
+                      key={pageNumber}
+                      className="join-item btn btn-square dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 dark:hover:bg-gray-700"
+                      type="radio"
+                      name="options"
+                      aria-label={pageNumber}
+                      checked={page === pageNumber}
+                      onChange={() => setPage(pageNumber)}
+                    />
+                  );
+                })}
               </div>
             </div>
-          ) : (
-            <>
-              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 pb-10">
-                {tuitions.map((tuition) => (
-                  <TuitionCard key={tuition._id} tuition={tuition} />
-                ))}
-              </div>
-
-              {/* paganation */}
-              <div className="flex justify-center items-center pb-10">
-                <div className="join gap-3">
-                  {Array.from({ length: totalPages }, (_, i) => {
-                    const pageNumber = i + 1;
-
-                    return (
-                      <input
-                        key={pageNumber}
-                        className="join-item btn btn-square"
-                        type="radio"
-                        name="options"
-                        aria-label={pageNumber}
-                        checked={page === pageNumber}
-                        onChange={() => setPage(pageNumber)}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            </>
-          )}
-        </Container>
-      </div>
-    );
+          </>
+        )}
+      </Container>
+    </div>
+  );
 };
 
 export default Tuitions;

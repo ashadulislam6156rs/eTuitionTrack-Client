@@ -6,24 +6,24 @@ import { Link } from "react-router";
 
 const TutionsNotFound = () => {
   return (
-    <Container className={`pt-20`}>
-      <Link to={"/tuitions"} className="btn ml-10 myBtn mt-5 text-black">
+    <Container className={`pt-20 dark:bg-gray-900 min-h-screen`}>
+      <Link to={"/tuitions"} className="btn ml-10 myBtn mt-5">
         <IoArrowBack />
         Back tuitions
       </Link>
       <div className="flex flex-col -mt-10 items-center justify-center pb-10 text-center">
         {/* Image */}
 
-        <img src={img} alt="No Data Found" />
+        <img src={img} alt="No Data Found" className="dark:opacity-80" />
 
         {/* Title */}
-        <h2 className="text-3xl -mt-20 md:text-4xl font-bold text-gray-700 mb-2">
+        <h2 className="text-3xl -mt-20 md:text-4xl font-bold text-gray-700 dark:text-gray-300 mb-2">
           No Tuition Found
         </h2>
 
         {/* Description */}
-        <p className="text-gray-500 max-w-md">
-          We couldn’t find any tuition matching your search. Try changing
+        <p className="text-gray-500 dark:text-gray-400 max-w-md">
+          We couldn't find any tuition matching your search. Try changing
           keywords or filters and search again.
         </p>
       </div>

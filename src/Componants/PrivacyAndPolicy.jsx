@@ -2,25 +2,27 @@ import React from "react";
 
 const PrivacyAndPolicy = () => {
   return (
-    <div className=" py-12 px-4 sm:px-6 lg:px-8">
+    <div className="py-12 px-4 sm:px-6 lg:px-8 dark:bg-gray-900 min-h-screen">
       <title>Privacy Policy | eTutionTrack</title>
       <div className="max-w-5xl mx-auto rounded-2xl p-6 sm:p-10">
         {/* Header */}
         <div className="text-center mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-gray-100">
             Privacy Policy
           </h1>
-          <p className="mt-3 text-gray-500 text-sm sm:text-base">
+          <p className="mt-3 text-gray-500 dark:text-gray-400 text-sm sm:text-base">
             Your privacy is important to us at{" "}
-            <span className="font-semibold">eTutionTrack</span>
+            <span className="font-semibold dark:text-blue-400">
+              eTutionTrack
+            </span>
           </p>
         </div>
 
         {/* Content */}
-        <div className="space-y-8 text-gray-700 text-sm sm:text-base leading-relaxed">
+        <div className="space-y-8 text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
           {/* Section 1 */}
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
               1. Information We Collect
             </h2>
             <p>
@@ -33,7 +35,7 @@ const PrivacyAndPolicy = () => {
 
           {/* Section 2 */}
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
               2. How We Use Your Information
             </h2>
             <ul className="list-disc list-inside space-y-1">
@@ -46,7 +48,7 @@ const PrivacyAndPolicy = () => {
 
           {/* Section 3 */}
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
               3. Data Security
             </h2>
             <p>
@@ -58,7 +60,7 @@ const PrivacyAndPolicy = () => {
 
           {/* Section 4 */}
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
               4. Sharing of Information
             </h2>
             <p>
@@ -70,7 +72,7 @@ const PrivacyAndPolicy = () => {
 
           {/* Section 5 */}
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
               5. Cookies
             </h2>
             <p>
@@ -82,7 +84,7 @@ const PrivacyAndPolicy = () => {
 
           {/* Section 6 */}
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
               6. Your Rights
             </h2>
             <p>
@@ -94,7 +96,7 @@ const PrivacyAndPolicy = () => {
 
           {/* Section 7 */}
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
               7. Changes to This Policy
             </h2>
             <p>
@@ -105,13 +107,13 @@ const PrivacyAndPolicy = () => {
 
           {/* Section 8 */}
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
               8. Contact Us
             </h2>
             <p>
               If you have any questions about this Privacy Policy, please
               contact us at{" "}
-              <span className="font-medium text-indigo-600">
+              <span className="font-medium text-indigo-600 dark:text-indigo-400">
                 support@etuitiontrack.com
               </span>
             </p>
@@ -119,7 +121,7 @@ const PrivacyAndPolicy = () => {
         </div>
 
         {/* Footer */}
-        <div className="mt-12 text-center text-xs sm:text-sm text-gray-400">
+        <div className="mt-12 text-center text-xs sm:text-sm text-gray-400 dark:text-gray-500">
           © {new Date().getFullYear()} eTutionTrack. All rights reserved.
         </div>
       </div>

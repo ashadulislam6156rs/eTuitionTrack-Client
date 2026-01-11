@@ -1,51 +1,49 @@
-import React from 'react';
-import Container from './Container/Container';
-import useAxiosSecure from '../Hooks/useAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
-import TutorCard from '../Pages/Dashboard/Tutors/TutorCard';
+import React from "react";
+import Container from "./Container/Container";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import TutorCard from "../Pages/Dashboard/Tutors/TutorCard";
 import { motion } from "framer-motion";
-import Loading from './Loading/Loading';
+import Loading from "./Loading/Loading";
 
 const LatestTutors = () => {
+  const axiosSecure = useAxiosSecure();
 
+  const { data: tutors = [], isLoading } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/users/tutor/latest");
+      return res.data;
+    },
+  });
 
-    const axiosSecure = useAxiosSecure();
-
-    const { data: tutors = [], isLoading } = useQuery({
-      queryKey: ["users"],
-      queryFn: async () => {
-        const res = await axiosSecure.get("/users/tutor/latest");
-        return res.data;
+  const containerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
       },
-    });
-  
-    const containerVariants = {
-      hidden: { opacity: 0, y: 30 },
-      show: {
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 0.6,
-          ease: "easeOut",
-          staggerChildren: 0.15,
-          delayChildren: 0.2,
-        },
-      },
-    };
+    },
+  };
 
   if (isLoading) {
-  return <Loading></Loading>
-}
+    return <Loading></Loading>;
+  }
   return (
-    <Container className={`bg-base-200 pt-10`}>
+    <Container className={`bg-base-200 dark:bg-gray-800 pt-10`}>
       <motion.div variants={containerVariants} initial="hidden" animate="show">
         <motion.h2
           variants={containerVariants}
-          className="text-4xl pt-7 font-bold text-center text-gray-900 mb-4"
+          className="text-4xl pt-7 font-bold text-center text-gray-900 dark:text-gray-100 mb-4"
         >
           Latest Tutors
         </motion.h2>
-        <p className="text-center text-gray-600 md:w-2/3 mx-auto mb-10">
+        <p className="text-center text-gray-600 dark:text-gray-300 md:w-2/3 mx-auto mb-10">
           Meet our newest tutors who have recently joined the platform. Explore
           qualified and verified educators offering personalized guidance across
           a wide range of subjects to help you achieve your academic goals.

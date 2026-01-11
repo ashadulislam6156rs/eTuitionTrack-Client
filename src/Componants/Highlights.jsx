@@ -97,17 +97,17 @@ const Highlights = () => {
   };
 
   return (
-    <section className="py-10 relative bg-[#29b5f615] overflow-hidden">
+    <section className="py-10 relative bg-[#29b5f615] dark:bg-gray-900 overflow-hidden">
       {/* Decorative Background Elements */}
       <div
-        className="absolute top-0 left-0 w-96 h-96 rounded-full opacity-5"
+        className="absolute top-0 left-0 w-96 h-96 rounded-full opacity-5 dark:opacity-10"
         style={{
           background: `radial-gradient(circle, #0288D1 0%, transparent 70%)`,
           transform: "translate(-50%, -50%)",
         }}
       />
       <div
-        className="absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-5"
+        className="absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-5 dark:opacity-10"
         style={{
           background: `radial-gradient(circle, #F57C00 0%, transparent 70%)`,
           transform: "translate(50%, 50%)",
@@ -136,12 +136,12 @@ const Highlights = () => {
           ></motion.div>
 
           <h2
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-bold mb-4 dark:text-blue-400"
             style={{ color: "#0D47A1" }}
           >
             Highlights
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Discover powerful features designed to make education management
             effortless and efficient
           </p>
@@ -164,7 +164,7 @@ const Highlights = () => {
                 scale: 1.03,
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)",
               }}
-              className="bg-white rounded-2xl p-8 shadow-lg relative overflow-hidden cursor-pointer group"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 relative overflow-hidden cursor-pointer group"
             >
               {/* Background Gradient on Hover */}
               <motion.div
@@ -212,14 +212,14 @@ const Highlights = () => {
 
                 {/* Title */}
                 <h3
-                  className="text-2xl font-bold mb-3 text-center"
+                  className="text-2xl font-bold mb-3 text-center dark:brightness-125"
                   style={{ color: highlight.color }}
                 >
                   {highlight.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 text-center leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 text-center leading-relaxed">
                   {highlight.description}
                 </p>
               </div>

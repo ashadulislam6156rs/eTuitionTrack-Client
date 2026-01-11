@@ -110,7 +110,7 @@ const Statistics = () => {
   return (
     <motion.section
       ref={sectionRef}
-      className="py-10 bg-[#0289d111]"
+      className="py-10 bg-[#0289d111] dark:bg-gray-800"
       variants={sectionVariant}
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
@@ -119,12 +119,12 @@ const Statistics = () => {
         {/* Section Header */}
         <motion.div className="text-center mb-7" variants={cardVariant}>
           <h2
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-bold mb-4 dark:text-blue-400"
             style={{ color: "#0D47A1" }}
           >
             Our Impact in Numbers
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Join thousands of satisfied users who have transformed their
             educational journey with eTuitionTrack
           </p>
@@ -141,10 +141,10 @@ const Statistics = () => {
             <motion.div
               key={index}
               variants={cardVariant}
-              className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl dark:shadow-gray-900/50 hover:shadow-2xl dark:hover:shadow-gray-900/70 transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden"
             >
               <div
-                className="absolute top-0 right-0 w-24 h-24 rounded-full opacity-10"
+                className="absolute top-0 right-0 w-24 h-24 rounded-full opacity-10 dark:opacity-20"
                 style={{
                   background: stat.color,
                   transform: "translate(30%, -30%)",
@@ -160,13 +160,13 @@ const Statistics = () => {
 
               <div className="text-center">
                 <h3
-                  className="text-5xl font-bold mb-2"
+                  className="text-5xl font-bold mb-2 dark:brightness-125"
                   style={{ color: stat.color }}
                 >
                   {counters[index].toLocaleString()}
                   {stat.suffix}
                 </h3>
-                <p className="text-gray-600 font-medium text-lg">
+                <p className="text-gray-600 dark:text-gray-300 font-medium text-lg">
                   {stat.label}
                 </p>
               </div>
@@ -212,17 +212,17 @@ const Statistics = () => {
             <motion.div
               key={i}
               variants={cardVariant}
-              className="text-center p-6 rounded-xl"
+              className="text-center p-6 rounded-xl dark:bg-gray-800/50"
               style={{ background: item.bg }}
             >
               <div className="text-4xl mb-3">{item.icon}</div>
               <h4
-                className="text-xl font-bold mb-2"
+                className="text-xl font-bold mb-2 dark:brightness-125"
                 style={{ color: item.color }}
               >
                 {item.title}
               </h4>
-              <p className="text-gray-600">{item.text}</p>
+              <p className="text-gray-600 dark:text-gray-300">{item.text}</p>
             </motion.div>
           ))}
         </motion.div>

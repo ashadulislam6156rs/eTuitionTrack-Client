@@ -19,7 +19,6 @@ const PaymentSuccess = () => {
         .catch((err) => toast.error("Payment error: " + err));
     }
   }, [sessionId, axiosSecure]);
-  
 
   useEffect(() => {
     const timer = setTimeout(() => setShowConfetti(false), 6000);
@@ -27,21 +26,24 @@ const PaymentSuccess = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex justify-center items-center relative p-5 ">
+    <div className="min-h-screen flex justify-center items-center relative p-5 bg-gray-900 text-gray-100">
       <title>Payment Success | eTutionTrack</title>
       {showConfetti && (
         <Confetti width={window.innerWidth} height={window.innerHeight} />
       )}
 
-      <div className="bg-white p-10 rounded-2xl text-center shadow-2xl max-w-md w-full">
-        <h1 className="text-4xl mb-5 text-green-500 font-bold">
+      <div className="bg-gray-800 p-10 rounded-2xl text-center shadow-2xl max-w-md w-full">
+        <h1 className="text-4xl mb-5 text-green-400 font-bold">
           🎉 Payment Successful! 🎉
         </h1>
-        <p className="text-lg mb-8 text-gray-600">
+        <p className="text-lg mb-8 text-gray-300">
           Thank you for your payment. Your transaction has been completed
           successfully.
         </p>
-        <Link to="/" className="btn myBtn rounded-lg">
+        <Link
+          to="/"
+          className="btn myBtn rounded-lg bg-green-500 text-gray-900 hover:bg-green-600 flex items-center justify-center gap-2"
+        >
           <IoArrowBack />
           Go Back Home
         </Link>

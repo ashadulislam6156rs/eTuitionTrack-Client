@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import { FaRegEdit } from "react-icons/fa";
-import { RiDeleteBinLine, RiSendBackward } from "react-icons/ri";
+import { RiDeleteBinLine } from "react-icons/ri";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
@@ -54,10 +54,7 @@ const MyApplications = () => {
   };
 
   const handleUpdateInfo = (data) => {
-    const updateInfo = {
-      ...data,
-    };
-
+    const updateInfo = { ...data };
     modalRef.current?.close();
 
     Swal.fire({
@@ -100,7 +97,6 @@ const MyApplications = () => {
               text: "Your tuition has been deleted.",
               icon: "success",
             });
-
             refetch();
           })
           .catch((err) => toast.error(err.message));
@@ -109,21 +105,21 @@ const MyApplications = () => {
   };
 
   if (isLoading) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-900 text-gray-100 p-5">
       <title>My Applications | eTutionTrack</title>
       <h1 className="text-3xl font-bold text-center pt-5">My Applications</h1>
-      <p className="text-sm text-center text-base-content/60 pb-7 pt-2">
+      <p className="text-sm text-center text-gray-400 pb-7 pt-2">
         Track all the tuitions you have applied for, including status, subject,
         and student details.
       </p>
 
-      <div className="overflow-x-auto bg-white rounded-xl shadow-lg border border-base-300">
-        <table className="table">
-          <thead className="bg-cyan-500 text-white text-sm">
+      <div className="overflow-x-auto bg-gray-800 rounded-xl shadow-lg border border-gray-700">
+        <table className="table w-full text-gray-100">
+          <thead className="bg-cyan-600 text-white text-sm">
             <tr>
               <th>#</th>
               <th>Subject</th>
@@ -145,25 +141,20 @@ const MyApplications = () => {
               </tr>
             ) : (
               applicatios.map((item, index) => (
-                <tr key={item._id} className="hover">
+                <tr key={item._id} className="hover:bg-gray-700">
                   <td className="font-bold">{index + 1}</td>
-
-                  <td className="font-medium text-[#F57C00]">
+                  <td className="font-medium text-orange-400">
                     {item.subjectName}
                   </td>
-
                   <td>
                     <span className="badge badge-soft badge-primary px-3">
                       {item.className}
                     </span>
                   </td>
-
                   <td>{item.location}</td>
-
-                  <td className="font-semibold text-green-600">
+                  <td className="font-semibold text-green-400">
                     {item.expectedSalary}৳
                   </td>
-
                   <td>
                     <span
                       className={`badge px-3 py-1 ${
@@ -177,42 +168,34 @@ const MyApplications = () => {
                       {item.tutorRequestStatus}
                     </span>
                   </td>
-
                   <td className="text-sm opacity-70">
                     {new Date(item.createdAt).toLocaleString("en-GB", {
                       timeZone: "Asia/Dhaka",
                     })}
                   </td>
-
                   <td className="space-x-2">
-                    {/* Edit Button */}
                     <button
                       title="Edit Application"
                       onClick={() => handleModalShow(item)}
                       disabled={item.tutorRequestStatus === "Approved"}
-                      className={`btn btn-square btn-sm bg-green-500 text-white
-      hover:bg-transparent hover:text-black
-      ${
-        item.tutorRequestStatus === "Approved"
-          ? "opacity-50 cursor-not-allowed"
-          : ""
-      }`}
+                      className={`btn btn-square btn-sm bg-green-500 text-white hover:bg-transparent hover:text-black ${
+                        item.tutorRequestStatus === "Approved"
+                          ? "opacity-50 cursor-not-allowed"
+                          : ""
+                      }`}
                     >
                       <FaRegEdit />
                     </button>
 
-                    {/* Delete Button */}
                     <button
                       title="Delete Application"
                       onClick={() => handleTutorDelete(item)}
                       disabled={item.tutorRequestStatus === "Approved"}
-                      className={`btn btn-square btn-sm bg-red-400 text-white
-      hover:bg-transparent hover:text-black
-      ${
-        item.tutorRequestStatus === "Approved"
-          ? "opacity-50 cursor-not-allowed"
-          : ""
-      }`}
+                      className={`btn btn-square btn-sm bg-red-500 text-white hover:bg-transparent hover:text-black ${
+                        item.tutorRequestStatus === "Approved"
+                          ? "opacity-50 cursor-not-allowed"
+                          : ""
+                      }`}
                     >
                       <RiDeleteBinLine />
                     </button>
@@ -223,9 +206,13 @@ const MyApplications = () => {
           </tbody>
         </table>
       </div>
-      {/* Open the modal using document.getElementById('ID').showModal() method */}
-      <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
+
+      {/* Modal */}
+      <dialog
+        ref={modalRef}
+        className="modal modal-bottom sm:modal-middle bg-gray-800 text-gray-100"
+      >
+        <div className="modal-box bg-gray-900 text-gray-100">
           <h3 className="font-bold text-lg text-center">
             Tutor Application Update Form
           </h3>
@@ -237,7 +224,7 @@ const MyApplications = () => {
               </label>
               <textarea
                 {...register("qualifications", { required: true })}
-                className="textarea my-1 textarea-bordered w-full h-24"
+                className="textarea my-1 textarea-bordered w-full h-24 bg-gray-700 text-gray-100"
                 placeholder="e.g. B.Sc. in CSE...English/Bangla Medium"
               ></textarea>
               {errors.qualifications && (
@@ -255,11 +242,11 @@ const MyApplications = () => {
                 type="text"
                 {...register("experience", { required: true })}
                 placeholder="e.g. 1 year in Subject....."
-                className="input my-1 input-bordered w-full"
+                className="input my-1 input-bordered w-full bg-gray-700 text-gray-100"
               />
               {errors.experience && (
                 <p className="text-xs text-red-500 font-medium">
-                  experience is required
+                  Experience is required
                 </p>
               )}
             </div>
@@ -267,7 +254,6 @@ const MyApplications = () => {
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-semibold">
-                  {" "}
                   Expected Salary
                 </span>
               </label>
@@ -275,7 +261,7 @@ const MyApplications = () => {
                 type="number"
                 {...register("expectedSalary", { required: true })}
                 placeholder="e.g 5000"
-                className="input my-1 input-bordered w-full"
+                className="input my-1 input-bordered w-full bg-gray-700 text-gray-100"
               />
               {errors.expectedSalary && (
                 <p className="text-xs text-red-500 font-medium">
@@ -285,16 +271,20 @@ const MyApplications = () => {
             </div>
 
             <div className="mt-3">
-              <button type="submit" className="myBtn btn">
-                {/* <RiSendBackward /> */}
+              <button
+                type="submit"
+                className="myBtn btn bg-green-500 text-gray-900 hover:bg-green-600"
+              >
                 Submit
               </button>
             </div>
           </form>
+
           <div className="modal-action">
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button className="btn">Close</button>
+              <button className="btn bg-gray-700 text-gray-100 hover:bg-gray-600">
+                Close
+              </button>
             </form>
           </div>
         </div>

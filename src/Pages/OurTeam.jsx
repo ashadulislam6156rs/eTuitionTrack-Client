@@ -24,24 +24,20 @@ const teamMembers = [
   },
 ];
 
-
 const PRIMARY_COLOR = "#0288D1";
 
 const OurTeam = () => {
   return (
-    <section className="relative py-10 bg-[#F9F9F9] overflow-hidden">
+    <section className="relative py-10 bg-[#F9F9F9] dark:bg-gray-800 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Section Header */}
-        <h3
-          className="font-bold text-sm uppercase tracking-wider mb-3"
-          style={{ color: PRIMARY_COLOR }}
-        >
+        <h3 className="font-bold text-sm uppercase tracking-wider mb-3 text-[#0288D1] dark:text-blue-400">
           Expert People
         </h3>
-        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-gray-100 mb-6">
           Meet Our Team
         </h2>
-        <p className="max-w-3xl mx-auto text-lg text-slate-600 mb-10">
+        <p className="max-w-3xl mx-auto text-lg text-slate-600 dark:text-gray-300 mb-10">
           Meet the professionals who work behind the scenes to make our platform
           reliable and efficient.
         </p>
@@ -55,7 +51,5 @@ const OurTeam = () => {
     </section>
   );
 };
-
-
 
 export default OurTeam;

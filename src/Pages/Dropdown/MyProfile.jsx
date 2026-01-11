@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import Container from '../../Componants/Container/Container';
-import useAuth from '../../Hooks/useAuth';
-import { useForm } from 'react-hook-form';
-import { MdVerifiedUser } from 'react-icons/md';
+import React, { useEffect } from "react";
+import Container from "../../Componants/Container/Container";
+import useAuth from "../../Hooks/useAuth";
+import { useForm } from "react-hook-form";
+import { MdVerifiedUser } from "react-icons/md";
 import { BiEditAlt } from "react-icons/bi";
-import { toast } from 'react-toastify';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import axios from 'axios';
-import { RxCrossCircled } from 'react-icons/rx';
-import Swal from 'sweetalert2';
-import Loading from '../../Componants/Loading/Loading';
+import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import axios from "axios";
+import { RxCrossCircled } from "react-icons/rx";
+import Swal from "sweetalert2";
+import Loading from "../../Componants/Loading/Loading";
 
 const MyProfile = () => {
   const { user, updateUserInfo } = useAuth();
@@ -130,13 +130,13 @@ const MyProfile = () => {
   const profileCompletion = calculateProfileCompletion();
 
   if (isLoading) {
-    <Loading></Loading>;
+    return <Loading></Loading>;
   }
   return (
     <div>
       <title>My Profile | eTutionTrack</title>
       <Container>
-        <div className="bg-base-100 rounded-xl shadow-lg p-6 md:p-8 my-6">
+        <div className="bg-base-100 dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-950/50 p-6 md:p-8 my-6">
           <div className="flex flex-col md:flex-row md:items-start gap-6">
             {/* Left Profile Section */}
             <div className="flex flex-col items-center md:w-1/3 text-center">
@@ -147,16 +147,18 @@ const MyProfile = () => {
                     "https://cdn-icons-png.flaticon.com/512/149/149071.png"
                   }
                   alt="User Avatar"
-                  className="w-36 h-36 rounded-full object-cover border-4 border-[#F57C00] shadow-lg"
+                  className="w-36 h-36 rounded-full object-cover border-4 border-[#F57C00] dark:border-orange-500 shadow-lg"
                 />
               </div>
 
-              <h2 className="mt-4 text-xl font-bold text-[#F57C00]">
+              <h2 className="mt-4 text-xl font-bold text-[#F57C00] dark:text-orange-400">
                 {currentUser.fullName}
               </h2>
-              <p className="text-gray-600">{currentUser.email}</p>
+              <p className="text-gray-600 dark:text-gray-400">
+                {currentUser.email}
+              </p>
 
-              <div className="flex items-center justify-center mt-2 bg-linear-to-r from-[#F57C00] to-red-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+              <div className="flex items-center justify-center mt-2 bg-linear-to-r from-[#F57C00] to-red-500 dark:from-orange-500 dark:to-red-600 text-white px-4 py-1 rounded-full text-sm font-medium">
                 {user?.emailVerified ? (
                   <>
                     <MdVerifiedUser className="mr-1" />
@@ -173,12 +175,12 @@ const MyProfile = () => {
               {/* Profile Completeness */}
 
               <div className="w-full mt-6">
-                <p className="text-gray-700 mb-1 font-medium">
+                <p className="text-gray-700 dark:text-gray-300 mb-1 font-medium">
                   Profile Completeness ({profileCompletion}%)
                 </p>
-                <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
+                <div className="w-full h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                   <div
-                    className="h-4 bg-linear-to-r from-[#F57C00] to-red-500 rounded-full transition-all duration-500"
+                    className="h-4 bg-linear-to-r from-[#F57C00] to-red-500 dark:from-orange-500 dark:to-red-600 rounded-full transition-all duration-500"
                     style={{ width: `${profileCompletion}%` }}
                   ></div>
                 </div>
@@ -186,8 +188,8 @@ const MyProfile = () => {
             </div>
 
             {/* Right Form Section */}
-            <div className="md:w-2/3 md:border-l-2 md:border-l-[#f57b0042] md:pl-3 flex flex-col gap-4">
-              <h1 className="text-2xl font-bold text-[#F57C00] mb-4">
+            <div className="md:w-2/3 md:border-l-2 md:border-l-[#f57b0042] dark:md:border-l-orange-900/30 md:pl-3 flex flex-col gap-4">
+              <h1 className="text-2xl font-bold text-[#F57C00] dark:text-orange-400 mb-4">
                 Edit Profile
               </h1>
 
@@ -197,17 +199,17 @@ const MyProfile = () => {
               >
                 {/* Full Name */}
                 <div>
-                  <label className="block text-gray-700 font-medium mb-1">
+                  <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1">
                     Full Name
                   </label>
                   <input
                     type="text"
                     {...register("fullName", { required: true })}
-                    className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#F57C00] placeholder-gray-400"
+                    className="w-full p-3 border dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#F57C00] dark:focus:ring-orange-500 placeholder-gray-400 dark:placeholder-gray-500 dark:bg-gray-900 dark:text-gray-100"
                     placeholder="Enter your name"
                   />
                   {errors.fullName && (
-                    <p className=" pt-1 text-sm md:text-base text-red-500 font-medium">
+                    <p className="pt-1 text-sm md:text-base text-red-500 dark:text-red-400 font-medium">
                       Name is required
                     </p>
                   )}
@@ -215,17 +217,17 @@ const MyProfile = () => {
 
                 {/* Email */}
                 <div>
-                  <label className="block text-gray-700 font-medium mb-1">
+                  <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1">
                     Email
                   </label>
                   <input
                     type="text"
                     {...register("email", { required: true })}
                     readOnly
-                    className="w-full p-3 border rounded-lg bg-gray-100 cursor-not-allowed"
+                    className="w-full p-3 border dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 dark:text-gray-400 cursor-not-allowed"
                   />
                   {errors.email && (
-                    <p className="pt-1 text-sm md:text-base text-red-500 font-medium">
+                    <p className="pt-1 text-sm md:text-base text-red-500 dark:text-red-400 font-medium">
                       Email is required
                     </p>
                   )}
@@ -233,37 +235,39 @@ const MyProfile = () => {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text font-semibold">
+                    <span className="label-text dark:text-gray-300 font-semibold">
                       Upload Image
                     </span>
                   </label>
                   <input
                     type="file"
                     {...register("photoURL")}
-                    className="file-input file-input-neutral p-0 mt-1 focus:ring-2 border-black file-input-bordered w-full"
+                    className="file-input file-input-neutral dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 p-0 mt-1 focus:ring-2 border-black dark:border-gray-600 file-input-bordered w-full"
                   />
                 </div>
 
-                {/* Address */}
+                {/* Contact Number */}
                 <div>
-                  <label className="block text-gray-700 font-medium mb-1">
+                  <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1">
                     Contact number
                   </label>
                   <input
                     type="text"
                     {...register("contactNumber")}
-                    className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#F57C00] placeholder-gray-400"
-                    placeholder="Enter your address"
+                    className="w-full p-3 border dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#F57C00] dark:focus:ring-orange-500 placeholder-gray-400 dark:placeholder-gray-500 dark:bg-gray-900 dark:text-gray-100"
+                    placeholder="Enter your contact number"
                   />
                 </div>
+
+                {/* Address */}
                 <div>
-                  <label className="block text-gray-700 font-medium mb-1">
+                  <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1">
                     Address
                   </label>
                   <input
                     type="text"
                     {...register("address")}
-                    className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#F57C00] placeholder-gray-400"
+                    className="w-full p-3 border dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#F57C00] dark:focus:ring-orange-500 placeholder-gray-400 dark:placeholder-gray-500 dark:bg-gray-900 dark:text-gray-100"
                     placeholder="Enter your address"
                   />
                 </div>

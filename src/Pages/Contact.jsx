@@ -7,8 +7,6 @@ const PRIMARY_BLUE = "#0288D1";
 const DEEP_BLUE = "#0D47A1";
 
 const Contact = () => {
-
-
   const {
     register,
     handleSubmit,
@@ -16,9 +14,7 @@ const Contact = () => {
     reset,
   } = useForm();
 
-
   useEffect(() => {
-   
     if (
       window.matchMedia &&
       window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -30,14 +26,10 @@ const Contact = () => {
   const handleUserMessage = (data) => {
     toast.success(`Thanks ${data.name}! Your message has been received.`);
     reset();
-    
-  }
-
-
-
+  };
 
   return (
-    <section className="w-full font-sans text-slate-700 transition-colors duration-500">
+    <section className="w-full font-sans text-slate-700 dark:text-slate-300 transition-colors duration-500 dark:bg-gray-900">
       <title>Contact Us | eTutionTrack</title>
       <section className="relative py-24 text-center text-white">
         <div
@@ -48,7 +40,7 @@ const Contact = () => {
         ></div>
 
         {/* Optional Overlay for better text visibility */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
 
         {/* Content */}
         <div className="relative z-10 px-4">
@@ -56,7 +48,7 @@ const Contact = () => {
             Contact Us
           </h1>
           <p className="max-w-3xl mx-auto text-lg text-white/90">
-            Let’s talk about your idea, project, or business growth. We are
+            Let's talk about your idea, project, or business growth. We are
             ready to answer your questions.
           </p>
         </div>
@@ -88,7 +80,7 @@ const Contact = () => {
           ].map((item, i) => (
             <div
               key={i}
-              className="bg-white dark:bg-slate-800 rounded-xl shadow-xl p-8 text-center transition-all duration-300 transform hover:shadow-2xl hover:scale-[1.02]"
+              className="bg-white dark:bg-slate-800 rounded-xl shadow-xl dark:shadow-gray-950/50 p-8 text-center transition-all duration-300 transform hover:shadow-2xl dark:hover:shadow-gray-950/70 hover:scale-[1.02]"
               style={{ borderTop: `4px solid ${PRIMARY_BLUE}` }}
             >
               <div
@@ -120,10 +112,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Form Content */}
           <div>
-            <span
-              className="font-bold uppercase text-sm tracking-widest"
-              style={{ color: PRIMARY_BLUE }}
-            >
+            <span className="font-bold uppercase text-sm tracking-widest text-[#0288D1] dark:text-blue-400">
               Get In Touch
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mt-2 mb-4">
@@ -145,10 +134,12 @@ const Contact = () => {
                     type="text"
                     placeholder="Your Name"
                     {...register("name", { required: true })}
-                    className="input input-neutral"
+                    className="input input-neutral dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
                   />
                   {errors.name && (
-                    <p className="text-red-500 inline">Name is require</p>
+                    <p className="text-red-500 dark:text-red-400 inline">
+                      Name is require
+                    </p>
                   )}
                 </div>
                 <div>
@@ -156,10 +147,12 @@ const Contact = () => {
                     type="email"
                     {...register("email", { required: true })}
                     placeholder="Your email"
-                    className="input input-neutral"
+                    className="input input-neutral dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
                   />
                   {errors.email && (
-                    <p className="text-red-500 inline">Email is require</p>
+                    <p className="text-red-500 dark:text-red-400 inline">
+                      Email is require
+                    </p>
                   )}
                 </div>
               </div>
@@ -168,17 +161,17 @@ const Contact = () => {
                   type="text"
                   {...register("subjectName")}
                   placeholder="Subject name"
-                  className="input input-neutral"
+                  className="input input-neutral dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
                 />
                 <input
                   type="text"
                   placeholder="Phone number"
                   {...register("number")}
-                  className="input input-neutral"
+                  className="input input-neutral dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
                 />
               </div>
               <textarea
-                className="textarea"
+                className="textarea dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
                 {...register("message")}
                 placeholder="Write your message..."
               ></textarea>
@@ -194,7 +187,7 @@ const Contact = () => {
             <img
               src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
               alt="Team discussion"
-              className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white dark:border-slate-800"
+              className="rounded-3xl shadow-2xl dark:shadow-gray-950/50 w-full h-auto object-cover border-4 border-white dark:border-slate-800"
             />
           </div>
         </div>
@@ -205,7 +198,7 @@ const Contact = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-900 dark:text-white mb-8">
           Find Our Office Location
         </h2>
-        <div className="h-[450px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800">
+        <div className="h-[450px] rounded-3xl overflow-hidden shadow-2xl dark:shadow-gray-950/50 border-4 border-white dark:border-slate-800">
           <iframe
             title="Mymensingh Map"
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3623.3649290800945!2d90.383971!3d24.748674!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37564f19bdffb0d3%3A0xe64dac6c9ade19d8!2z4Ka44KeC4Kaw4KeN4Kav4Kau4KeB4KaW4KeAIOCmleCni-Cnn-CmvuCmn-CmvuCmsA!5e0!3m2!1sen!2sus!4v1765900129028!5m2!1sen!2sus"

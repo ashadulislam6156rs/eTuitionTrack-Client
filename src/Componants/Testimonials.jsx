@@ -59,14 +59,14 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-10 bg-[#fdf7e48e]">
+    <section className="py-10 bg-[#fdf7e48e] dark:bg-gray-900">
       <Container>
         {/* Header */}
         <div className="text-center mb-7">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0D47A1] mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0D47A1] dark:text-blue-400 mb-4">
             What Our Users Say
           </h2>
-          <p className="text-gray-700 max-w-2xl mx-auto">
+          <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
             Teachers, students, and parents simplifying education management
             with eTuitionTrack
           </p>
@@ -88,7 +88,7 @@ const Testimonials = () => {
         >
           {testimonials.map((t, i) => (
             <SwiperSlide key={i}>
-              <div className="bg-[#F9F9F9] h-70 rounded-2xl p-8 shadow-lg  flex flex-col">
+              <div className="bg-[#F9F9F9] dark:bg-gray-800 h-70 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 flex flex-col">
                 <div className="flex items-center mb-5">
                   <div className="w-14 h-14 rounded-full flex items-center justify-center mr-4">
                     <img
@@ -98,16 +98,20 @@ const Testimonials = () => {
                     />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#0D47A1]">
+                    <h3 className="text-lg font-semibold text-[#0D47A1] dark:text-blue-400">
                       {t.name}
                     </h3>
-                    <p className="text-sm text-[#0288D1]">{t.role}</p>
-                    <div className="text-yellow-400 text-sm">★★★★★</div>
+                    <p className="text-sm text-[#0288D1] dark:text-blue-300">
+                      {t.role}
+                    </p>
+                    <div className="text-yellow-400 dark:text-yellow-300 text-sm">
+                      ★★★★★
+                    </div>
                   </div>
                 </div>
 
-                <p className="text-gray-700 leading-relaxed flex-grow">
-                  “{t.text}”
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed flex-grow">
+                  "{t.text}"
                 </p>
               </div>
             </SwiperSlide>
@@ -123,6 +127,15 @@ const Testimonials = () => {
         }
         .swiper-pagination-bullet-active {
           background: #0D47A1;
+          opacity: 1;
+        }
+        
+        html[data-theme="dark"] .swiper-pagination-bullet {
+          background: #60A5FA;
+          opacity: 0.5;
+        }
+        html[data-theme="dark"] .swiper-pagination-bullet-active {
+          background: #3B82F6;
           opacity: 1;
         }
        

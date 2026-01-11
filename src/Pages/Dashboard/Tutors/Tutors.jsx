@@ -38,7 +38,7 @@ const Tutors = () => {
         <Container>
           <div className="pb-5 pt-10">
             <h1 className="text-2xl font-bold text-center">
-              Explore Available Tuitions
+              Explore Available Tutors
             </h1>
             <p className="text-sm text-center md:w-3/4 mx-auto text-base-content/60 py-2">
               Browse verified tuition requests from students and find

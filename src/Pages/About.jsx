@@ -8,10 +8,8 @@ const PRIMARY_COLOR = "#0288D1";
 const BACKGROUND_LIGHT = "#F9F9F9";
 
 const About = () => {
-
-  
   return (
-    <div className="font-sans bg-white transition-colors duration-500">
+    <div className="font-sans bg-white dark:bg-gray-900 transition-colors duration-500">
       {/*  Hero Section */}
       <title>About Us | eTutionTrack</title>
       <section className="relative w-full min-h-[500px] flex items-center justify-center overflow-hidden">
@@ -22,15 +20,18 @@ const About = () => {
             className="w-full h-full object-cover"
           />
           {/* Darker overlay for better text contrast */}
-          <div className="absolute inset-0 bg-slate-900/60"></div>
+          <div className="absolute inset-0 bg-slate-900/60 dark:bg-slate-900/80"></div>
         </div>
 
         <div className="relative z-10 container mx-auto px-6 max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-5 items-center text-white">
           <div className="max-w-xl p-6 md:p-0">
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight pt-10 md:pt-3 mb-6">
-              About <span className="block text-[#F57C00]">eTuitionTrack</span>
+              About{" "}
+              <span className="block text-[#F57C00] dark:text-orange-400">
+                eTuitionTrack
+              </span>
             </h1>
-            <p className="text-xl text-gray-200 mb-10">
+            <p className="text-xl text-gray-200 dark:text-gray-300 mb-10">
               eTuitionTrack is a smart tuition management platform that connects
               students, tutors, and guardians through a modern and transparent
               system. Our goal is to make tuition tracking simple, reliable, and
@@ -44,16 +45,13 @@ const About = () => {
       </section>
 
       {/* Services Section (Consistent Padding) */}
-      <section className="py-10" style={{ backgroundColor: BACKGROUND_LIGHT }}>
+      <section className="py-10 bg-[#F9F9F9] dark:bg-gray-800">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-10">
-            <span
-              style={{ color: PRIMARY_COLOR }}
-              className="text-sm font-extrabold uppercase tracking-widest"
-            >
+            <span className="text-sm font-extrabold uppercase tracking-widest text-[#0288D1] dark:text-blue-400">
               What We Do
             </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mt-2">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mt-2">
               Our Services
             </h2>
           </div>
@@ -86,21 +84,19 @@ const About = () => {
       {/* Our Process (Integrated Component) */}
       <OurProcess />
 
-      <section className="py-10" style={{ backgroundColor: BACKGROUND_LIGHT }}>
+      <section className="py-10 bg-[#F9F9F9] dark:bg-gray-800">
         <div className="container mx-auto px-6 max-w-7xl flex flex-col items-center justify-center gap-16">
           <div className="flex flex-col md:flex-row items-center justify-center gap-16 w-full">
-            <div
-              className="w-60 h-60 rounded-full border-[18px] border-gray-100 flex flex-col items-center justify-center bg-white shadow-2xl transition-all duration-500 hover:scale-105"
-              style={{ borderColor: PRIMARY_COLOR + "20" }}
-            >
-              <span
-                className="text-6xl font-bold"
-                style={{ color: PRIMARY_COLOR }}
-              >
+            <div className="w-60 h-60 rounded-full border-[18px] border-gray-100 dark:border-gray-700 flex flex-col items-center justify-center bg-white dark:bg-gray-900 shadow-2xl dark:shadow-gray-950/50 transition-all duration-500 hover:scale-105">
+              <span className="text-6xl font-bold text-[#0288D1] dark:text-blue-400">
                 5+
               </span>
-              <span className="text-sm font-semibold text-gray-700">Years</span>
-              <span className="text-xs text-gray-500">Experience</span>
+              <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                Years
+              </span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                Experience
+              </span>
             </div>
 
             {/* Stats Grid */}
@@ -119,26 +115,26 @@ const About = () => {
 // --- Subcomponents ---
 
 const ServiceCard = ({ icon, title, text }) => (
-  <div className="bg-white p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center transform hover:-translate-y-1">
-    <div
-      className="w-16 h-16 rounded-full flex items-center justify-center text-3xl mx-auto mb-6 shadow-inner"
-      style={{ backgroundColor: PRIMARY_COLOR + "20", color: PRIMARY_COLOR }}
-    >
+  <div className="bg-white dark:bg-gray-900 p-10 rounded-2xl shadow-lg dark:shadow-gray-950/50 hover:shadow-xl dark:hover:shadow-gray-950/70 transition-all duration-300 text-center transform hover:-translate-y-1">
+    <div className="w-16 h-16 rounded-full flex items-center justify-center text-3xl mx-auto mb-6 shadow-inner bg-[#0288D120] dark:bg-blue-900/30 text-[#0288D1] dark:text-blue-400">
       {icon}
     </div>
-    <h3 className="text-xl font-extrabold text-gray-900 mb-3">{title}</h3>
-    <p className="text-gray-600 text-base">{text}</p>
+    <h3 className="text-xl font-extrabold text-gray-900 dark:text-gray-100 mb-3">
+      {title}
+    </h3>
+    <p className="text-gray-600 dark:text-gray-300 text-base">{text}</p>
   </div>
 );
 
 const Stat = ({ value, label }) => (
   <div className="p-4">
-    <span className="text-5xl font-extrabold text-gray-900 block mb-1">
+    <span className="text-5xl font-extrabold text-gray-900 dark:text-gray-100 block mb-1">
       {value}
     </span>
-    <p className="text-xl font-medium text-gray-600">{label}</p>
+    <p className="text-xl font-medium text-gray-600 dark:text-gray-300">
+      {label}
+    </p>
   </div>
 );
-
 
 export default About;

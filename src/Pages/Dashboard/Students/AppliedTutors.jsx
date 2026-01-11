@@ -130,16 +130,18 @@ const AppliedTutors = () => {
     <div>
       <div className="text-center mt-4">
         <title>Applied Tutors | eTutionTrack</title>
-        <h1 className="text-2xl font-bold">Applied Tutors</h1>
-        <p className="text-sm text-base-content/60 py-2">
+        <h1 className="text-2xl font-bold dark:text-gray-100">
+          Applied Tutors
+        </h1>
+        <p className="text-sm text-base-content/60 dark:text-gray-400 py-2">
           Review all tuition requests that are waiting for approval. Manage
           details and take necessary actions from here.
         </p>
       </div>
       <div className="overflow-x-auto mt-5 rounded-lg">
-        <table className="table bg-white">
+        <table className="table bg-white dark:bg-gray-800">
           {/* head */}
-          <thead className="bg-cyan-500 text-white">
+          <thead className="bg-cyan-500 dark:bg-cyan-700 text-white">
             <tr>
               <th>SL.N</th>
               <th>Tutors Info</th>
@@ -150,7 +152,7 @@ const AppliedTutors = () => {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody className="rounded-lg">
+          <tbody className="rounded-lg dark:text-gray-300">
             {Tutors.length === 0 ? (
               <tr>
                 <td colSpan="7" className="py-10">
@@ -159,18 +161,20 @@ const AppliedTutors = () => {
               </tr>
             ) : (
               Tutors.map((tutor, index) => (
-                <tr key={tutor._id}>
-                  <th>{index + 1}</th>
+                <tr key={tutor._id} className="hover dark:hover:bg-gray-700/50">
+                  <th className="dark:text-gray-300">{index + 1}</th>
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
-                        <div className="mask rounded-full  h-12 w-12">
+                        <div className="mask rounded-full h-12 w-12">
                           <img src={tutor.tutorImage} alt="Avatar" />
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold">{tutor.tutorName}</div>
-                        <div className="text-sm opacity-50">
+                        <div className="font-bold dark:text-gray-200">
+                          {tutor.tutorName}
+                        </div>
+                        <div className="text-sm opacity-50 dark:text-gray-400">
                           {tutor.tutorEmail}
                         </div>
                       </div>
@@ -180,15 +184,15 @@ const AppliedTutors = () => {
                   <td>{tutor.expectedSalary} ৳</td>
                   <td>
                     {tutor.tutorRequestStatus === "Pending" ? (
-                      <span className="badge badge-soft badge-primary">
+                      <span className="badge badge-soft badge-primary dark:bg-blue-900 dark:text-blue-200">
                         Pending
                       </span>
                     ) : tutor.tutorRequestStatus === "Approved" ? (
-                      <span className="badge badge-soft badge-accent">
+                      <span className="badge badge-soft badge-accent dark:bg-green-900 dark:text-green-200">
                         Approved
                       </span>
                     ) : (
-                      <span className="badge badge-soft badge-error">
+                      <span className="badge badge-soft badge-error dark:bg-red-900 dark:text-red-200">
                         {tutor.tutorRequestStatus}
                       </span>
                     )}{" "}
@@ -197,14 +201,14 @@ const AppliedTutors = () => {
                     {tutor.tutorRequestStatus === "Pending" ? (
                       <button
                         onClick={() => handlePayment(tutor)}
-                        className="btn btn-sm bg-[#0D47A1] hover:bg-transparent hover:text-black text-white"
+                        className="btn btn-sm bg-[#0D47A1] dark:bg-blue-700 hover:bg-transparent dark:hover:bg-blue-600 hover:text-black dark:hover:text-white text-white"
                       >
                         Accept Tutor
                       </button>
                     ) : (
                       <button
                         disabled
-                        className="btn opacity-60 btn-sm bg-[#0D47A1] hover:bg-transparent cursor-not-allowed text-white"
+                        className="btn opacity-60 btn-sm bg-[#0D47A1] dark:bg-blue-700 hover:bg-transparent cursor-not-allowed text-white"
                       >
                         Accepted
                       </button>
@@ -215,14 +219,14 @@ const AppliedTutors = () => {
                     <button
                       title="View Tutor Details"
                       onClick={() => handleViewDetails(tutor)}
-                      className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"
+                      className="btn bg-[#0D47A1] dark:bg-blue-700 hover:bg-transparent dark:hover:bg-blue-600 hover:text-black dark:hover:text-white text-white btn-square btn-sm"
                     >
                       <FiEye />
                     </button>
                     <button
                       title="Reject Tutor"
                       onClick={() => handleTutorRejected(tutor, "Rejected")}
-                      className="btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm"
+                      className="btn hover:bg-transparent dark:hover:bg-red-500 hover:text-black dark:hover:text-white bg-red-400 dark:bg-red-600 text-white btn-square btn-sm"
                     >
                       <RxCross2 />
                     </button>
@@ -235,9 +239,9 @@ const AppliedTutors = () => {
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box p-6 sm:p-8 rounded-xl bg-white shadow-lg max-w-lg">
+        <div className="modal-box p-6 sm:p-8 rounded-xl bg-white dark:bg-gray-800 shadow-lg dark:shadow-gray-950/50 max-w-lg">
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary">
+            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary dark:border-blue-500">
               <img
                 src={currentTutor?.tutorImage || "/default-avatar.png"}
                 alt={currentTutor?.tutorImage || "Student"}
@@ -245,34 +249,44 @@ const AppliedTutors = () => {
               />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-800">
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
                 {currentTutor?.tutorName || "No Name"}
               </h3>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 {currentTutor?.tutorEmail}
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-gray-700">
-            <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-              <p className="font-semibold text-gray-600">Experiment</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-gray-700 dark:text-gray-300">
+            <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+              <p className="font-semibold text-gray-600 dark:text-gray-400">
+                Experiment
+              </p>
               <p>{currentTutor?.experience || "-"}</p>
             </div>
-            <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-              <p className="font-semibold text-gray-600">Qualifications</p>
+            <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+              <p className="font-semibold text-gray-600 dark:text-gray-400">
+                Qualifications
+              </p>
               <p>{currentTutor?.qualifications || "-"}</p>
             </div>
-            <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-              <p className="font-semibold text-gray-600">Status</p>
+            <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+              <p className="font-semibold text-gray-600 dark:text-gray-400">
+                Status
+              </p>
               <p>{currentTutor?.tutorRequestStatus || "-"}</p>
             </div>
-            <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-              <p className="font-semibold text-gray-600">Rquest Time</p>
+            <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+              <p className="font-semibold text-gray-600 dark:text-gray-400">
+                Rquest Time
+              </p>
               <p>{formatBDTime(currentTutor?.createdAt || "-")}</p>
             </div>
-            <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-              <p className="font-semibold text-gray-600">Expected Salary</p>
+            <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+              <p className="font-semibold text-gray-600 dark:text-gray-400">
+                Expected Salary
+              </p>
               <p>
                 {currentTutor?.expectedSalary
                   ? `${currentTutor.expectedSalary} BDT`
@@ -282,15 +296,21 @@ const AppliedTutors = () => {
           </div>
 
           {currentTutor?.details && (
-            <div className="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
-              <p className="font-semibold text-gray-600 mb-1">Details</p>
-              <p className="text-gray-700 text-sm">{currentTutor.details}</p>
+            <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm mb-4">
+              <p className="font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                Details
+              </p>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
+                {currentTutor.details}
+              </p>
             </div>
           )}
 
           <div className="modal-action">
             <form method="dialog">
-              <button className="btn btn-primary w-full">Close</button>
+              <button className="btn btn-primary dark:bg-blue-700 dark:border-blue-700 w-full">
+                Close
+              </button>
             </form>
           </div>
         </div>

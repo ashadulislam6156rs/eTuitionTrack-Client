@@ -8,7 +8,7 @@ import logo from "../../assets/eTuitionTrack-logo.png";
 const Footer = () => {
   return (
     <Container>
-      <footer className=" text-gray-600 overflow-hidden">
+      <footer className=" text-gray-600 dark:text-white overflow-hidden">
         <div className="pt-12 pb-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
             {/* Logo and Description */}
@@ -103,7 +103,7 @@ const Footer = () => {
                     />
                     <a
                       href="mailto:support@etuitiontrack.com"
-                      className="hover:text-gray-900 transition-colors"
+                      className="hover:text-gray-900 dark:hover:text-[#F57C00] transition-colors"
                     >
                       support@etuitiontrack.com
                     </a>
@@ -116,7 +116,7 @@ const Footer = () => {
                     />
                     <a
                       href="tel:+880123456789"
-                      className="hover:text-gray-900 transition-colors"
+                      className="hover:text-gray-900 dark:hover:text-[#F57C00] transition-colors"
                     >
                       +880 1234 56789
                     </a>

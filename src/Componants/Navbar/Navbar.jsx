@@ -1,31 +1,32 @@
-import React from 'react';
-import { Link, NavLink, useNavigate } from 'react-router';
-import logo from "../../assets/eTuitionTrack-logo.png"
-import Container from '../Container/Container';
-import { HiUserAdd } from 'react-icons/hi';
-import useAuth from '../../Hooks/useAuth';
-import {  IoLogOutOutline } from 'react-icons/io5';
-import { toast } from 'react-toastify';
-import useRole from '../../Hooks/useRole';
-import Loading from '../Loading/Loading';
+import React from "react";
+import { Link, NavLink, useNavigate } from "react-router";
+import logo from "../../assets/eTuitionTrack-logo.png";
+import Container from "../Container/Container";
+import { HiUserAdd } from "react-icons/hi";
+import useAuth from "../../Hooks/useAuth";
+import { IoLogOutOutline } from "react-icons/io5";
+import { toast } from "react-toastify";
+import useRole from "../../Hooks/useRole";
+import Loading from "../Loading/Loading";
 
-import { MdDashboard } from 'react-icons/md';
+import { MdDashboard } from "react-icons/md";
+import useTheme from "../../Hooks/useTheme";
 
 
 const Navbar = () => {
   const { user, setUser, userLogOut } = useAuth();
 
+  const { setTheme } = useTheme();
+
 
   const navigate = useNavigate();
   const { role, roleLoading } = useRole();
- 
+
   if (roleLoading) {
-    return <Loading></Loading>
+    return <Loading></Loading>;
   }
-  
 
   const handleUserLogOut = () => {
-
     userLogOut()
       .then(() => {
         setUser(null);
@@ -36,11 +37,10 @@ const Navbar = () => {
       .catch((err) => toast.error(`${err.message}`));
   };
 
-
   const handleClick = () => {
     if (role === "Admin") {
       navigate("/dashboard/users-management");
-    } 
+    }
     if (role === "Student") {
       navigate("/dashboard/my-tuitions");
     }
@@ -49,85 +49,87 @@ const Navbar = () => {
     }
   };
 
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
 
-
-    const links = (
-      <>
+  const links = (
+    <>
+      <li>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#F57C00] bg-transparent"
+              : "hover:text-[#F57C00] bg-transparent flex items-center"
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/tuitions"}
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#F57C00] bg-transparent"
+              : "hover:text-[#F57C00] bg-transparent"
+          }
+        >
+          Tuitions
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/tutors"}
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#F57C00] bg-transparent"
+              : "hover:text-[#F57C00] bg-transparent"
+          }
+        >
+          Tutors
+        </NavLink>
+      </li>
+      {user && (
         <li>
-          <NavLink
-            to={"/"}
-            className={({ isActive }) =>
-              isActive
-                ? "text-[#F57C00] bg-transparent"
-                : "hover:text-[#F57C00] bg-transparent flex items-center"
-            }
+          <button
+            onClick={handleClick}
+            className="hover:text-[#F57C00] bg-transparent"
           >
-            Home
-          </NavLink>
+            Dashboard
+          </button>
         </li>
-        <li>
-          <NavLink
-            to={"/tuitions"}
-            className={({ isActive }) =>
-              isActive
-                ? "text-[#F57C00] bg-transparent"
-                : "hover:text-[#F57C00] bg-transparent"
-            }
-          >
-            Tuitions
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={"/tutors"}
-            className={({ isActive }) =>
-              isActive
-                ? "text-[#F57C00] bg-transparent"
-                : "hover:text-[#F57C00] bg-transparent"
-            }
-          >
-            Tutors
-          </NavLink>
-        </li>
-        {user && (
-          <li>
-            <button
-              onClick={handleClick}
-              className="hover:text-[#F57C00] bg-transparent"
-            >
-              Dashboard
-            </button>
-          </li>
-        )}
-        <li>
-          <NavLink
-            to={"/about"}
-            className={({ isActive }) =>
-              isActive
-                ? "text-[#F57C00] bg-transparent"
-                : "hover:text-[#F57C00] bg-transparent"
-            }
-          >
-            About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={"/contact"}
-            className={({ isActive }) =>
-              isActive
-                ? "text-[#F57C00] bg-transparent"
-                : "hover:text-[#F57C00] bg-transparent"
-            }
-          >
-            Contact
-          </NavLink>
-        </li>
-      </>
-    );
+      )}
+      <li>
+        <NavLink
+          to={"/about"}
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#F57C00] bg-transparent"
+              : "hover:text-[#F57C00] bg-transparent"
+          }
+        >
+          About
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/contact"}
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#F57C00] bg-transparent"
+              : "hover:text-[#F57C00] bg-transparent"
+          }
+        >
+          Contact
+        </NavLink>
+      </li>
+    </>
+  );
 
   return (
-    <div>
+    <div className="dark:bg-gray-900">
       <Container>
         <div className="navbar p-0">
           <div className="navbar-start">
@@ -135,7 +137,7 @@ const Navbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost lg:hidden"
+                className="btn btn-ghost lg:hidden dark:text-gray-200"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +158,7 @@ const Navbar = () => {
               {/* Small Device Links */}
               <ul
                 tabIndex="-1"
-                className="menu menu-sm font-bold text-[#0D47A1] dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm font-bold text-[#0D47A1] dark:text-gray-200 dropdown-content bg-base-100 dark:bg-gray-800 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 {links}
               </ul>
@@ -167,13 +169,63 @@ const Navbar = () => {
           </div>
           {/* Large Device  Links*/}
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal font-bold text-[text-[#0D47A1]] px-1">
+            <ul className="menu menu-horizontal font-bold text-[#0D47A1] dark:text-gray-200 px-1">
               {links}
             </ul>
           </div>
 
           {/* Nav End */}
           <div className="navbar-end flex items-center gap-3">
+            {/* Theme Control */}
+            <label className="toggle text-base-content">
+              <input
+                type="checkbox"
+                value="synthwave"
+                className="theme-controller"
+                onChange={(e) => handleTheme(e.target.checked)}
+              />
+
+              <svg
+                aria-label="sun"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2"></path>
+                  <path d="M12 20v2"></path>
+                  <path d="m4.93 4.93 1.41 1.41"></path>
+                  <path d="m17.66 17.66 1.41 1.41"></path>
+                  <path d="M2 12h2"></path>
+                  <path d="M20 12h2"></path>
+                  <path d="m6.34 17.66-1.41 1.41"></path>
+                  <path d="m19.07 4.93-1.41 1.41"></path>
+                </g>
+              </svg>
+
+              <svg
+                aria-label="moon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </g>
+              </svg>
+            </label>
+
             {user ? (
               /* User Dropdown */
               <div className="dropdown dropdown-end relative">
@@ -182,9 +234,8 @@ const Navbar = () => {
                   role="button"
                   className="btn btn-ghost btn-circle avatar flex items-center"
                 >
-                  <div className="w-10 h-10 border-2 border-[#29B6F6] rounded-full overflow-hidden">
+                  <div className="w-10 h-10 border-2 border-[#29B6F6] dark:border-blue-400 rounded-full overflow-hidden">
                     <img
-                      
                       referrerPolicy="no-referrer"
                       alt="User Avatar"
                       src={
@@ -197,16 +248,16 @@ const Navbar = () => {
 
                 <ul
                   tabIndex={0}
-                  className="menu bg-[#fdf7e4] menu-sm dropdown-content rounded-box mt-4 w-52 p-2 shadow-lg shadow-gray-500 z-9999"
+                  className="menu bg-[#fdf7e4] dark:bg-gray-800 menu-sm dropdown-content rounded-box mt-4 w-52 p-2 shadow-lg shadow-gray-500 dark:shadow-gray-700 z-9999"
                 >
                   <div className="ml-3 pb-2">
-                    <h1 className="font-semibold pb-1 text-base text-gray-900 leading-tight">
+                    <h1 className="font-semibold pb-1 text-base text-gray-900 dark:text-gray-100 leading-tight">
                       {user?.displayName}
                     </h1>
 
                     <div
                       className="mt-1 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full 
-                  bg-green-100 text-green-700
+                  bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-200
                   text-xs font-medium"
                     >
                       <svg
@@ -227,7 +278,7 @@ const Navbar = () => {
                     </div>
                   </div>
 
-                  <li className="text-[#0D47A1] font-bold rounded-sm border border-white">
+                  <li className="text-[#0D47A1] dark:text-gray-200 font-bold rounded-sm border border-white dark:border-gray-600">
                     <button
                       onClick={handleClick}
                       className="hover:text-[#F57C00] bg-transparent text-left w-full px-2 py-1 flex items-center gap-2"
@@ -236,55 +287,6 @@ const Navbar = () => {
                       Dashboard
                     </button>
                   </li>
-
-                  {/* Theme Control */}
-                  {/* <label className="toggle text-base-content">
-                      <input
-                        type="checkbox"
-                        value="synthwave"
-                        className="theme-controller"
-                      />
-
-                      <svg
-                        aria-label="sun"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                      >
-                        <g
-                          strokeLinejoin="round"
-                          strokeLinecap="round"
-                          strokeWidth="2"
-                          fill="none"
-                          stroke="currentColor"
-                        >
-                          <circle cx="12" cy="12" r="4"></circle>
-                          <path d="M12 2v2"></path>
-                          <path d="M12 20v2"></path>
-                          <path d="m4.93 4.93 1.41 1.41"></path>
-                          <path d="m17.66 17.66 1.41 1.41"></path>
-                          <path d="M2 12h2"></path>
-                          <path d="M20 12h2"></path>
-                          <path d="m6.34 17.66-1.41 1.41"></path>
-                          <path d="m19.07 4.93-1.41 1.41"></path>
-                        </g>
-                      </svg>
-
-                      <svg
-                        aria-label="moon"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                      >
-                        <g
-                          strokeLinejoin="round"
-                          strokeLinecap="round"
-                          strokeWidth="2"
-                          fill="none"
-                          stroke="currentColor"
-                        >
-                          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-                        </g>
-                      </svg>
-                    </label> */}
 
                   <li>
                     <button

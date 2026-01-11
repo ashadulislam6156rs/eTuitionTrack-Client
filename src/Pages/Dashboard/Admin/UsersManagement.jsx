@@ -27,9 +27,7 @@ const UsersManagement = () => {
     queryKey: ["users-management"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
-      const filterUser = res.data.filter(
-        (user) => user.userRole !== "Admin"
-      );
+      const filterUser = res.data.filter((user) => user.userRole !== "Admin");
       return filterUser;
     },
   });
@@ -184,19 +182,19 @@ const UsersManagement = () => {
     <div>
       <title>Users Management | eTutionTrack</title>
       <div>
-        <h1 className="text-3xl font-bold text-center pt-5">
+        <h1 className="text-3xl font-bold text-center pt-5 dark:text-gray-100">
           Users Management
         </h1>
-        <p className="text-sm text-center md:w-3/4 mx-auto text-base-content/60 pb-7 pt-2">
+        <p className="text-sm text-center md:w-3/4 mx-auto text-base-content/60 dark:text-gray-400 pb-7 pt-2">
           This dashboard allows you to efficiently manage all registered users.
           You can view their profiles, update roles such as Admin, Tutor, or
           Student, monitor contact information, and track registration details
           to keep the user database organized and up-to-date.
         </p>
 
-        <div className="overflow-x-auto bg-white rounded-xl shadow-lg border border-base-300">
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-950/50 border border-base-300 dark:border-gray-700">
           <table className="table">
-            <thead className="bg-cyan-500 text-white text-sm">
+            <thead className="bg-cyan-500 dark:bg-cyan-700 text-white text-sm">
               <tr>
                 <th>#</th>
                 <th>User Info</th>
@@ -208,7 +206,7 @@ const UsersManagement = () => {
               </tr>
             </thead>
 
-            <tbody>
+            <tbody className="dark:text-gray-300">
               {users.length === 0 ? (
                 <tr>
                   <td colSpan="7" className="py-10">
@@ -217,7 +215,7 @@ const UsersManagement = () => {
                 </tr>
               ) : (
                 users?.map((user, index) => (
-                  <tr key={index} className="hover">
+                  <tr key={index} className="hover dark:hover:bg-gray-700/50">
                     <td className="font-bold">{index + 1}</td>
 
                     {/* User info */}
@@ -232,8 +230,10 @@ const UsersManagement = () => {
                           </div>
                         </div>
                         <div>
-                          <div className="font-bold">{user.fullName}</div>
-                          <div className="text-sm opacity-50">
+                          <div className="font-bold dark:text-gray-200">
+                            {user.fullName}
+                          </div>
+                          <div className="text-sm opacity-50 dark:text-gray-400">
                             {user.contactNumber}
                           </div>
                         </div>
@@ -242,7 +242,7 @@ const UsersManagement = () => {
 
                     {/* user email */}
                     <td>
-                      <span className="badge badge-soft badge-primary px-3">
+                      <span className="badge badge-soft badge-primary dark:bg-blue-900 dark:text-blue-200 px-3">
                         {user.email}
                       </span>
                     </td>
@@ -252,10 +252,10 @@ const UsersManagement = () => {
                       <span
                         className={`badge px-3 py-1 ${
                           user.userRole === "Tutor"
-                            ? "badge-secondary"
+                            ? "badge-secondary dark:bg-purple-900 dark:text-purple-200"
                             : user.userRole === "Admin"
-                            ? " badge-primary"
-                            : "badge-neutral"
+                            ? "badge-primary dark:bg-blue-900 dark:text-blue-200"
+                            : "badge-neutral dark:bg-gray-700 dark:text-gray-300"
                         }`}
                       >
                         {user.userRole}
@@ -263,7 +263,7 @@ const UsersManagement = () => {
                     </td>
 
                     {/* Register Time */}
-                    <td className="text-sm opacity-70">
+                    <td className="text-sm opacity-70 dark:text-gray-400">
                       {new Date(user?.createdAt).toLocaleString("en-GB", {
                         timeZone: "Asia/Dhaka",
                       })}
@@ -276,7 +276,7 @@ const UsersManagement = () => {
                         title="Update User Role Admin"
                         onClick={() => updateUserRole(user, "Admin")}
                         disabled={user.userRole === "Admin"}
-                        className={`btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm ${
+                        className={`btn bg-[#0D47A1] dark:bg-blue-700 hover:bg-transparent dark:hover:bg-blue-600 hover:text-black dark:hover:text-white text-white btn-square btn-sm ${
                           user.userRole === "Admin"
                             ? "opacity-30 cursor-not-allowed"
                             : ""
@@ -288,7 +288,7 @@ const UsersManagement = () => {
                         title="Update User Role Student"
                         onClick={() => updateUserRole(user, "Student")}
                         disabled={user.userRole === "Student"}
-                        className={`btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm ${
+                        className={`btn hover:bg-transparent dark:hover:bg-red-500 hover:text-black dark:hover:text-white bg-red-400 dark:bg-red-600 text-white btn-square btn-sm ${
                           user.userRole === "Student"
                             ? "opacity-30 cursor-not-allowed"
                             : ""
@@ -301,7 +301,7 @@ const UsersManagement = () => {
                         title="Update User Role Tutor"
                         onClick={() => updateUserRole(user, "Tutor")}
                         disabled={user.userRole === "Tutor"}
-                        className={`btn hover:bg-transparent hover:text-black btn-square bg-green-500 text-white btn-sm ${
+                        className={`btn hover:bg-transparent dark:hover:bg-green-600 hover:text-black dark:hover:text-white btn-square bg-green-500 dark:bg-green-700 text-white btn-sm ${
                           user.userRole === "Tutor"
                             ? "opacity-30 cursor-not-allowed"
                             : ""
@@ -316,21 +316,21 @@ const UsersManagement = () => {
                       <button
                         title="User Details View"
                         onClick={() => handleUsersViewDetails(user)}
-                        className="btn bg-[#0D47A1] hover:bg-transparent hover:text-black text-white btn-square btn-sm"
+                        className="btn bg-[#0D47A1] dark:bg-blue-700 hover:bg-transparent dark:hover:bg-blue-600 hover:text-black dark:hover:text-white text-white btn-square btn-sm"
                       >
                         <FiEye />
                       </button>
                       <button
                         title="Update User Info"
                         onClick={() => userInfoUpdate(user)}
-                        className="btn hover:bg-transparent hover:text-black btn-square bg-green-500 text-white btn-sm"
+                        className="btn hover:bg-transparent dark:hover:bg-green-600 hover:text-black dark:hover:text-white btn-square bg-green-500 dark:bg-green-700 text-white btn-sm"
                       >
                         <FaRegEdit />
                       </button>
                       <button
                         title="User Delete"
                         onClick={() => handleUserDelete(user)}
-                        className="btn hover:bg-transparent hover:text-black bg-red-400 text-white btn-square btn-sm"
+                        className="btn hover:bg-transparent dark:hover:bg-red-500 hover:text-black dark:hover:text-white bg-red-400 dark:bg-red-600 text-white btn-square btn-sm"
                       >
                         <RiDeleteBinLine />
                       </button>
@@ -346,8 +346,8 @@ const UsersManagement = () => {
           ref={userInfoUpdateModalRef}
           className="modal modal-bottom sm:modal-middle"
         >
-          <div className="modal-box">
-            <h3 className="font-bold text-lg text-center">
+          <div className="modal-box dark:bg-gray-800">
+            <h3 className="font-bold text-lg text-center dark:text-gray-100">
               User Info Update Form
             </h3>
 
@@ -358,16 +358,18 @@ const UsersManagement = () => {
               <div className="form-control w-full md:col-span-2">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text font-semibold">Full name</span>
+                    <span className="label-text dark:text-gray-300 font-semibold">
+                      Full name
+                    </span>
                   </label>
                   <input
                     type="text"
                     {...register("fullName", { required: true })}
                     placeholder="Enter name"
-                    className="input my-1 input-bordered w-full"
+                    className="input my-1 input-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 dark:placeholder-gray-500 w-full"
                   />
                   {errors.fullName && (
-                    <p className="text-xs text-red-500 font-medium">
+                    <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                       Name is required
                     </p>
                   )}
@@ -375,34 +377,37 @@ const UsersManagement = () => {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text font-semibold">Email</span>
+                    <span className="label-text dark:text-gray-300 font-semibold">
+                      Email
+                    </span>
                   </label>
                   <input
                     type="email"
                     {...register("email", { required: true })}
                     placeholder="Enter email"
                     readOnly
-                    className="input my-1 input-bordered w-full"
+                    className="input my-1 input-bordered dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400 w-full"
                   />
                   {errors.email && (
-                    <p className="text-xs text-red-500 font-medium">
+                    <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                       Email is required
                     </p>
                   )}
                 </div>
 
-                <label className="label -mb-3.5">User Image</label>
+                <label className="label dark:text-gray-300 -mb-3.5">
+                  User Image
+                </label>
                 <input
                   type="file"
                   {...register("photoURL")}
-                  className="file-input w-full file-input-bordered"
+                  className="file-input w-full file-input-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100"
                 />
               </div>
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">
-                    {" "}
+                  <span className="label-text dark:text-gray-300 font-semibold">
                     Contact number
                   </span>
                 </label>
@@ -410,10 +415,10 @@ const UsersManagement = () => {
                   type="text"
                   {...register("contactNumber", { required: true })}
                   placeholder="Enter contact number"
-                  className="input my-1 input-bordered w-full"
+                  className="input my-1 input-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 dark:placeholder-gray-500 w-full"
                 />
                 {errors.contactNumber && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Contact Number is required
                   </p>
                 )}
@@ -421,16 +426,18 @@ const UsersManagement = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">User Role</span>
+                  <span className="label-text dark:text-gray-300 font-semibold">
+                    User Role
+                  </span>
                 </label>
                 <input
                   type="text"
                   {...register("userRole", { required: true })}
                   placeholder="Enter user role"
-                  className="input  my-1 input-bordered w-full"
+                  className="input my-1 input-bordered dark:bg-gray-900 dark:border-gray-600 dark:text-gray-100 dark:placeholder-gray-500 w-full"
                 />
                 {errors.userRole && (
-                  <p className="text-xs text-red-500 font-medium">
+                  <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                     Role is required
                   </p>
                 )}
@@ -444,22 +451,23 @@ const UsersManagement = () => {
             </form>
             <div className="modal-action">
               <form method="dialog">
-                <button className="btn">Close</button>
+                <button className="btn dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100">
+                  Close
+                </button>
               </form>
             </div>
           </div>
         </dialog>
 
         {/* User details View */}
-        {/* Open the modal using document.getElementById('ID').showModal() method */}
         <dialog
           ref={userDetailsModalRef}
           className="modal modal-bottom sm:modal-middle"
         >
-          <div className="modal-box p-6 sm:p-8 rounded-xl bg-white shadow-lg max-w-lg">
+          <div className="modal-box p-6 sm:p-8 rounded-xl bg-white dark:bg-gray-800 shadow-lg dark:shadow-gray-950/50 max-w-lg">
             {/* Header */}
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary">
+              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary dark:border-blue-500">
                 <img
                   src={currentUser?.photoURL || "/default-avatar.png"}
                   alt={currentUser?.photoURL || "Student"}
@@ -467,25 +475,33 @@ const UsersManagement = () => {
                 />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-gray-800">
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
                   {currentUser?.fullName || "No Name"}
                 </h3>
-                <p className="text-sm text-gray-500">{currentUser?.email}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  {currentUser?.email}
+                </p>
               </div>
             </div>
 
             {/* Info */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-gray-700">
-              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-                <p className="font-semibold text-gray-600">Contact Number</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-gray-700 dark:text-gray-300">
+              <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+                <p className="font-semibold text-gray-600 dark:text-gray-400">
+                  Contact Number
+                </p>
                 <p>{currentUser?.contactNumber || "-"}</p>
               </div>
-              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-                <p className="font-semibold text-gray-600">Role</p>
+              <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+                <p className="font-semibold text-gray-600 dark:text-gray-400">
+                  Role
+                </p>
                 <p>{currentUser?.userRole || "-"}</p>
               </div>
-              <div className="bg-gray-50 p-3 rounded-lg shadow-sm">
-                <p className="font-semibold text-gray-600">Register Time</p>
+              <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+                <p className="font-semibold text-gray-600 dark:text-gray-400">
+                  Register Time
+                </p>
                 <p>
                   {new Date(currentUser?.createdAt).toLocaleString("en-GB", {
                     timeZone: "Asia/Dhaka",
@@ -496,16 +512,22 @@ const UsersManagement = () => {
 
             {/* Details */}
             {currentUser?.details && (
-              <div className="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
-                <p className="font-semibold text-gray-600 mb-1">Details</p>
-                <p className="text-gray-700 text-sm">{currentUser.details}</p>
+              <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm mb-4">
+                <p className="font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                  Details
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">
+                  {currentUser.details}
+                </p>
               </div>
             )}
 
             {/* Close Button */}
             <div className="modal-action">
               <form method="dialog">
-                <button className="btn btn-primary w-full">Close</button>
+                <button className="btn btn-primary dark:bg-blue-700 dark:border-blue-700 w-full">
+                  Close
+                </button>
               </form>
             </div>
           </div>

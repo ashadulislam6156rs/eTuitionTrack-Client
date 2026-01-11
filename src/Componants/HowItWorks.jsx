@@ -5,32 +5,38 @@ import Container from "./Container/Container";
 export default function HowItWorks() {
   const steps = [
     {
-      icon: <FaPlusCircle className="text-4xl text-[#F57C00]" />,
+      icon: (
+        <FaPlusCircle className="text-4xl text-[#F57C00] dark:text-orange-400" />
+      ),
       title: "Post Your Tuition Requirement",
       desc: "Students register and post tuition needs including class, subject, budget, schedule, and location.",
     },
     {
-      icon: <FaClipboardCheck className="text-4xl text-[#F57C00]" />,
+      icon: (
+        <FaClipboardCheck className="text-4xl text-[#F57C00] dark:text-orange-400" />
+      ),
       title: "Apply or Approve Tuitions",
       desc: "Tutors browse available tuitions and apply, while admins review applications and approve or reject them.",
     },
     {
-      icon: <FaTasks className="text-4xl text-[#F57C00]" />,
+      icon: (
+        <FaTasks className="text-4xl text-[#F57C00] dark:text-orange-400" />
+      ),
       title: "Track and Manage",
       desc: "Admins monitor all activities, students and tutors track class progress, payments, and communication seamlessly.",
     },
   ];
 
   return (
-    <div className="bg-base-200 pt-10">
+    <div className="bg-base-200 dark:bg-gray-800 pt-10">
       <Container>
         <section className="py-5 font-display">
           <div className="mx-auto">
             {/* SECTION TITLE */}
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-4">
               How the Platform Works
             </h2>
-            <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+            <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
               A simple workflow to manage tuitions for students, tutors, and
               admins efficiently.
             </p>
@@ -44,15 +50,15 @@ export default function HowItWorks() {
                   data-aos-delay={index * 150}
                   data-aos-duration="900"
                   data-aos-easing="ease-out-cubic"
-                  className="bg-white rounded-2xl p-4 lg:p-8 shadow-lg text-center border border-gray-100 hover:shadow-2xl transition-all"
+                  className="bg-white dark:bg-gray-900 rounded-2xl p-4 lg:p-8 shadow-lg dark:shadow-gray-950/50 text-center border border-gray-100 dark:border-gray-700 hover:shadow-2xl dark:hover:shadow-gray-950/70 transition-all"
                 >
                   <div className="flex justify-center mb-6">{step.icon}</div>
 
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                     {step.title}
                   </h3>
 
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
