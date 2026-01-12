@@ -109,17 +109,17 @@ const MyApplications = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-5">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-5">
       <title>My Applications | eTutionTrack</title>
       <h1 className="text-3xl font-bold text-center pt-5">My Applications</h1>
-      <p className="text-sm text-center text-gray-400 pb-7 pt-2">
+      <p className="text-sm text-center text-gray-600 dark:text-gray-400 pb-7 pt-2">
         Track all the tuitions you have applied for, including status, subject,
         and student details.
       </p>
 
-      <div className="overflow-x-auto bg-gray-800 rounded-xl shadow-lg border border-gray-700">
-        <table className="table w-full text-gray-100">
-          <thead className="bg-cyan-600 text-white text-sm">
+      <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+        <table className="table w-full text-gray-900 dark:text-gray-100">
+          <thead className="bg-cyan-500 dark:bg-cyan-600 text-white text-sm">
             <tr>
               <th>#</th>
               <th>Subject</th>
@@ -141,9 +141,12 @@ const MyApplications = () => {
               </tr>
             ) : (
               applicatios.map((item, index) => (
-                <tr key={item._id} className="hover:bg-gray-700">
+                <tr
+                  key={item._id}
+                  className="hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
                   <td className="font-bold">{index + 1}</td>
-                  <td className="font-medium text-orange-400">
+                  <td className="font-medium text-orange-600 dark:text-orange-400">
                     {item.subjectName}
                   </td>
                   <td>
@@ -152,7 +155,7 @@ const MyApplications = () => {
                     </span>
                   </td>
                   <td>{item.location}</td>
-                  <td className="font-semibold text-green-400">
+                  <td className="font-semibold text-green-600 dark:text-green-400">
                     {item.expectedSalary}৳
                   </td>
                   <td>
@@ -178,7 +181,7 @@ const MyApplications = () => {
                       title="Edit Application"
                       onClick={() => handleModalShow(item)}
                       disabled={item.tutorRequestStatus === "Approved"}
-                      className={`btn btn-square btn-sm bg-green-500 text-white hover:bg-transparent hover:text-black ${
+                      className={`btn btn-square btn-sm bg-green-500 text-white hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 ${
                         item.tutorRequestStatus === "Approved"
                           ? "opacity-50 cursor-not-allowed"
                           : ""
@@ -191,7 +194,7 @@ const MyApplications = () => {
                       title="Delete Application"
                       onClick={() => handleTutorDelete(item)}
                       disabled={item.tutorRequestStatus === "Approved"}
-                      className={`btn btn-square btn-sm bg-red-500 text-white hover:bg-transparent hover:text-black ${
+                      className={`btn btn-square btn-sm bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 ${
                         item.tutorRequestStatus === "Approved"
                           ? "opacity-50 cursor-not-allowed"
                           : ""
@@ -208,11 +211,8 @@ const MyApplications = () => {
       </div>
 
       {/* Modal */}
-      <dialog
-        ref={modalRef}
-        className="modal modal-bottom sm:modal-middle bg-gray-800 text-gray-100"
-      >
-        <div className="modal-box bg-gray-900 text-gray-100">
+      <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
           <h3 className="font-bold text-lg text-center">
             Tutor Application Update Form
           </h3>
@@ -220,15 +220,17 @@ const MyApplications = () => {
           <form className="space-y-2" onSubmit={handleSubmit(handleUpdateInfo)}>
             <div className="form-control w-full md:col-span-2">
               <label className="label">
-                <span className="label-text font-semibold">Qualifications</span>
+                <span className="label-text dark:text-gray-300 font-semibold">
+                  Qualifications
+                </span>
               </label>
               <textarea
                 {...register("qualifications", { required: true })}
-                className="textarea my-1 textarea-bordered w-full h-24 bg-gray-700 text-gray-100"
+                className="textarea my-1 textarea-bordered w-full h-24 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
                 placeholder="e.g. B.Sc. in CSE...English/Bangla Medium"
               ></textarea>
               {errors.qualifications && (
-                <p className="text-xs text-red-500 font-medium">
+                <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                   Qualifications is required
                 </p>
               )}
@@ -236,16 +238,18 @@ const MyApplications = () => {
 
             <div className="form-control">
               <label className="label">
-                <span className="label-text font-semibold">Experience</span>
+                <span className="label-text dark:text-gray-300 font-semibold">
+                  Experience
+                </span>
               </label>
               <input
                 type="text"
                 {...register("experience", { required: true })}
                 placeholder="e.g. 1 year in Subject....."
-                className="input my-1 input-bordered w-full bg-gray-700 text-gray-100"
+                className="input my-1 input-bordered w-full bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
               />
               {errors.experience && (
-                <p className="text-xs text-red-500 font-medium">
+                <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                   Experience is required
                 </p>
               )}
@@ -253,7 +257,7 @@ const MyApplications = () => {
 
             <div className="form-control">
               <label className="label">
-                <span className="label-text font-semibold">
+                <span className="label-text dark:text-gray-300 font-semibold">
                   Expected Salary
                 </span>
               </label>
@@ -261,10 +265,10 @@ const MyApplications = () => {
                 type="number"
                 {...register("expectedSalary", { required: true })}
                 placeholder="e.g 5000"
-                className="input my-1 input-bordered w-full bg-gray-700 text-gray-100"
+                className="input my-1 input-bordered w-full bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
               />
               {errors.expectedSalary && (
-                <p className="text-xs text-red-500 font-medium">
+                <p className="text-xs text-red-500 dark:text-red-400 font-medium">
                   Expected Salary is required
                 </p>
               )}
@@ -273,7 +277,7 @@ const MyApplications = () => {
             <div className="mt-3">
               <button
                 type="submit"
-                className="myBtn btn bg-green-500 text-gray-900 hover:bg-green-600"
+                className="myBtn btn bg-green-500 text-white hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
               >
                 Submit
               </button>
@@ -282,7 +286,7 @@ const MyApplications = () => {
 
           <div className="modal-action">
             <form method="dialog">
-              <button className="btn bg-gray-700 text-gray-100 hover:bg-gray-600">
+              <button className="btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600">
                 Close
               </button>
             </form>
