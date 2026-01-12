@@ -33,12 +33,12 @@ const RevenueHistory = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-5">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-5">
       <title>My Revenue History | eTutionTrack</title>
       <h1 className="text-3xl font-bold text-center pt-5">
         My Revenue History
       </h1>
-      <p className="text-sm text-center text-gray-400 md:w-3/4 mx-auto pb-7 pt-2">
+      <p className="text-sm text-center text-gray-600 dark:text-gray-400 md:w-3/4 mx-auto pb-7 pt-2">
         A complete summary of all the tuitions you have earned from. Track your
         confirmed payments, student info, subjects, and total revenue generated
         from your tutoring services.
@@ -46,33 +46,35 @@ const RevenueHistory = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
         {/* Card 1 */}
-        <div className="bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-700 hover:shadow-xl transition-all duration-200">
-          <h3 className="text-lg font-semibold text-gray-100">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-200">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
             Total Earnings
           </h3>
-          <p className="text-3xl font-bold text-cyan-400 mt-2">
+          <p className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mt-2">
             ৳ {totalEarnings}
           </p>
-          <p className="text-sm text-gray-400 mt-1">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
             Total revenue earned on the platform
           </p>
         </div>
 
         {/* Card 2 */}
-        <div className="bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-700 hover:shadow-xl transition-all duration-200">
-          <h3 className="text-lg font-semibold text-gray-100">Transactions</h3>
-          <p className="text-3xl font-bold text-cyan-400 mt-2">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-200">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            Transactions
+          </h3>
+          <p className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mt-2">
             {PaidDatas?.length}
           </p>
-          <p className="text-sm text-gray-400 mt-1">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
             Successful transactions recorded
           </p>
         </div>
       </div>
 
-      <div className="overflow-x-auto bg-gray-800 rounded-xl shadow-lg border border-gray-700">
-        <table className="table w-full text-gray-100">
-          <thead className="bg-cyan-600 text-white text-sm">
+      <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+        <table className="table w-full text-gray-900 dark:text-gray-100">
+          <thead className="bg-cyan-500 dark:bg-cyan-600 text-white text-sm">
             <tr>
               <th>#</th>
               <th>Subject</th>
@@ -94,11 +96,14 @@ const RevenueHistory = () => {
               </tr>
             ) : (
               PaidDatas?.map((item, index) => (
-                <tr key={index} className="hover:bg-gray-700">
+                <tr
+                  key={index}
+                  className="hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
                   <td className="font-bold">{index + 1}</td>
 
                   {/* Subject */}
-                  <td className="font-medium text-orange-400">
+                  <td className="font-medium text-orange-600 dark:text-orange-400">
                     {item.subjectName}
                   </td>
 
@@ -113,7 +118,7 @@ const RevenueHistory = () => {
                   <td>{item.location}</td>
 
                   {/* Salary */}
-                  <td className="font-semibold text-green-400">
+                  <td className="font-semibold text-green-600 dark:text-green-400">
                     {item.expectedSalary}৳
                   </td>
 
@@ -138,7 +143,7 @@ const RevenueHistory = () => {
                   </td>
 
                   {/* Student Info */}
-                  <td className="font-semibold text-green-400">
+                  <td className="font-semibold text-green-600 dark:text-green-400">
                     {item.studentEmail}
                   </td>
                 </tr>

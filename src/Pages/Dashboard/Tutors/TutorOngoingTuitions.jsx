@@ -24,19 +24,19 @@ const TutorOngoingTuitions = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-5">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-5">
       <title>My Ongoing Tuitions | eTutionTrack</title>
       <h1 className="text-3xl font-bold text-center pt-5">
         My Ongoing Tuitions
       </h1>
-      <p className="text-sm text-center text-gray-400 pb-7 pt-2">
+      <p className="text-sm text-center text-gray-600 dark:text-gray-400 pb-7 pt-2">
         Keep track of all your ongoing tuition sessions, monitor student
         details, subjects, and stay updated on each class status.
       </p>
 
-      <div className="overflow-x-auto bg-gray-800 rounded-xl shadow-lg border border-gray-700">
-        <table className="table w-full text-gray-100">
-          <thead className="bg-cyan-600 text-white text-sm">
+      <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+        <table className="table w-full text-gray-900 dark:text-gray-100">
+          <thead className="bg-cyan-500 dark:bg-cyan-600 text-white text-sm">
             <tr>
               <th>#</th>
               <th>Subject</th>
@@ -57,11 +57,14 @@ const TutorOngoingTuitions = () => {
               </tr>
             ) : (
               ongoingTutions.map((item, index) => (
-                <tr key={index} className="hover:bg-gray-700">
+                <tr
+                  key={index}
+                  className="hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
                   <td className="font-bold">{index + 1}</td>
 
                   {/* Subject */}
-                  <td className="font-medium text-orange-400">
+                  <td className="font-medium text-orange-600 dark:text-orange-400">
                     {item.subjectName}
                   </td>
 
@@ -76,7 +79,7 @@ const TutorOngoingTuitions = () => {
                   <td>{item.location}</td>
 
                   {/* Expected Salary */}
-                  <td className="font-semibold text-green-400">
+                  <td className="font-semibold text-green-600 dark:text-green-400">
                     {item.expectedSalary}৳
                   </td>
 
