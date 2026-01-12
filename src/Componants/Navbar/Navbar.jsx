@@ -10,14 +10,12 @@ import useRole from "../../Hooks/useRole";
 import Loading from "../Loading/Loading";
 
 import { MdDashboard } from "react-icons/md";
-import useTheme from "../../Hooks/useTheme";
-
+import { useTheme } from "../../Context/ThemeProvider";
 
 const Navbar = () => {
   const { user, setUser, userLogOut } = useAuth();
 
-  const { setTheme } = useTheme();
-
+  const { theme, toggleTheme } = useTheme();
 
   const navigate = useNavigate();
   const { role, roleLoading } = useRole();
@@ -49,9 +47,9 @@ const Navbar = () => {
     }
   };
 
-  const handleTheme = (checked) => {
-    setTheme(checked ? "dark" : "light");
-  };
+  // const handleTheme = (checked) => {
+  //   setTheme(checked ? "dark" : "light");
+  // };
 
   const links = (
     <>
@@ -182,7 +180,8 @@ const Navbar = () => {
                 type="checkbox"
                 value="synthwave"
                 className="theme-controller"
-                onChange={(e) => handleTheme(e.target.checked)}
+                onChange={(e) => toggleTheme(e.target.checked)}
+                checked={theme === "dark"}
               />
 
               <svg

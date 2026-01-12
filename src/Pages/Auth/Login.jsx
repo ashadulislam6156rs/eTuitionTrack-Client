@@ -17,6 +17,7 @@ const Login = () => {
   const {
     handleSubmit,
     register,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -48,6 +49,33 @@ const Login = () => {
       })
       .catch((err) => toast.error(err.message));
   };
+
+  const demoCredentials = {
+    Admin: {
+      email: "ashadulislam@gmail.com",
+      password: "Asd051374",
+    },
+    Student: {
+      email: "ashadulislam5924@gmail.com",
+      password: "Asd05137495",
+    },
+    Tutor: {
+      email: "ratul12@gmail.com",
+      password: "Asd05137495",
+    },
+  };
+
+
+const handleSelectCredentials = (e) => {
+  const role = e.target.value;
+
+  if (!demoCredentials[role]) return;
+
+  setValue("email", demoCredentials[role].email);
+  setValue("password", demoCredentials[role].password);
+
+};
+
 
   return (
     <div className="flex items-center justify-center p-4 min-h-screen">
@@ -153,12 +181,24 @@ const Login = () => {
               )}
             </div>
 
-            <Link className="text-primary dark:text-blue-400 font-bold hover:underline transition-colors">
-              Forget Password?
-            </Link>
+            <div className="flex flex-col md:flex-row justify-between md:items-center mt-2">
+              <Link className="text-primary flex-1 dark:text-blue-400 font-bold hover:underline transition-colors">
+                Forget Password?
+              </Link>
+              <select
+                defaultValue="Auto-fill credentials?"
+                onChange={handleSelectCredentials}
+                className="select appearance-none select-ghost flex-1 focus:border-0 outline-0 -ml-3 md:ml-30 bg-none text-primary dark:text-blue-400 font-bold hover:underline transition-colors cursor-pointer"
+              >
+                <option disabled={true}>Auto-fill credentials?</option>
+                <option value={"Admin"}>Admin</option>
+                <option value={"Student"}>Student</option>
+                <option value={"Tutor"}>Tutor</option>
+              </select>
+            </div>
 
             {/* Login Button */}
-            <button className="btn w-full mt-2 myBtn">
+            <button className="btn w-full myBtn">
               <HiUserAdd className="inline-block" /> LogIn
             </button>
           </form>
